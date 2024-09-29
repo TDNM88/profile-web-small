@@ -3,140 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <title>TDNM Homepage</title>
+    <title>TDNM Gallery Lounge</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-green-900 text-white">
-    <header class="flex justify-between items-center p-4">
-        <div class="flex items-center">
-            <button class="mr-4 star-button">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="gold" viewBox="0 0 24 24">
-                    <path d="M12 .587l3.668 7.431 8.18 1.18-5.91 5.744 1.393 8.12L12 18.897l-7.43 3.908 1.393-8.12-5.91-5.744 8.18-1.18z"/>
-                </svg>
-            </button>
-            <div class="text-3xl font-bold">TDNM Gallery Lounge</div>
-        </div>
-        <div>
-            <button>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <button class="star-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 .587l3.668 7.431 8.18 1.18-5.91 5.744 1.393 8.12L12 18.897l-7.43 3.908 1.393-8.12-5.91-5.744 8.18-1.18z"/>
+                        </svg>
+                    </button>
+                    <h1>TDNM Gallery Lounge</h1>
+                </div>
+                <div class="header-right">
+                    <button id="lounge-button" class="active">Lounge</button>
+                    <button id="gallery-button">Gallery</button>
+                </div>
+            </div>
         </div>
     </header>
-    <main class="p-4">
-        <div class="flex justify-center">
-        <button class="bg-gray-800 text-white px-4 py-2 rounded mr-4" id="lounge-button">Lounge</button>
-        <button class="bg-green-500 text-white px-4 py-2 rounded" id="gallery-button">Gallery</button>
-    </div>
-    <div id="content" class="mt-4 flex flex-col items-center md:items-start gap-12">
-        <div class="flex-c">
-            <h1 class="fw-600 text-32 lh-38 c-text-primary otext-1">Hello friends! Welcome to the Lounge</h1>
-        </div>
-        <div class="text-14 lh-20 c-text-tertiary text-center md:text-left max-w-600 otext-2 text-op-85">
-            *I am Vietnamese, live in Hanoi.
-            <br>
-            *If needed, feel free to contact me.
-        </div>
-    </div>
-</main>
-<script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.0/gradio.js"></script>
-<script>
-    const loungeButton = document.getElementById('lounge-button');
-    const galleryButton = document.getElementById('gallery-button');
-    const contentDiv = document.getElementById('content');
 
-    loungeButton.addEventListener('click', function() {
-        // Đặt lại nội dung về Lounge
-        contentDiv.innerHTML = `
-            <div class="flex-c">
-                <h1 class="fw-600 text-32 lh-38 c-text-primary otext-1">Hello friends! Welcome to the Lounge</h1>
-            </div>
-            <div class="text-14 lh-20 c-text-tertiary text-center md:text-left max-w-600 otext-2 text-op-85">
-                *I am Vietnamese, live in Hanoi.
-                <br>
-                *AI Model Trainer | Apps Dev | AI Artist | Media Producer | Branding Guru
-                <br>
-                *200++ AI models | 50++ Apps & Tool | 1.6+ Runs Model from international artists
-                <br>
-                *1st prize Flux Model Training Event (9-2024), 3rd prize Dragon Year Training Event (2-2024), Top 10 SD3 & HunYuan DiT Training Events (2024)
-            </div>`;
-        
-        // Thay đổi màu nút
-        loungeButton.classList.remove('bg-gray-800', 'text-white');
-        loungeButton.classList.add('bg-green-500', 'text-white');
-        galleryButton.classList.remove('bg-green-500', 'text-white');
-        galleryButton.classList.add('bg-gray-800', 'text-white');
-    });
+    <main>
+        <div class="container">
+            <div id="content" class="lounge-content">
+                <section class="intro">
+                    <h2>Hello friends! Welcome to the Lounge</h2>
+                    <p>This is a place where you can relax, chat, and enjoy some great art.</p>
+                </section>
 
-    galleryButton.addEventListener('click', function() {
-        // Thay đổi nội dung bên trong div có id "content"
-        contentDiv.innerHTML = '<gradio-app src="https://tdn-m-tams-image-gen.hf.space"></gradio-app>';
-        
-        // Thay đổi màu nút
-        galleryButton.classList.remove('bg-gray-800', 'text-white');
-        galleryButton.classList.add('bg-green-500', 'text-white');
-        loungeButton.classList.remove('bg-green-500', 'text-white');
-        loungeButton.classList.add('bg-gray-800', 'text-white');
-    });
-</script>
-        <div class="mt-8">
-            <div class="flex flex-col">
-                <div class="flex items-center mb-4">
-                    <img src="images/logoTREE.png" alt="TDNM Logo" class="mr-4">
-                    <div>
-                        <h3 class="text-lg font-bold">Let's Instagram</h3>
-                        <p class="text-sm">Follow us on Instagram for updates.</p>
-                    </div>
+                <div class="content-wrapper">
+                    <section class="about-me">
+                        <h2>About Me</h2>
+                        <p>Hi, I'm TDNM, an AI artist and model trainer.</p>
+                        <div class="achievements">
+                            <h3>Recent Achievements:</h3>
+                            <ul>
+                                <li>🏆 1st prize Flux Model Training Event (9-2024)</li>
+                                <li>🥉 3rd prize Dragon Year Training Event (2-2024)</li>
+                                <li>🔝 Top 10 SD3 & HunYuan DiT Training Events (2024)</li>
+                            </ul>
+                        </div>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <i class="fas fa-image"></i>
+                                <span class="stat-number">5000+</span>
+                                <span class="stat-label">Images Generated</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-code-branch"></i>
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Models Trained</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-users"></i>
+                                <span class="stat-number">10000+</span>
+                                <span class="stat-label">Community Members</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-star"></i>
+                                <span class="stat-number">4.9</span>
+                                <span class="stat-label">Average Rating</span>
+                            </div>
+                        </div>
+                        <p class="location">Updated on 30th, September, 2024</p>
+                    </section>
+
+                    <section class="featured-models">
+                        <h2>Featured Models</h2>
+                        <div class="model-grid">
+                            <div class="model-card">
+                                <img src="images/model1.jpeg" alt="Flux Best Face Ever-Reborn 1">
+                                <h3>Flux Best Face Ever-Reborn 1</h3>
+                                <p>LORA model for enhanced facial features</p>
+                            </div>
+                            <div class="model-card">
+                                <img src="images/model2.jpeg" alt="FLUX VIET-COSTUME 1">
+                                <h3>FLUX VIET-COSTUME 1</h3>
+                                <p>LORA model for Vietnamese traditional costumes</p>
+                            </div>
+                            <div class="model-card">
+                                <img src="images/model3.jpeg" alt="FLUX WONDER BEAUTY TDNM-V1">
+                                <h3>FLUX WONDER BEAUTY TDNM-V1</h3>
+                                <p>LORA model for stunning beauty effects</p>
+                            </div>
+                            <div class="model-card">
+                                <img src="images/model4.jpeg" alt="FLUX TA Realistic-Legendary">
+                                <h3>FLUX TA Realistic-Legendary</h3>
+                                <p>CHECKPOINT model for realistic legendary characters</p>
+                            </div>
+                        </div>
+                        <div class="view-more-container">
+                            <a href="models.html" class="view-more-button">Xem thêm</a>
+                        </div>
+                    </section>
                 </div>
-                <div class="flex items-center mb-4">
-                    <img src="images/logoTREE.png" alt="Tensor Art Logo" class="mr-4">
-                    <div>
-                        <h3 class="text-lg font-bold">My Proud Stats at Tensor Art</h3>
-                        <p class="text-sm">Check out my achievements at Tensor Art.</p>
-                    </div>
-                </div>
-                <div class="flex items-center mb-4">
-                    <img src="images/logoTREE.png" alt="Homepage Logo" class="mr-4">
-                    <div>
-                        <h3 class="text-lg font-bold">My Homepage</h3>
-                        <p class="text-sm">Visit my homepage for more information.</p>
-                    </div>
-                </div>
-                <div class="flex items-center mb-4">
-                    <img src="images/logoTREE.png" alt="Art Logo" class="mr-4">
-                    <div>
-                        <h3 class="text-lg font-bold">Model List (High Quality) @Tensor Art</h3>
-                        <p class="text-sm">Explore high-quality models at @rensor Art.</p>
             </div>
         </div>
-        <div class="flex items-center mb-4">
-            <img src="images/logoTREE.png" alt="Download Logo" class="mr-4">
-            <div>
-                <h3 class="text-lg font-bold">Model List (all free download) @Shakker</h3>
-                <p class="text-sm">Download all models for free from @Shakker.</p>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="social-icon">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="social-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
             </div>
         </div>
-    </div>
-</div>
-</main>
-<footer class="p-4">
-    <div class="flex justify-between">
-        <div>
-            <button>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    5c.682 0 1.33-.276 1.667-.76A5.825 5.825 0 0 1 21 16c.392 0 .813-.127.813-.293 0-.147-.03-.288-.107-.435C22.388 19.856 24 18.395 24 16 24 14.6 22.4 13.5 21 13.5 19.6 13.5 18.2 14.6 18.2 16 18.2 17.4 19.6 18.2 21 18.2 21 21.355z" />
-                </svg>
-            </button>
-        </div>
-        <div>
-            <button>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.19L19.91 8H3zm5 16v-10l8.9 5.19L15 16z" />
-                </svg>
-            </button>
-        </div>
-    </div>
-</footer>
+    </footer>
+
+    <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.0/gradio.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
