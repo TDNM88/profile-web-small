@@ -26,24 +26,54 @@
     </header>
     <main class="p-4">
         <div class="flex justify-center">
-    <button class="bg-gray-800 text-white px-4 py-2 rounded mr-4" id="lounge-button">Lounge</button>
-    <button class="bg-green-500 text-white px-4 py-2 rounded" id="gallery-button">Gallery</button>
-</div>
-<div id="content" class="mt-4 flex flex-col items-center md:items-start gap-12">
-    <div class="flex-c">
-        <h1 class="fw-600 text-32 lh-38 c-text-primary otext-1">Hello friends! Welcome to the Lounge</h1>
+        <button class="bg-gray-800 text-white px-4 py-2 rounded mr-4" id="lounge-button">Lounge</button>
+        <button class="bg-green-500 text-white px-4 py-2 rounded" id="gallery-button">Gallery</button>
     </div>
-    <div class="text-14 lh-20 c-text-tertiary text-center md:text-left max-w-600 otext-2 text-op-85">
-        *I am Vietnamese, live in Hanoi.
-        <br>
-        *If needed, feel free to contact me.
+    <div id="content" class="mt-4 flex flex-col items-center md:items-start gap-12">
+        <div class="flex-c">
+            <h1 class="fw-600 text-32 lh-38 c-text-primary otext-1">Hello friends! Welcome to the Lounge</h1>
+        </div>
+        <div class="text-14 lh-20 c-text-tertiary text-center md:text-left max-w-600 otext-2 text-op-85">
+            *I am Vietnamese, live in Hanoi.
+            <br>
+            *If needed, feel free to contact me.
+        </div>
     </div>
-</div>
+</main>
 <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.0/gradio.js"></script>
 <script>
-    document.getElementById('gallery-button').addEventListener('click', function() {
+    const loungeButton = document.getElementById('lounge-button');
+    const galleryButton = document.getElementById('gallery-button');
+    const contentDiv = document.getElementById('content');
+
+    loungeButton.addEventListener('click', function() {
+        // Đặt lại nội dung về Lounge
+        contentDiv.innerHTML = `
+            <div class="flex-c">
+                <h1 class="fw-600 text-32 lh-38 c-text-primary otext-1">Hello friends! Welcome to the Lounge</h1>
+            </div>
+            <div class="text-14 lh-20 c-text-tertiary text-center md:text-left max-w-600 otext-2 text-op-85">
+                *I am Vietnamese, live in Hanoi.
+                <br>
+                *If needed, feel free to contact me.
+            </div>`;
+        
+        // Thay đổi màu nút
+        loungeButton.classList.remove('bg-gray-800', 'text-white');
+        loungeButton.classList.add('bg-green-500', 'text-white');
+        galleryButton.classList.remove('bg-green-500', 'text-white');
+        galleryButton.classList.add('bg-gray-800', 'text-white');
+    });
+
+    galleryButton.addEventListener('click', function() {
         // Thay đổi nội dung bên trong div có id "content"
-        document.getElementById('content').innerHTML = '<gradio-app src="https://tdn-m-tams-image-gen.hf.space"></gradio-app>';
+        contentDiv.innerHTML = '<gradio-app src="https://tdn-m-tams-image-gen.hf.space"></gradio-app>';
+        
+        // Thay đổi màu nút
+        galleryButton.classList.remove('bg-gray-800', 'text-white');
+        galleryButton.classList.add('bg-green-500', 'text-white');
+        loungeButton.classList.remove('bg-green-500', 'text-white');
+        loungeButton.classList.add('bg-gray-800', 'text-white');
     });
 </script>
         <div class="mt-8">
