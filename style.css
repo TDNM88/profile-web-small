@@ -9,6 +9,17 @@ header {
     padding: 1rem;
 }
 
+.star-button {
+    background-color: transparent; /* Nền trong suốt */
+    border: none; /* Bỏ viền */
+    cursor: pointer; /* Con trỏ chuột */
+    transition: transform 0.2s; /* Hiệu ứng chuyển động */
+}
+
+.star-button:hover {
+    transform: scale(1.1); /* Phóng to khi hover */
+}
+
 main {
     display: flex;
     justify-content: center;
