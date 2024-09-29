@@ -1,0 +1,75 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex {
+    flex-direction: column;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-col > div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.flex-col > div > img {
+    margin-right: 1rem;
+}
+
+.flex-col > div > div {
+    flex: 1;
+}
+
+.flex-col > div > div > h3 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.flex-col > div > div > p {
+    font-size: 0.875rem;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+footer > div {
+    display: flex;
+    align-items: center;
+}
+
+footer > div > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+footer > div > button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
