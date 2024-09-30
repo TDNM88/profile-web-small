@@ -1,10 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const loungeButton = document.getElementById('lounge-button');
     const galleryButton = document.getElementById('gallery-button');
-    const contentDiv = document.getElementById('content');
-
-    // Lưu trữ nội dung ban đầu của trang Lounge
-    const initialLoungeContent = contentDiv.innerHTML;
 
     function setActiveButton(activeButton, inactiveButton) {
         activeButton.classList.add('active');
@@ -12,15 +8,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     loungeButton.addEventListener('click', function() {
-        // Khôi phục nội dung ban đầu của trang Lounge
-        contentDiv.innerHTML = initialLoungeContent;
-        contentDiv.className = 'lounge-content';
-        setActiveButton(loungeButton, galleryButton);
+        window.location.href = 'index.html';
     });
 
     galleryButton.addEventListener('click', function() {
-        contentDiv.innerHTML = '<gradio-app src="https://tdn-m-tams-image-gen.hf.space"></gradio-app>';
-        contentDiv.className = 'gallery-content';
-        setActiveButton(galleryButton, loungeButton);
+        window.location.href = 'app.html';
     });
+
+    // Kiểm tra trang hiện tại và đặt nút active tương ứng
+    if (window.location.pathname.includes('app.html')) {
+        setActiveButton(galleryButton, loungeButton);
+    } else {
+        setActiveButton(loungeButton, galleryButton);
+    }
 });
