@@ -317,3 +317,59 @@ footer {
     border-radius: 8px;
     padding: 1rem;
 }
+
+.app-description {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.app-instructions {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.app-instructions h3 {
+    color: var(--accent-color);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.app-instructions ol, .app-instructions ul {
+    padding-left: 1.5rem;
+}
+
+.app-instructions li {
+    margin-bottom: 0.5rem;
+}
+
+.tips-limitations {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.tips-limitations h3 {
+    font-size: 1.2rem;
+}
+
+.tips-limitations > div {
+    flex: 1;
+    margin: 0 1rem;
+}
+
+@media (max-width: 768px) {
+    .tips-limitations {
+        flex-direction: column;
+    }
+
+    .tips-limitations > div {
+        margin: 1rem 0;
+    }
+}
+
+.gradio-container {
+    margin-top: 2rem;
+}

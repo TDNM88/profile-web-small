@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TDNM Gallery Lounge - App</title>
+    <title>TDNM Gallery Lounge - AI Content Creator</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.0/gradio.js"></script>
@@ -31,8 +31,47 @@
     <main>
         <div class="container">
             <div class="app-content">
-                <h2>TDNM AI App</h2>
-                <p>Experience the power of AI-generated art with our interactive app.</p>
+                <h2>AI Content Creator</h2>
+                <div class="app-description">
+                    <p>Chào mừng bạn đến với ứng dụng Tạo Nội dung và Video AI của chúng tôi. Dưới đây là hướng dẫn sử dụng chi tiết:</p>
+                </div>
+                <div class="app-instructions">
+                    <h3>Tạo Nội dung</h3>
+                    <ol>
+                        <li>Truy cập tab "Tạo Nội dung".</li>
+                        <li>Nhập yêu cầu viết nội dung.</li>
+                        <li>Chọn thể loại và ngôn ngữ.</li>
+                        <li>Nhấn "Tạo nội dung" và chỉnh sửa nếu cần.</li>
+                    </ol>
+
+                    <h3>Tạo Âm thanh</h3>
+                    <ol>
+                        <li>Chuyển sang tab "Tạo Âm thanh".</li>
+                        <li>Chọn giọng đọc và tạo file âm thanh.</li>
+                    </ol>
+
+                    <h3>Tạo Video</h3>
+                    <ol>
+                        <li>Chuyển sang tab "Tạo Video".</li>
+                        <li>Tải lên hình ảnh và tạo video.</li>
+                    </ol>
+
+                    <div class="tips-limitations">
+                        <h3>Mẹo sử dụng</h3>
+                        <ul>
+                            <li>Viết yêu cầu cụ thể để có kết quả tốt nhất.</li>
+                            <li>Thử nghiệm với các giọng đọc khác nhau.</li>
+                            <li>Sử dụng hình ảnh chất lượng cao.</li>
+                        </ul>
+
+                        <h3>Hạn chế</h3>
+                        <ul>
+                            <li>Giới hạn về độ dài nội dung và thời lượng.</li>
+                            <li>Chất lượng phụ thuộc vào yêu cầu đầu vào.</li>
+                            <li>Tính năng video chất lượng cao có thể bị hạn chế.</li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="gradio-container">
                     <gradio-app src="https://tdn-m-my-app.hf.space"></gradio-app>
                 </div>
