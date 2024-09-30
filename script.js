@@ -21,4 +21,21 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         setActiveButton(loungeButton, galleryButton);
     }
+
+    // Xử lý accordion
+    const accordionButtons = document.querySelectorAll('.accordion-button');
+    
+    accordionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.nextElementSibling;
+            content.classList.toggle('active');
+            
+            // Đóng các mục khác khi mở một mục mới
+            accordionButtons.forEach(otherButton => {
+                if (otherButton !== button) {
+                    otherButton.nextElementSibling.classList.remove('active');
+                }
+            });
+        });
+    });
 });

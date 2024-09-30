@@ -373,3 +373,49 @@ footer {
 .gradio-container {
     margin-top: 2rem;
 }
+
+.accordion {
+    margin-bottom: 2rem;
+}
+
+.accordion-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.accordion-button {
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-button:hover {
+    background-color: var(--primary-color);
+}
+
+.accordion-content {
+    padding: 0 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.accordion-content.active {
+    padding: 1rem;
+    max-height: 500px; /* Điều chỉnh giá trị này nếu cần */
+}
+
+.accordion-content ol, .accordion-content ul {
+    padding-left: 1.5rem;
+}
+
+.accordion-content li {
+    margin-bottom: 0.5rem;
+}
