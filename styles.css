@@ -38,6 +38,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 20px 0;
 }
 
 .header-left {
@@ -418,4 +419,113 @@ footer {
 
 .accordion-content li {
     margin-bottom: 0.5rem;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.header-left h1 {
+    font-size: 2rem;
+    margin-left: 10px;
+}
+
+.header-right button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+.lounge-content {
+    padding: 20px 0;
+}
+
+.intro, .about-me, .featured-models {
+    margin-bottom: 40px;
+}
+
+.intro h2, .about-me h2, .featured-models h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.intro p, .about-me p, .featured-models p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.achievements, .stats {
+    margin-top: 20px;
+}
+
+.achievements h3, .stats .stat-item {
+    margin-bottom: 10px;
+}
+
+.achievements ul {
+    list-style: none;
+    padding: 0;
+}
+
+.achievements ul li {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stat-item {
+    flex: 1 1 200px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.stat-item i {
+    font-size: 2rem;
+    margin-right: 10px;
+}
+
+.model-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.model-card {
+    flex: 1 1 200px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.model-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.view-more-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.view-more-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.view-more-button:hover {
+    background-color: #0056b3;
 }
