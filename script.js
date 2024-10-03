@@ -32,12 +32,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Kiểm tra trang hiện tại và đặt nút active tương ứng
     if (window.location.pathname.includes('app.html')) {
+        setActiveButton(myAppsButton, loungeButton);
+    } else if (window.location.pathname.includes('gallery.html')) {
         setActiveButton(galleryButton, loungeButton);
     } else {
         setActiveButton(loungeButton, galleryButton);
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
     // Xử lý accordion
     const accordionButtons = document.querySelectorAll('.accordion-button');
     
