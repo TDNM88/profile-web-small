@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setActiveButton(loungeButton, galleryButton);
     }
 
+    document.addEventListener('DOMContentLoaded', () => {
     // Xử lý accordion
     const accordionButtons = document.querySelectorAll('.accordion-button');
     
