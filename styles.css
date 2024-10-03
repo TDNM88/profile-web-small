@@ -237,14 +237,17 @@ footer {
 }
 
 .accordion-content {
-    display: none;
+    max-height: 0;
+    overflow: hidden;
     background-color: var(--surface-color);
-    padding: 1rem;
+    padding: 0 1rem; /* Padding top/bottom set to 0 for smooth transition */
     border-top: 1px solid var(--primary-color);
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
 }
 
 .accordion-content.active {
-    display: block;
+    max-height: 500px; /* Adjust as needed to fit content */
+    padding: 1rem; /* Restore padding when active */
 }
 
 @media (max-width: 768px) {
