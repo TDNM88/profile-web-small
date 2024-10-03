@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TDNM Gallery Lounge</title>
@@ -14,14 +12,15 @@
                 <div class="header-left">
                     <button class="star-button">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M12 .587l3.668 7.431 8.18 1.18-5.91 5.744 1.393 8.12L12 18.897l-7.43 3.908 1.393-8.12-5.91-5.744 8.18-1.18z"/>
+                            <path d="M12 .587l3.668 7.431 8.18 1.18-5.91 5.744 1.393 8.12L12 18.897l-7.43 3.908 1.393-8.12-5.91-5.744 8.18-1.18z"></path>
                         </svg>
                     </button>
                     <h1>TDNM Gallery Lounge</h1>
                 </div>
                 <div class="header-right">
-                    <button id="lounge-button" class="active">Lounge</button>
-                    <button id="gallery-button">Gallery</button>
+                    <a href="index.html" id="lounge-button" class="nav-button active">Lounge</a>
+                    <a href="gallery.html" id="gallery-button" class="nav-button">Gallery</a>
+                    <a href="app.html" id="my-apps-button" class="nav-button">My Apps</a>
                 </div>
             </div>
         </div>
@@ -30,74 +29,74 @@
     <main>
         <div class="container">
             <div id="content" class="lounge-content">
-                <section class="intro">
-                    <h2>Hello friends! Welcome to the Lounge</h2>
-                    <p>This is a place where you can relax, chat, and enjoy some great art.</p>
-                </section>
-
-                <div class="content-wrapper">
-                    <section class="about-me">
-                        <h2>About Me</h2>
-                        <p>Hi, I'm TDNM, an AI artist and model trainer.</p>
-                        <div class="achievements">
-                            <h3>Recent Achievements:</h3>
-                            <ul>
+                <section class="about-me" style="text-align: center; background-image: url('images/artwork9.jpg'); background-size: cover; background-position: center;">
+                    <div style="background-color: rgba(0, 0, 0, 0.8); padding: 20px;">
+                        <h1 class="fade-in" style="color: rgb(200, 197, 57);">Welcome to the Gallery</h1>
+                        <p class="fade-in">I am TDNM, an AI Artist & Model Trainer. Feel free to explore my work and contact me for any inquiries.</p>
+                        <h2 class="slide-in" style="margin-bottom: 10px;">Recent Achievements:</h2>
+                        <div class="achievements-container" style="margin-top: 0;">
+                            <ul class="slide-in" style="display: inline-block; text-align: left; font-size: 1.2em;">
                                 <li>🏆 1st prize Flux Model Training Event (9-2024)</li>
+                                <li>🏆 1st prize AI Tools on Tensor Art (7-2024)</li>
                                 <li>🥉 3rd prize Dragon Year Training Event (2-2024)</li>
                                 <li>🔝 Top 10 SD3 & HunYuan DiT Training Events (2024)</li>
                             </ul>
                         </div>
-                        <div class="stats">
-                            <div class="stat-item">
-                                <i class="fas fa-image"></i>
-                                <span class="stat-number">5000+</span>
-                                <span class="stat-label">Artwork Collections</span>
-                            </div>
-                            <div class="stat-item">
-                                <i class="fas fa-code-branch"></i>
-                                <span class="stat-number">200+</span>
-                                <span class="stat-label">Models Trained and Published</span>
-                            </div>
-                            <div class="stat-item">
-                                <i class="fas fa-users"></i>
-                                <span class="stat-number">1.6M++</span>
-                                <span class="stat-label">Users around the World</span>
-                            </div>
-                            <div class="stat-item">
-                                <i class="fas fa-star"></i>
-                                <span class="stat-number">50+</span>
-                                <span class="stat-label">Apps Published</span>
-                            </div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <i class="fas fa-image"></i>
+                            <span class="stat-number">5000+</span>
+                            <span class="stat-label">Artwork Collections</span>
                         </div>
-                        <p class="location">Updated on 30th, September, 2024</p>
-                    </section>
+                        <div class="stat-item">
+                            <i class="fas fa-code-branch"></i>
+                            <span class="stat-number">200+</span>
+                            <span class="stat-label">Models Trained and Published</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-users"></i>
+                            <span class="stat-number">1.6M++</span>
+                            <span class="stat-label">Users around the World</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-star"></i>
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Apps Published</span>
+                        </div>
+                    </div>
+                    <p class="location" style="color: black; font-style: italic; font-weight: 300;">Updated on 30th, September, 2024</p>
+                </section>
+
+                <div class="content-wrapper">
+                    
 
                     <section class="featured-models">
                         <h2>Featured Models</h2>
                         <div class="model-grid">
                             <div class="model-card">
-                                <img src="images/model1.jpeg" alt="Flux Best Face Ever-Reborn 1">
+                                <img src="images/model1.jpg" alt="Flux Best Face Ever-Reborn 1">
                                 <h3>Flux Best Face Ever-Reborn 1</h3>
                                 <p>LORA model for enhanced facial features</p>
                             </div>
                             <div class="model-card">
-                                <img src="images/model2.jpeg" alt="FLUX VIET-COSTUME 1">
+                                <img src="images/model2.jpg" alt="FLUX VIET-COSTUME 1">
                                 <h3>FLUX VIET-COSTUME 1</h3>
                                 <p>LORA model for Vietnamese traditional costumes</p>
                             </div>
                             <div class="model-card">
-                                <img src="images/model3.jpeg" alt="FLUX WONDER BEAUTY TDNM-V1">
+                                <img src="images/model3.jpg" alt="FLUX WONDER BEAUTY TDNM-V1">
                                 <h3>FLUX WONDER BEAUTY TDNM-V1</h3>
                                 <p>LORA model for stunning beauty effects</p>
                             </div>
                             <div class="model-card">
-                                <img src="images/model4.jpeg" alt="FLUX TA Realistic-Legendary">
+                                <img src="images/model4.jpg" alt="FLUX TA Realistic-Legendary">
                                 <h3>FLUX TA Realistic-Legendary</h3>
                                 <p>CHECKPOINT model for realistic legendary characters</p>
                             </div>
                         </div>
                         <div class="view-more-container">
-                            <a href="models.html" class="view-more-button">Xem thêm</a>
+                            <a href="gallery.html" class="view-more-button">ENTER THE GALLERY</a>
                         </div>
                     </section>
                 </div>
@@ -125,5 +124,5 @@
     </footer>
 
     <script src="script.js"></script>
-</body>
-</html>
+
+</body></html>

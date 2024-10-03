@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const loungeButton = document.getElementById('lounge-button');
     const galleryButton = document.getElementById('gallery-button');
+    const myAppsButton = document.getElementById('my-apps-button');
 
     function setActiveButton(activeButton, inactiveButton) {
         activeButton.classList.add('active');
@@ -8,10 +9,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     loungeButton.addEventListener('click', function() {
-        window.location.href = 'index.html';
+        loungeButton.classList.add('active');
+        galleryButton.classList.remove('active');
+        myAppsButton.classList.remove('active');
+        // Thêm logic để hiển thị nội dung Lounge
     });
 
     galleryButton.addEventListener('click', function() {
+        galleryButton.classList.add('active');
+        loungeButton.classList.remove('active');
+        myAppsButton.classList.remove('active');
+        // Thêm logic để hiển thị nội dung Gallery
+    });
+
+    myAppsButton.addEventListener('click', function() {
+        myAppsButton.classList.add('active');
+        loungeButton.classList.remove('active');
+        galleryButton.classList.remove('active');
+        // Chuyển hướng đến trang My Apps
         window.location.href = 'app.html';
     });
 
