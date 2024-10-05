@@ -421,28 +421,48 @@ p, li {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: var(--surface-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+    color: #fff; /* Màu chữ trắng */
+    text-decoration: none; /* Loại bỏ gạch chân */
+}
+
+.gallery-item a {
+    text-decoration: none; /* Loại bỏ gạch chân */
+    color: inherit; /* Sử dụng màu chữ của phần tử cha */
+    display: block; /* Đảm bảo toàn bộ mục có thể nhấp */
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
 }
 
 .gallery-item img {
     width: 100%;
-    height: auto;
-    aspect-ratio: 2 / 3;
+    height: 300px;
     object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
 .item-info {
     margin-top: 10px;
-    text-align: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
 }
 
 .item-info h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.2em;
     margin: 5px 0;
+    color: #e6be45; /* Màu chữ trắng */
 }
 
 .item-info p {
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
-    color: #555;
+    color: #fff; /* Màu chữ trắng */
 }
