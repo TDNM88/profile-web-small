@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDNM Gallery Lounge - Ứng dụng Tạo Sinh Hình Ảnh 1</title>
+    <link rel="stylesheet" href="../apps/app-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.0/gradio.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <button class="star-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        
+                            <path d="M12 .587l3.668 7.431 8.18 1.18-5.91 5.744 1.393 8.12L12 18.897l-7.43 3.908 1.393-8.12-5.91-5.744 8.18-1.18z"/>
+                        </svg>
+                    </button>
+                    <h1>TDNM Gallery Lounge</h1>
+                </div>
+                <div class="header-right">
+                    <a href="/index.html" id="lounge-button" class="nav-button">Lounge</a>
+                    <a href="/gallery.html" id="gallery-button" class="nav-button active">Gallery</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <div class="app-content">
+                <h2>Tạo âm nhạc cùng AI</h2>
+                <div class="app-description">
+                    <p>Sau text, images, video thì bây giờ là musique...</p>
+                    <div class="module"> 
+                        <gradio-app src="https://tdn-m-musicgen-streaming.hf.space"></gradio-app>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="social-icon">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="social-icon">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
