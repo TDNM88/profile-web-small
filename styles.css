@@ -3,8 +3,8 @@
 :root {
     --primary-color: #3b82f6;
     --secondary-color: #10b981;
-    --background-color: #0f172a;
-    --surface-color: #1e293b;
+    --background-color: #7f9adb;
+    --surface-color: #313e52;
     --text-color: #e2e8f0;
     --accent-color: #fbbf24;
 }
@@ -465,4 +465,326 @@ p, li {
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
     color: #fff; /* Màu chữ trắng */
+}
+
+/* CSS cho section "SẢN PHẨM NỔI BẬT" */
+.featured-products {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.featured-products h2 {
+    font-size: 2.5em;
+    color: #f3efef;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.featured-products h2::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background-color: #ff6f61;
+    margin: 10px auto;
+}
+
+.product-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px;
+    width: 45%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.product-card h3 {
+    font-size: 1.8em;
+    color: #333;
+    margin: 20px 0 10px;
+}
+
+.product-card p {
+    font-size: 1.2em;
+    color: #666;
+    padding: 0 20px 20px;
+}
+
+.view-more-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.view-more-button:hover {
+    background-color: #e55b50;
+}
+
+/* CSS cho trang media_production.html */
+.media-production {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.media-production h2 {
+    font-size: 2.5em;
+    color: #f3efef;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+.media-production {
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 40px 0;
+    text-align: center;
+}
+
+.media-production h2::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background-color: #ff6f61;
+    margin: 10px auto;
+}
+
+.intro-text {
+    font-size: 1.2em;
+    color: #f6f5f5;
+    margin-bottom: 40px;
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.media-card {
+    background-color: #f9ea62;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.media-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.media-video {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.media-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.media-info {
+    padding: 20px;
+}
+
+.media-info h3 {
+    font-size: 1.8em;
+    color: #0f75eb;
+    margin-bottom: 10px;
+}
+
+.media-info p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.media-info ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.media-info ul li {
+    font-size: 1.1em;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.media-features {
+    margin: 60px 0;
+}
+
+.media-features h2 {
+    font-size: 2.5em;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.media-features h2::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background-color: #ff6f61;
+    margin: 10px auto;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.feature-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.feature-card h3 {
+    font-size: 1.8em;
+    color: #333;
+    margin: 20px 0 10px;
+}
+
+.feature-card p {
+    font-size: 1.2em;
+    color: #666;
+    padding: 0 20px 20px;
+}
+
+.media-testimonials {
+    margin: 60px 0;
+}
+
+.media-testimonials h2 {
+    font-size: 2.5em;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.media-testimonials h2::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background-color: #ff6f61;
+    margin: 10px auto;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.testimonial-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 20px auto;
+    display: block;
+}
+
+.testimonial-card p {
+    font-size: 1.2em;
+    color: #666;
+    padding: 0 20px 20px;
+    text-align: center;
+}
+
+.testimonial-card h4 {
+    font-size: 1.5em;
+    color: #333;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.testimonial-card span {
+    display: block;
+    font-size: 1.1em;
+    color: #444;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .media-grid, .feature-grid, .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .media-card, .feature-card, .testimonial-card {
+        width: 100%;
+    }
 }
