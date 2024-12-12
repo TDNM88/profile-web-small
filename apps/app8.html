@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDNM Gallery Lounge - Ứng dụng TTS Real-time</title>
+    <link rel="stylesheet" href="../apps/app-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.0/gradio.js"></script>
+    <title>Image Downloader</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.1.0/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.7.1/dist/jszip.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      @apply bg-gray-100;
+    }
+    #app {
+      @apply container mx-auto p-8;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <button class="star-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        
+                            <path d="M12 .587l3.668 7.431 8.18 1.18-5.91 5.744 1.393 8.12L12 18.897l-7.43 3.908 1.393-8.12-5.91-5.744 8.18-1.18z"/>
+                        </svg>
+                    </button>
+                    <h1>TDNM Gallery Lounge</h1>
+                </div>
+                <div class="header-right">
+                    <a href="/index.html" id="lounge-button" class="nav-button">Lounge</a>
+                    <a href="/gallery.html" id="gallery-button" class="nav-button active">Gallery</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="app">
+    <div class="p-6 bg-white rounded-lg shadow-md">
+      <h2 class="text-2xl font-bold mb-4">Image Downloader</h2>
+      <div class="mb-4">
+        <label for="inputUrls" class="block text-gray-700 font-medium mb-2">Paste URLs (one per line):</label>
+        <textarea v-model="inputUrls" id="inputUrls" rows="6" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter image URLs"></textarea>
+      </div>
+      <button @click="extractUrls" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2">Extract URLs</button>
+      <button @click="downloadZip" :disabled="!canDownload" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Download ZIP</button>
+      <div v-if="error" class="text-red-500 mt-2">
+        {{ error }}
+      </div>
+
+      <div v-if="urls.length > 0" class="mt-4">
+        <h3 class="text-xl font-medium mb-2">Extracted URLs:</h3>
+        <ul class="list-disc list-inside">
+          <li v-for="(url, index) in urls" :key="index" class="flex items-center">
+            <span>{{ url }}</span>
+            <button @click="removeUrl(index)" class="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline">Remove</button>
+          </li>
+        </ul>
+      </div>
+      <div v-if="downloading" class="mt-4 text-center">
+        <span class="text-gray-700">Downloading...</span>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        inputUrls: '',
+        urls: [],
+        error: null,
+        downloading: false,
+      },
+      computed: {
+        canDownload() {
+          return this.urls.length > 0 && !this.downloading;
+        }
+      },
+      methods: {
+        extractUrls() {
+          this.error = null;
+          this.urls = this.inputUrls.split('\n').map(url => url.trim()).filter(url => url !== '');
+          if(this.urls.length === 0){
+            this.error = "No URLs found"
+          }
+        },
+        removeUrl(index) {
+          this.urls.splice(index, 1);
+        },
+        async downloadZip() {
+          this.error = null;
+          this.downloading = true;
+          const zip = new JSZip();
+          try {
+            for (let i = 0; i < this.urls.length; i++) {
+              const url = this.urls[i];
+              const response = await fetch(url);
+              if (!response.ok) {
+                throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
+              }
+              const blob = await response.blob();
+              const filename = `image${i + 1}.${url.split('.').pop()}`;
+              zip.file(filename, blob);
+            }
+            const zipBlob = await zip.generateAsync({ type: 'blob' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(zipBlob);
+            link.download = 'images.zip';
+            link.click();
+          } catch (error) {
+            this.error = `Download failed: ${error.message}`;
+          } finally {
+            this.downloading = false;
+          }
+        }
+      }
+    });
+  </script>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="social-icon">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="social-icon">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
