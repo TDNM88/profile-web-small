@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tài Xỉu Hiện Đại</title>
+<style>
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#dice-container {
+    display: flex;
+    margin-top: 20px;
+}
+
+.die {
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+}
+
+#result {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+#controls {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div id="game-container">
+    <h2>Tài Xỉu Hiện Đại</h2>
+    <div id="dice-container">
+        <div class="die" id="die1">?</div>
+        <div class="die" id="die2">?</div>
+        <div class="die" id="die3">?</div>
+    </div>
+    <div id="result"></div>
+    <div id="controls">
+        <button onclick="rollDice()">Lắc Xúc Xắc</button>
+    </div>
+    <div id="message"></div>
+</div>
+
+<script>
+function rollDice() {
+    const die1 = document.getElementById('die1');
+    const die2 = document.getElementById('die2');
+    const die3 = document.getElementById('die3');
+    const result = document.getElementById('result');
+    const message = document.getElementById('message');
+
+    const totalPoints = Math.floor(Math.random() * 6) + 1 + Math.floor(Math.random() * 6) + 1 + Math.floor(Math.random() * 6) + 1;
+
+    die1.textContent = Math.floor(Math.random() * 6) + 1;
+    die2.textContent = Math.floor(Math.random() * 6) + 1;
+    die3.textContent = Math.floor(Math.random() * 6) + 1;
+
+    if (totalPoints > 10) {
+        result.textContent = 'Tài';
+    } else if (totalPoints < 10) {
+        result.textContent = 'Xỉu';
+    } else {
+        result.textContent = 'Hòa';
+    }
+
+    message.textContent = 'Đừng chơi cờ bạc nữa, bạn sẽ mất tất cả!';
+}
+</script>
+</body>
+</html>
