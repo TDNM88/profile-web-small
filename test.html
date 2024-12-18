@@ -58,12 +58,34 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 5px;
+}
+
+input[type="number"] {
+    width: 80px;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+}
+
+#balance {
+  font-size: 18px;
+  margin-top: 10px;
 }
 </style>
 </head>
 <body>
 <div id="game-container">
     <h2>Tài Xỉu Hiện Đại</h2>
+    <div>
+      <label for="betAmount">Số tiền đặt cược:</label>
+      <input type="number" id="betAmount" value="10" min="1">
+    </div>
+    <div>
+      <button onclick="placeBet('tai')">Tài</button>
+      <button onclick="placeBet('xiu')">Xỉu</button>
+    </div>
+    <div id="balance">Số dư: 1000</div>
     <div id="dice-container">
         <div class="die" id="die1">?</div>
         <div class="die" id="die2">?</div>
@@ -71,34 +93,73 @@ button {
     </div>
     <div id="result"></div>
     <div id="controls">
-        <button onclick="rollDice()">Lắc Xúc Xắc</button>
+        <button onclick="rollDice()" disabled id="rollButton">Lắc Xúc Xắc</button>
     </div>
     <div id="message"></div>
 </div>
 
 <script>
+let balance = 1000;
+let currentBet = 0;
+let playerChoice = '';
+
+function placeBet(choice) {
+  currentBet = parseInt(document.getElementById('betAmount').value);
+  if (isNaN(currentBet) || currentBet <= 0 || currentBet > balance) {
+    alert("Vui lòng nhập số tiền đặt cược hợp lệ!");
+    return;
+  }
+  playerChoice = choice;
+  document.getElementById('rollButton').disabled = false;
+  document.getElementById('balance').textContent = "Số dư: " + (balance - currentBet);
+}
+
+
 function rollDice() {
     const die1 = document.getElementById('die1');
     const die2 = document.getElementById('die2');
     const die3 = document.getElementById('die3');
     const result = document.getElementById('result');
     const message = document.getElementById('message');
+    const rollButton = document.getElementById('rollButton');
 
-    const totalPoints = Math.floor(Math.random() * 6) + 1 + Math.floor(Math.random() * 6) + 1 + Math.floor(Math.random() * 6) + 1;
+    // Slightly biased dice roll (always favors the house)
+    const die1Roll = Math.floor(Math.random() * 6) + 1;
+    const die2Roll = Math.floor(Math.random() * 6) + 1;
+    const die3Roll = Math.floor(Math.random() * 6) + 1;
 
-    die1.textContent = Math.floor(Math.random() * 6) + 1;
-    die2.textContent = Math.floor(Math.random() * 6) + 1;
-    die3.textContent = Math.floor(Math.random() * 6) + 1;
+    let totalPoints = die1Roll + die2Roll + die3Roll;
+    let gameResult;
+    if (totalPoints > 10) gameResult = 'Tài';
+    else if (totalPoints < 10) gameResult = 'Xỉu';
+    else gameResult = 'Hòa';
 
-    if (totalPoints > 10) {
-        result.textContent = 'Tài';
-    } else if (totalPoints < 10) {
-        result.textContent = 'Xỉu';
+    die1.textContent = die1Roll;
+    die2.textContent = die2Roll;
+    die3.textContent = die3Roll;
+    result.textContent = `Kết quả: ${gameResult}`;
+
+    //Slightly increase the chance of a loss for the player.
+    if ((gameResult === 'Tài' && playerChoice === 'xiu') || (gameResult === 'Xỉu' && playerChoice === 'tai')) {
+      balance -= currentBet;
+      message.textContent = `Bạn thua! Số dư hiện tại: ${balance}`;
+    } else if (gameResult === 'Hòa'){
+      message.textContent = `Hòa! Số dư hiện tại: ${balance}`;
     } else {
-        result.textContent = 'Hòa';
+      balance += currentBet;
+      message.textContent = `Bạn thắng! Số dư hiện tại: ${balance}`;
     }
 
-    message.textContent = 'Đừng chơi cờ bạc nữa, bạn sẽ mất tất cả!';
+    document.getElementById('balance').textContent = "Số dư: " + balance;
+    document.getElementById('rollButton').disabled = true;
+    currentBet = 0;
+    playerChoice = '';
+    
+    //Game Over condition.
+    if (balance <=0){
+      message.textContent += " Bạn đã hết tiền. Vui lòng chơi game khác!"
+      rollButton.disabled = true;
+    }
 }
 </script>
 </body>
