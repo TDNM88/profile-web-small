@@ -138,12 +138,16 @@
 </head>
 <body>
     <div class="container">
-        <!-- Left Panel -->
-        <div class="side-screen">
-            <p>Đăng ký ngay</p>
-            <button>Danh sách chờ</button>
+        <!-- Left Panel - Đăng ký -->
+        <div class="side-panel">
+            <h2>Đăng ký ngay</h2>
+            <p>Nhận thông báo khi chúng tôi ra mắt và nhận ưu đãi đặc biệt dành cho người dùng đầu tiên!</p>
+            <form id="registerForm">
+                <input type="email" placeholder="Nhập email của bạn" required
+                       style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 20px; border: none;">
+                <button type="submit">Danh sách chờ</button>
+            </form>
         </div>
-
         <!-- Main smartphone -->
         <div class="smartphone">
             <div class="camera"></div>
@@ -165,11 +169,49 @@
             <div class="button"></div>
         </div>
 
-        <!-- Right Panel -->
-        <div class="side-screen">
-            <p>Tìm hiểu thêm</p>
-            <button>Khám phá</button>
+        <!-- Right Panel - Tính năng -->
+        <div class="side-panel">
+            <h2>Tính năng nổi bật</h2>
+            <p>Khám phá sức mạnh của VideoGenius với các tính năng đột phá:</p>
+            <button onclick="showFeatures()">Xem chi tiết</button>
         </div>
     </div>
+
+    <script>
+        // Xử lý form đăng ký
+        const form = document.getElementById('registerForm');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = form.querySelector('input').value;
+            if (validateEmail(email)) {
+                // Gửi dữ liệu
+                fetch('/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email: email })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Đăng ký thành công! Cảm ơn bạn.');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            } else {
+                alert('Vui lòng nhập email hợp lệ.');
+            }
+        });
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        function showFeatures() {
+            alert('Các tính năng chính:\n- Tạo video AI tự động\n- Hỗ trợ đa ngôn ngữ\n- Thư viện MC ảo đa dạng\n- Xử lý video siêu tốc');
+        }
+    </script>
 </body>
 </html>
