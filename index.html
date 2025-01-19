@@ -3,25 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VideoGenius - Sắp ra mắt</title>
+    <title>VideoGenius - Coming Soon</title>
     <style>
-        /* Reset CSS */
-        * {
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
             background: url('./images/blurred_image_30.png') no-repeat center center fixed;
             background-size: cover;
             color: white;
-            font-family: 'Arial', sans-serif;
-            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
         }
 
         .container {
@@ -31,6 +25,49 @@
             max-width: 1200px;
             width: 100%;
             margin: 0 auto;
+            padding: 20px;
+        }
+
+        .side-screen {
+            width: 200px;
+            height: 360px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .side-screen p {
+            margin: 0 0 20px 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .side-screen button {
+            width: 160px;
+            padding: 12px 20px;
+            background: linear-gradient(45deg, #007bff, #00bfff);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        .side-screen button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
         }
 
         /* Smartphone Design */
@@ -54,7 +91,7 @@
             content: '';
             width: 60px;
             height: 6px;
-            background: #555;
+            background: #444;
             border-radius: 10px;
             position: absolute;
             top: 15px;
@@ -65,21 +102,21 @@
         .camera {
             width: 12px;
             height: 12px;
-            background: #444;
+            background: #333;
             border-radius: 50%;
             position: absolute;
             top: 18px;
             left: 50%;
             transform: translateX(-50%);
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
 
         .screen {
             width: calc(100% - 32px);
-            height: calc(100% - 80px);
+            height: calc(100% - 70px);
             background: black;
-            margin: 50px 16px;
-            border-radius: 25px;
+            margin: 40px 16px;
+            border-radius: 20px;
             overflow: hidden;
             display: flex;
             justify-content: center;
@@ -87,92 +124,27 @@
             position: relative;
         }
 
-        /* Side Panels */
-        .side-panel {
-            width: 280px;
-            height: 400px;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-
-        .side-panel:hover {
-            transform: translateY(-10px);
-        }
-
-        .side-panel h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        .side-panel p {
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .side-panel button {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #007bff, #00bfff);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .side-panel button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                gap: 30px;
-            }
-
-            .smartphone {
-                width: 300px;
-                height: 600px;
-            }
-
-            .side-panel {
-                width: 100%;
-                height: auto;
-                padding: 20px;
-            }
+        .button {
+            width: 30px;
+            height: 6px;
+            background: #444;
+            border-radius: 10px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Left Panel - Đăng ký -->
-        <div class="side-panel">
-            <h2>Đăng ký ngay</h2>
-            <p>Nhận thông báo khi chúng tôi ra mắt và nhận ưu đãi đặc biệt dành cho người dùng đầu tiên!</p>
-            <form id="registerForm">
-                <input type="email" placeholder="Nhập email của bạn" required
-                       style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 20px; border: none;">
-                <button type="submit">Danh sách chờ</button>
-            </form>
+        <!-- Left Panel -->
+        <div class="side-screen">
+            <p>Đăng ký ngay</p>
+            <button>Danh sách chờ</button>
         </div>
 
-        <!-- Main Smartphone -->
+        <!-- Main smartphone -->
         <div class="smartphone">
             <div class="camera"></div>
             <div class="screen">
@@ -190,51 +162,14 @@
                 </blockquote>
                 <script async src="https://www.tiktok.com/embed.js"></script>
             </div>
+            <div class="button"></div>
         </div>
 
-        <!-- Right Panel - Tính năng -->
-        <div class="side-panel">
-            <h2>Tính năng nổi bật</h2>
-            <p>Khám phá sức mạnh của VideoGenius với các tính năng đột phá:</p>
-            <button onclick="showFeatures()">Xem chi tiết</button>
+        <!-- Right Panel -->
+        <div class="side-screen">
+            <p>Tìm hiểu thêm</p>
+            <button>Khám phá</button>
         </div>
     </div>
-
-    <script>
-        // Xử lý form đăng ký
-        const form = document.getElementById('registerForm');
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = form.querySelector('input').value;
-            if (validateEmail(email)) {
-                // Gửi dữ liệu
-                fetch('/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email: email })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    alert('Đăng ký thành công! Cảm ơn bạn.');
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            } else {
-                alert('Vui lòng nhập email hợp lệ.');
-            }
-        });
-
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(String(email).toLowerCase());
-        }
-
-        function showFeatures() {
-            alert('Các tính năng chính:\n- Tạo video AI tự động\n- Hỗ trợ đa ngôn ngữ\n- Thư viện MC ảo đa dạng\n- Xử lý video siêu tốc');
-        }
-    </script>
 </body>
 </html>
