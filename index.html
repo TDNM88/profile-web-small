@@ -3,99 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VideoGenius - Coming Soon</title>
+    <title>VideoGenius - Sắp ra mắt</title>
     <style>
-        body {
+        /* Reset CSS */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             background: url('./images/blurred_image_30.png') no-repeat center center fixed;
             background-size: cover;
             color: white;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
+            padding: 20px;
         }
 
         .container {
             display: flex;
-            gap: 20px;
+            gap: 40px;
             align-items: center;
             max-width: 1200px;
+            width: 100%;
             margin: 0 auto;
-            padding: 20px;
         }
 
+        /* Smartphone Design */
         .smartphone {
             width: 360px;
             height: 720px;
             background: #111;
             border: 16px solid #333;
-            border-radius: 30px;
+            border-radius: 40px;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
         .smartphone::before {
             content: '';
-            width: 50px;
-            height: 4px;
+            width: 60px;
+            height: 6px;
             background: #555;
             border-radius: 10px;
             position: absolute;
-            top: 10px;
+            top: 15px;
             left: 50%;
             transform: translateX(-50%);
         }
 
+        .camera {
+            width: 12px;
+            height: 12px;
+            background: #444;
+            border-radius: 50%;
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+        }
+
         .screen {
             width: calc(100% - 32px);
-            height: calc(100% - 70px);
+            height: calc(100% - 80px);
             background: black;
-            margin: 40px 16px;
-            border-radius: 20px;
+            margin: 50px 16px;
+            border-radius: 25px;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
         }
 
+        /* Side Panels */
         .side-panel {
-            width: 200px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 20px;
+            width: 280px;
+            height: 400px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .side-panel:hover {
+            transform: translateY(-10px);
+        }
+
+        .side-panel h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .side-panel p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .side-panel button {
             width: 100%;
-            padding: 10px;
-            margin-top: 15px;
-            background: #007bff;
+            padding: 12px;
+            background: linear-gradient(135deg, #007bff, #00bfff);
             color: white;
             border: none;
-            border-radius: 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
         }
 
         .side-panel button:hover {
-            background: #0056b3;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .smartphone {
+                width: 300px;
+                height: 600px;
+            }
+
+            .side-panel {
+                width: 100%;
+                height: auto;
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Left Panel -->
+        <!-- Left Panel - Đăng ký -->
         <div class="side-panel">
-            <p>Đăng ký ngay</p>
-            <button>Danh sách chờ</button>
+            <h2>Đăng ký ngay</h2>
+            <p>Nhận thông báo khi chúng tôi ra mắt và nhận ưu đãi đặc biệt dành cho người dùng đầu tiên!</p>
+            <form id="registerForm">
+                <input type="email" placeholder="Nhập email của bạn" required
+                       style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 20px; border: none;">
+                <button type="submit">Danh sách chờ</button>
+            </form>
         </div>
 
         <!-- Main Smartphone -->
         <div class="smartphone">
+            <div class="camera"></div>
             <div class="screen">
                 <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@showthesecret/video/7461541393450716424" 
                     data-video-id="7461541393450716424" 
@@ -113,11 +192,49 @@
             </div>
         </div>
 
-        <!-- Right Panel -->
+        <!-- Right Panel - Tính năng -->
         <div class="side-panel">
-            <p>Tìm hiểu thêm</p>
-            <button>Khám phá</button>
+            <h2>Tính năng nổi bật</h2>
+            <p>Khám phá sức mạnh của VideoGenius với các tính năng đột phá:</p>
+            <button onclick="showFeatures()">Xem chi tiết</button>
         </div>
     </div>
+
+    <script>
+        // Xử lý form đăng ký
+        const form = document.getElementById('registerForm');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = form.querySelector('input').value;
+            if (validateEmail(email)) {
+                // Gửi dữ liệu
+                fetch('/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email: email })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Đăng ký thành công! Cảm ơn bạn.');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            } else {
+                alert('Vui lòng nhập email hợp lệ.');
+            }
+        });
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        function showFeatures() {
+            alert('Các tính năng chính:\n- Tạo video AI tự động\n- Hỗ trợ đa ngôn ngữ\n- Thư viện MC ảo đa dạng\n- Xử lý video siêu tốc');
+        }
+    </script>
 </body>
 </html>
