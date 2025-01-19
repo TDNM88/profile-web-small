@@ -231,6 +231,26 @@
             margin-bottom: 1rem;
             line-height: 1.6;
         }
+
+        /* Hiệu ứng reveal */
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 1s ease;
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Delay cho các phần tử */
+    .reveal:nth-child(1) { transition-delay: 0.1s; }
+    .reveal:nth-child(2) { transition-delay: 0.3s; }
+    .reveal:nth-child(3) { transition-delay: 0.5s; }
+    .reveal:nth-child(4) { transition-delay: 0.7s; }
+    .reveal:nth-child(5) { transition-delay: 0.9s; }
+    .reveal:nth-child(6) { transition-delay: 1.1s; }
     </style>
 </head>
 <body>
@@ -248,35 +268,36 @@
         <!-- Horizontal sections -->
         <div class="horizontal-grid">
             <!-- Info panel -->
-            <div class="info-panel">
-                <!-- Phần giới thiệu VideoGenius -->
-                <div class="intro-section">
-                    <h1>VideoGenius - Ứng Dụng Tạo Video AI Hàng Đầu</h1>
-                    <p>
-                        VideoGenius là giải pháp sáng tạo video thông minh sử dụng công nghệ Trí Tuệ Nhân Tạo tiên tiến. Với VideoGenius, bạn có thể dễ dàng tạo ra những video chuyên nghiệp chỉ trong vài phút mà không cần bất kỳ kỹ năng chỉnh sửa video nào.
-                    </p>
+            <!-- Thêm class reveal vào các phần tử -->
+<div class="info-panel">
+    <div class="intro-section">
+        <h1 class="reveal">VideoGenius - Ứng Dụng Tạo Video AI Hàng Đầu</h1>
+        <p class="reveal">
+            VideoGenius là giải pháp sáng tạo video thông minh sử dụng công nghệ Trí Tuệ Nhân Tạo tiên tiến. Với VideoGenius, bạn có thể dễ dàng tạo ra những video chuyên nghiệp chỉ trong vài phút mà không cần bất kỳ kỹ năng chỉnh sửa video nào.
+        </p>
 
-                    <h2>Tính năng nổi bật:</h2>
-                    <ul>
-                        <li>Tự động hóa toàn bộ quy trình sản xuất video</li>
-                        <li>Hỗ trợ tạo kịch bản, lồng tiếng và thêm phụ đề tự động</li>
-                        <li>Thư viện MC ảo đa dạng với nhiều phong cách khác nhau</li>
-                        <li>Tích hợp công nghệ AI giọng nói tự nhiên, đa ngôn ngữ</li>
-                        <li>Xuất video chất lượng cao với nhiều định dạng khác nhau</li>
-                    </ul>
+        <h2 class="reveal">Tính năng nổi bật:</h2>
+        <ul class="reveal">
+            <li>Tự động hóa toàn bộ quy trình sản xuất video</li>
+            <li>Hỗ trợ tạo kịch bản, lồng tiếng và thêm phụ đề tự động</li>
+            <li>Thư viện MC ảo đa dạng với nhiều phong cách khác nhau</li>
+            <li>Tích hợp công nghệ AI giọng nói tự nhiên, đa ngôn ngữ</li>
+            <li>Xuất video chất lượng cao với nhiều định dạng khác nhau</li>
+        </ul>
 
-                    <h2>Lợi ích khi sử dụng:</h2>
-                    <ul>
-                        <li>Tiết kiệm thời gian và chi phí sản xuất</li>
-                        <li>Dễ dàng tạo video cho mọi mục đích: Marketing, Giáo dục, Giải trí</li>
-                        <li>Giao diện thân thiện, dễ sử dụng cho mọi đối tượng</li>
-                        <li>Hỗ trợ tạo video hàng loạt với chất lượng ổn định</li>
-                    </ul>
+        <h2 class="reveal">Lợi ích khi sử dụng:</h2>
+        <ul class="reveal">
+            <li>Tiết kiệm thời gian và chi phí sản xuất</li>
+            <li>Dễ dàng tạo video cho mọi mục đích: Marketing, Giáo dục, Giải trí</li>
+            <li>Giao diện thân thiện, dễ sử dụng cho mọi đối tượng</li>
+            <li>Hỗ trợ tạo video hàng loạt với chất lượng ổn định</li>
+        </ul>
 
-                    <p>
-                        VideoGenius là công cụ hoàn hảo cho doanh nghiệp, nhà sáng tạo nội dung và bất kỳ ai muốn tạo video chuyên nghiệp một cách nhanh chóng và hiệu quả. Hãy trải nghiệm sức mạnh của AI trong sản xuất video ngay hôm nay!
-                    </p>
-                </div>
+        <p class="reveal">
+            VideoGenius là công cụ hoàn hảo cho doanh nghiệp, nhà sáng tạo nội dung và bất kỳ ai muốn tạo video chuyên nghiệp một cách nhanh chóng và hiệu quả. Hãy trải nghiệm sức mạnh của AI trong sản xuất video ngay hôm nay!
+        </p>
+    </div>
+</div>
 
                 <!-- Grid hiển thị các MC -->
                 <div class="mc-grid">
@@ -331,6 +352,26 @@
         document.getElementById('tryNowBtn').addEventListener('click', function() {
             document.getElementById('registrationPanel').style.display = 'flex';
         });
+
+        // Scroll reveal animation
+    function reveal() {
+        const reveals = document.querySelectorAll('.reveal');
+        
+        for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const elementTop = reveals[i].getBoundingClientRect().top;
+            const elementVisible = 150;
+
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add('active');
+            } else {
+                reveals[i].classList.remove('active');
+            }
+        }
+    }
+
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
     </script>
 </body>
 </html>
