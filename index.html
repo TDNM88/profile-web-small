@@ -16,26 +16,70 @@
             height: 100vh;
             font-family: Arial, sans-serif;
         }
-        .embed-container {
-            text-align: center;
+
+        .smartphone {
+            width: 360px;
+            height: 720px;
+            background-color: #111;
+            border: 16px solid #333;
+            border-radius: 30px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .smartphone::before {
+            content: '';
+            width: 50px;
+            height: 4px;
+            background-color: #555;
+            border-radius: 10px;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .smartphone::after {
+            content: '';
+            width: 80px;
+            height: 5px;
+            background-color: #333;
+            border-radius: 10px;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .screen {
+            width: 100%;
+            height: calc(100% - 40px);
+            background: black;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
         }
     </style>
 </head>
 <body>
-    <div class="embed-container">
-        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@showthesecret/video/7461541393450716424" 
-            data-video-id="7461541393450716424" 
-            style="max-width: 605px; min-width: 325px;">
-            <section>
-                <a target="_blank" title="@showthesecret" href="https://www.tiktok.com/@showthesecret?refer=embed">@showthesecret</a> 
-                VideoGenius - Tạo Video Siêu Tốc 
-                <a title="tdnm" target="_blank" href="https://www.tiktok.com/tag/tdnm?refer=embed">#tdnm</a> 
-                <a title="aivideo" target="_blank" href="https://www.tiktok.com/tag/aivideo?refer=embed">#aivideo</a> 
-                <a title="aiapps" target="_blank" href="https://www.tiktok.com/tag/aiapps?refer=embed">#aiapps</a> 
-                <a target="_blank" title="♬ nhạc nền  - ShowtheSecret" href="https://www.tiktok.com/music/nhạc-nền-ShowtheSecret-7461541481338211089?refer=embed">♬ nhạc nền - ShowtheSecret</a>
-            </section>
-        </blockquote>
-        <script async src="https://www.tiktok.com/embed.js"></script>
+    <div class="smartphone">
+        <div class="screen">
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@showthesecret/video/7461541393450716424" 
+                data-video-id="7461541393450716424" 
+                style="max-width: 320px; min-width: 280px; margin: 0 auto;">
+                <section>
+                    <a target="_blank" title="@showthesecret" href="https://www.tiktok.com/@showthesecret?refer=embed">@showthesecret</a> 
+                    VideoGenius - Tạo Video Siêu Tốc 
+                    <a title="tdnm" target="_blank" href="https://www.tiktok.com/tag/tdnm?refer=embed">#tdnm</a> 
+                    <a title="aivideo" target="_blank" href="https://www.tiktok.com/tag/aivideo?refer=embed">#aivideo</a> 
+                    <a title="aiapps" target="_blank" href="https://www.tiktok.com/tag/aiapps?refer=embed">#aiapps</a> 
+                    <a target="_blank" title="♬ nhạc nền  - ShowtheSecret" href="https://www.tiktok.com/music/nhạc-nền-ShowtheSecret-7461541481338211089?refer=embed">♬ nhạc nền - ShowtheSecret</a>
+                </section>
+            </blockquote>
+            <script async src="https://www.tiktok.com/embed.js"></script>
+        </div>
     </div>
 </body>
 </html>
