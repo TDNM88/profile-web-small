@@ -3,215 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VideoGenius - Coming Soon</title>
+    <title>VideoGenius - Ứng dụng Tạo Video AI</title>
     <style>
-        body {
+        /* Reset CSS */
+        * {
             margin: 0;
             padding: 0;
-            background: url('./images/blurred_image_30.png') no-repeat center center fixed;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            background-image: url('/images/bg.png');
             background-size: cover;
-            color: white;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: rgb(116, 10, 10);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            font-family: 'Arial', sans-serif;
+            padding: 2rem;
         }
 
-        .container {
-            display: flex;
-            gap: 40px;
-            align-items: center;
+        /* Main container */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 375px 1fr;
+            gap: 2rem;
             max-width: 1200px;
             width: 100%;
-            margin: 0 auto;
-            padding: 20px;
+            height: 80vh;
         }
 
-        .side-screen {
-            width: 200px;
-            height: 360px;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 30px;
+        /* Vertical smartphone section */
+        .vertical-section {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .side-screen p {
-            margin: 0 0 20px 0;
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .side-screen button {
-            width: 160px;
-            padding: 12px 20px;
-            background: linear-gradient(45deg, #007bff, #00bfff);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
-        }
-
-        .side-screen button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
-        }
-
-        /* Smartphone Design */
-        .smartphone {
-            width: 360px;
-            height: 720px;
-            background: #111;
-            border: 16px solid #333;
+        /* TikTok device */
+        .device {
+            width: 375px;
+            height: 667px;
+            background: #222;
             border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             position: relative;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .smartphone::before {
-            content: '';
-            width: 60px;
-            height: 6px;
-            background: #444;
-            border-radius: 10px;
-            position: absolute;
-            top: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .camera {
-            width: 12px;
-            height: 12px;
-            background: #333;
-            border-radius: 50%;
-            position: absolute;
-            top: 18px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-        }
-
-        .screen {
-            width: calc(100% - 32px);
-            height: calc(100% - 70px);
-            background: black;
-            margin: 40px 16px;
-            border-radius: 20px;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .device .screen {
+            width: 90%;
+            height: 90%;
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
             position: relative;
         }
 
-        .button {
-            width: 30px;
-            height: 6px;
-            background: #444;
-            border-radius: 10px;
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+        .device .screen iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            object-fit: cover;
+        }
+
+        /* Horizontal sections */
+        .horizontal-grid {
+            display: grid;
+            grid-template-rows: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        /* Panels styling */
+        .registration-panel, .info-panel {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .panel h2 {
+            font-size: 1.5rem;
+            color: #00ff88;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 25px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            outline: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: #00ff88;
+            color: black;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #00cc66;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1200px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Left Panel - Đăng ký -->
-        <div class="side-screen">
-            <h2>Đăng ký ngay</h2>
-            <p>Nhận thông báo khi chúng tôi ra mắt và nhận ưu đãi đặc biệt dành cho người dùng đầu tiên!</p>
-            <form id="registerForm">
-                <input type="email" placeholder="Nhập email của bạn" required
-                       style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 20px; border: none;">
-                <button type="submit">Danh sách chờ</button>
-            </form>
-        </div>
-        <!-- Main smartphone -->
-        <div class="smartphone">
-            <div class="camera"></div>
-            <div class="screen">
-                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@showthesecret/video/7461541393450716424" 
-                    data-video-id="7461541393450716424" 
-                    style="max-width: 320px; min-width: 280px; margin: 0 auto;">
-                    <section>
-                        <a target="_blank" title="@showthesecret" href="https://www.tiktok.com/@showthesecret?refer=embed">@showthesecret</a> 
-                        VideoGenius - Tạo Video Siêu Tốc 
-                        <a title="tdnm" target="_blank" href="https://www.tiktok.com/tag/tdnm?refer=embed">#tdnm</a> 
-                        <a title="aivideo" target="_blank" href="https://www.tiktok.com/tag/aivideo?refer=embed">#aivideo</a> 
-                        <a title="aiapps" target="_blank" href="https://www.tiktok.com/tag/aiapps?refer=embed">#aiapps</a> 
-                        <a target="_blank" title="♬ nhạc nền  - ShowtheSecret" href="https://www.tiktok.com/music/nhạc-nền-ShowtheSecret-7461541481338211089?refer=embed">♬ nhạc nền - ShowtheSecret</a>
-                    </section>
-                </blockquote>
-                <script async src="https://www.tiktok.com/embed.js"></script>
+    <div class="main-grid">
+        <!-- TikTok video display -->
+        <div class="vertical-section">
+            <div class="device">
+                <div class="screen">
+                    <iframe 
+                        src="https://www.tiktok.com/embed/7461541393450716424" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
-            <div class="button"></div>
         </div>
 
-        <!-- Right Panel - Tính năng -->
-        <div class="side-screen">
-            <h2>Tính năng nổi bật</h2>
-            <p>Khám phá sức mạnh của VideoGenius với các tính năng đột phá:</p>
-            <button onclick="showFeatures()">Xem chi tiết</button>
+        <!-- Horizontal sections -->
+        <div class="horizontal-grid">
+            <!-- Registration panel -->
+            <div class="registration-panel">
+                <h2>Đăng Ký Ngay</h2>
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="Họ và tên" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <button type="submit" class="btn">Đăng Ký</button>
+                </form>
+            </div>
+
+            <!-- Info panel -->
+            <div class="info-panel">
+                <h2>Tìm Hiểu Thêm</h2>
+                <p>Khám phá tính năng tạo video AI tiên tiến, giúp bạn sáng tạo video nhanh chóng, chuyên nghiệp.</p>
+                <button class="btn">Tìm Hiểu</button>
+            </div>
         </div>
     </div>
-
-    <script>
-        // Xử lý form đăng ký
-        const form = document.getElementById('registerForm');
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = form.querySelector('input').value;
-            if (validateEmail(email)) {
-                // Gửi dữ liệu
-                fetch('/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email: email })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    alert('Đăng ký thành công! Cảm ơn bạn.');
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            } else {
-                alert('Vui lòng nhập email hợp lệ.');
-            }
-        });
-
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(String(email).toLowerCase());
-        }
-
-        function showFeatures() {
-            alert('Các tính năng chính:\n- Tạo video AI tự động\n- Hỗ trợ đa ngôn ngữ\n- Thư viện MC ảo đa dạng\n- Xử lý video siêu tốc');
-        }
-    </script>
 </body>
 </html>
