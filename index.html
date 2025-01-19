@@ -40,22 +40,35 @@
             transform: translateX(-50%);
         }
 
-        .smartphone::after {
-            content: '';
-            width: 80px;
-            height: 5px;
-            background-color: #333;
+        .camera {
+            width: 10px;
+            height: 10px;
+            background: #444;
+            border-radius: 50%;
+            position: absolute;
+            top: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+        }
+
+        .button {
+            width: 20px;
+            height: 4px;
+            background-color: #666;
             border-radius: 10px;
             position: absolute;
-            bottom: 10px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
         }
 
         .screen {
-            width: 100%;
-            height: calc(100% - 40px);
+            width: calc(100% - 32px);
+            height: calc(100% - 70px);
             background: black;
+            margin: 40px 16px;
+            border-radius: 20px;
             overflow: hidden;
             display: flex;
             justify-content: center;
@@ -66,6 +79,7 @@
 </head>
 <body>
     <div class="smartphone">
+        <div class="camera"></div>
         <div class="screen">
             <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@showthesecret/video/7461541393450716424" 
                 data-video-id="7461541393450716424" 
@@ -81,6 +95,7 @@
             </blockquote>
             <script async src="https://www.tiktok.com/embed.js"></script>
         </div>
+        <div class="button"></div>
     </div>
 </body>
 </html>
