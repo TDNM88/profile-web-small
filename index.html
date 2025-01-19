@@ -1,159 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
+    <title>VideoGenius - Coming Soon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            margin: 0;
-            padding: 0;
             background: url('./images/blurred_image_30.png') no-repeat center center fixed;
             background-size: cover;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-        }
-
-        .container {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .smartphone {
-            width: 360px;
-            height: 720px;
-            background-color: #111;
-            border: 16px solid #333;
-            border-radius: 30px;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .smartphone::before {
-            content: '';
-            width: 50px;
-            height: 4px;
-            background-color: #555;
-            border-radius: 10px;
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .camera {
-            width: 10px;
-            height: 10px;
-            background: #444;
-            border-radius: 50%;
-            position: absolute;
-            top: 14px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
-        }
-
-        .button {
-            width: 20px;
-            height: 4px;
-            background-color: #666;
-            border-radius: 10px;
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .screen {
-            width: calc(100% - 32px);
-            height: calc(100% - 70px);
-            background: black;
-            margin: 40px 16px;
-            border-radius: 20px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .side-screen {
-            width: 160px;
-            height: 300px;
-            background-color: #222;
-            border: 8px solid #444;
-            border-radius: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-            gap: 10px;
-            text-align: center;
-            background: url('./images/blurred_image_30.png') no-repeat center center;
-            background-size: cover;
-        }
-
-        .side-screen p {
-            margin: 0;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .side-screen button {
-            width: 120px;
-            height: 40px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .side-screen button:hover {
-            background-color: #0056b3;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <!-- Side screen for "Đăng ký vào danh sách chờ" -->
-        <div class="side-screen">
-            <p>Đăng ký ngay</p>
-            <button>Danh sách chờ</button>
-        </div>
-
-        <!-- Main smartphone -->
-        <div class="smartphone">
-            <div class="camera"></div>
-            <div class="screen">
-                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@showthesecret/video/7461541393450716424" 
-                    data-video-id="7461541393450716424" 
-                    style="max-width: 320px; min-width: 280px; margin: 0 auto;">
-                    <section>
-                        <a target="_blank" title="@showthesecret" href="https://www.tiktok.com/@showthesecret?refer=embed">@showthesecret</a> 
-                        VideoGenius - Tạo Video Siêu Tốc 
-                        <a title="tdnm" target="_blank" href="https://www.tiktok.com/tag/tdnm?refer=embed">#tdnm</a> 
-                        <a title="aivideo" target="_blank" href="https://www.tiktok.com/tag/aivideo?refer=embed">#aivideo</a> 
-                        <a title="aiapps" target="_blank" href="https://www.tiktok.com/tag/aiapps?refer=embed">#aiapps</a> 
-                        <a target="_blank" title="♬ nhạc nền  - ShowtheSecret" href="https://www.tiktok.com/music/nhạc-nền-ShowtheSecret-7461541481338211089?refer=embed">♬ nhạc nền - ShowtheSecret</a>
-                    </section>
-                </blockquote>
-                <script async src="https://www.tiktok.com/embed.js"></script>
+<body class="min-h-screen flex items-center justify-center text-white">
+    <div class="max-w-6xl mx-auto p-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+            <!-- Left Panel -->
+            <div class="bg-black/50 backdrop-blur-md rounded-2xl p-8 shadow-2xl">
+                <h2 class="text-2xl font-bold mb-4">Đăng ký ngay</h2>
+                <p class="mb-6">Nhận thông báo khi chúng tôi ra mắt!</p>
+                <form class="space-y-4">
+                    <input type="email" placeholder="Email của bạn" 
+                           class="w-full p-3 rounded-lg bg-white/10 text-white placeholder-white/50">
+                    <button type="submit" 
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-all">
+                        Tham gia danh sách chờ
+                    </button>
+                </form>
             </div>
-            <div class="button"></div>
-        </div>
 
-        <!-- Side screen for "Tìm hiểu thêm" -->
-        <div class="side-screen">
-            <p>Tìm hiểu thêm</p>
-            <button>Khám phá</button>
+            <!-- Center Phone Mockup -->
+            <div class="relative mx-auto">
+                <div class="w-80 h-[600px] bg-black rounded-[40px] border-[14px] border-gray-800 shadow-2xl">
+                    <div class="absolute w-4 h-1 bg-gray-700 rounded-full top-4 left-1/2 -translate-x-1/2"></div>
+                    <div class="absolute w-2 h-2 bg-gray-700 rounded-full top-6 left-1/2 -translate-x-1/2"></div>
+                    <div class="h-full p-4 pt-8">
+                        <div class="w-full h-full bg-gray-900 rounded-2xl overflow-hidden">
+                            <video autoplay muted loop class="w-full h-full object-cover">
+                                <source src="./demo.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel -->
+            <div class="bg-black/50 backdrop-blur-md rounded-2xl p-8 shadow-2xl">
+                <h2 class="text-2xl font-bold mb-4">Tính năng nổi bật</h2>
+                <ul class="space-y-3">
+                    <li class="flex items-center">
+                        <span class="mr-2">🎥</span>
+                        Tạo video AI chuyên nghiệp
+                    </li>
+                    <li class="flex items-center">
+                        <span class="mr-2">⚡</span>
+                        Xử lý siêu tốc chỉ vài phút
+                    </li>
+                    <li class="flex items-center">
+                        <span class="mr-2">🎭</span>
+                        MC ảo đa dạng
+                    </li>
+                    <li class="flex items-center">
+                        <span class="mr-2">🌐</span>
+                        Hỗ trợ đa ngôn ngữ
+                    </li>
+                </ul>
+                <a href="#features" 
+                   class="mt-6 inline-block w-full bg-white/10 hover:bg-white/20 text-white font-bold py-3 rounded-lg text-center transition-all">
+                    Khám phá thêm
+                </a>
+            </div>
         </div>
     </div>
 </body>
