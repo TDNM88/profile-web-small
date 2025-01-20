@@ -1,0 +1,687 @@
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VideoGenius - Ứng dụng Tạo Video AI</title>
+    <style>
+       /* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    background-image: url('/images/bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: rgb(255, 255, 255);
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* Main container */
+.main-grid {
+    display: grid;
+    grid-template-columns: 375px 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    height: 80vh;
+    align-items: stretch; /* Đảm bảo cả hai phần có chiều cao bằng nhau */
+}
+
+/* Vertical smartphone section */
+.vertical-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Đảm bảo phần này chiếm toàn bộ chiều cao */
+}
+
+/* TikTok device */
+.device {
+    width: 375px;
+    height: 667px;
+    background: #222;
+    border-radius: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.device .screen {
+    width: 90%;
+    height: 90%;
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.device .screen iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: cover;
+}
+
+/* Horizontal sections */
+.horizontal-grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Căn chỉnh nội dung bên trong */
+    height: 100%; /* Đảm bảo phần này chiếm toàn bộ chiều cao */
+}
+
+/* Panels styling */
+.info-panel {
+    background-image: url('/images/bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Đảm bảo phần này chiếm toàn bộ chiều cao */
+}
+
+.panel h2 {
+    font-size: 1.5rem;
+    color: #00ff88;
+    margin-bottom: 1rem;
+}
+
+/* Nút Trải nghiệm Ngay */
+.btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+    color: black;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.4);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%);
+    transition: all 0.75s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 255, 136, 0.6);
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 15px rgba(0, 255, 136, 0.4);
+}
+
+/* Hiệu ứng khi focus */
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.5);
+}
+
+@media (max-width: 1200px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+}
+
+/* Grid hiển thị các MC */
+.mc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.mc-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    transition: transform 0.3s ease;
+}
+
+.mc-item:hover {
+    transform: scale(1.05);
+}
+
+.mc-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mc-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .mc-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .mc-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Hidden registration panel */
+.registration-panel {
+    display: none;
+}
+
+/* Styling for the introduction section */
+.intro-section {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.intro-section h1 {
+    font-size: 2rem;
+    color: #00ff88;
+    margin-bottom: 1rem;
+}
+
+.intro-section h2 {
+    font-size: 1.5rem;
+    color: #00ff88;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.intro-section ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.intro-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.intro-section p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+/* Hiệu ứng reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Delay cho các phần tử */
+.reveal:nth-child(1) { transition-delay: 0.1s; }
+.reveal:nth-child(2) { transition-delay: 0.3s; }
+.reveal:nth-child(3) { transition-delay: 0.5s; }
+.reveal:nth-child(4) { transition-delay: 0.7s; }
+.reveal:nth-child(5) { transition-delay: 0.9s; }
+.reveal:nth-child(6) { transition-delay: 1.1s; }
+
+/* Tối ưu hóa hiệu ứng hover và focus */
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.5);
+}
+
+.mc-item:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.5);
+}
+
+/* Tối ưu hóa màu sắc và độ tương phản */
+body {
+    color: #ffffff;
+}
+
+.intro-section h1, .intro-section h2 {
+    color: #00ff88;
+}
+
+.btn {
+    background: #00ff88;
+    color: #000000;
+}
+
+.btn:hover {
+    background: #00cc66;
+}
+
+.mc-label {
+    background: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+}
+
+/* Style cho registration panel */
+.registration-panel {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.95);
+        padding: 2rem;
+        border-radius: 15px;
+        width: 400px;
+        max-width: 90%;
+        z-index: 1000;
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        border: 1px solid rgba(0, 255, 136, 0.2);
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 999;
+        backdrop-filter: blur(5px);
+    }
+
+    .thank-you-message {
+        display: none;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .thank-you-message h3 {
+        color: #00ff88;
+        margin-bottom: 1rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 0.8rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+        border-color: #00ff88;
+        box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+    }
+
+    /* Floating header styles */
+.floating-header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 50px;
+    padding: 15px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    animation: float 3s ease-in-out infinite;
+}
+
+.header-content h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #00ff88;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header-content h1 span {
+    font-weight: 400;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-left: 8px;
+}
+
+/* Floating animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .floating-header {
+        top: 10px;
+        padding: 10px 20px;
+    }
+    
+    .header-content h1 {
+        font-size: 1.2rem;
+    }
+    
+    .header-content h1 span {
+        font-size: 0.9rem;
+    }
+}
+
+/* Style cho nút Xem thêm sản phẩm */
+.view-more-btn {
+    margin-top: 2rem;
+    background: linear-gradient(135deg, #00a8ff 0%, #0077ff 100%);
+    width: 80%;
+    max-width: 300px;
+}
+
+.view-more-btn:hover {
+    background: linear-gradient(135deg, #0077ff 0%, #0055cc 100%);
+    box-shadow: 0 6px 20px rgba(0, 120, 255, 0.6);
+}
+
+.view-more-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 15px rgba(0, 120, 255, 0.4);
+}
+
+.view-more-btn:focus {
+    box-shadow: 0 0 0 3px rgba(0, 120, 255, 0.5);
+}
+    </style>
+</head>
+<body>
+<header class="floating-header">
+    <div class="header-content">
+        <h1>VideoGenius <span>by TDNM</span></h1>
+    </div>
+</header>
+    <div class="main-grid">
+        <!-- TikTok video display -->
+        <div class="vertical-section">
+            <div class="device">
+                <div class="screen">
+                    <iframe src="https://www.tiktok.com/embed/7461841072747023624" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+                    </iframe>
+                </div>
+            </div>
+            <button class="btn view-more-btn" onclick="window.location.href='vi.html'">XEM THÊM SẢN PHẨM</button>
+        </div>
+
+        <!-- Horizontal sections -->
+        <div class="horizontal-grid">
+            <!-- Info panel -->
+            <!-- Thêm class reveal vào các phần tử -->
+<div class="info-panel">
+    <div class="intro-section">
+        <h1 class="reveal">VideoGenius - Tạo Video AI Thay Bạn</h1>
+        <p class="reveal">
+            VideoGenius là giải pháp sáng tạo video thông minh sử dụng công nghệ Trí Tuệ Nhân Tạo tiên tiến. Công cụ hoàn hảo cho doanh nghiệp, nhà sáng tạo nội dung và bất kỳ ai muốn tạo video chuyên nghiệp một cách nhanh chóng và hiệu quả. Hãy trải nghiệm sức mạnh của AI trong sản xuất video ngay hôm nay!
+        </p>
+            <!-- Grid hiển thị các MC -->
+                <div class="mc-grid">
+                    <div class="mc-item">
+                        <img src="/MC/MC6.png" alt="MC 1">
+                        <div class="mc-label">Tự động hóa toàn bộ quy trình sản xuất video</div>
+                    </div>
+                    <div class="mc-item">
+                        <img src="/MC/MC5.png" alt="MC 2">
+                        <div class="mc-label">Hỗ trợ tạo kịch bản, lồng tiếng và thêm phụ đề tự động</div>
+                    </div>
+                    <div class="mc-item">
+                        <img src="/MC/MC3.png" alt="MC 3">
+                        <div class="mc-label">Thư viện MC ảo đa dạng với nhiều phong cách khác nhau</div>
+                    </div>
+                    <div class="mc-item">
+                        <img src="/MC/MC4.png" alt="MC 4">
+                        <div class="mc-label">Tích hợp công nghệ AI giọng nói tự nhiên, đa ngôn ngữ</div>
+                    </div>
+                    <div class="mc-item">
+                        <img src="/MC/MC7.jpg" alt="MC 5">
+                        <div class="mc-label">Tiết kiệm thời gian và chi phí sản xuất</div>
+                    </div>
+                    <div class="mc-item">
+                        <img src="/MC/MC1.png" alt="MC 6">
+                        <div class="mc-label">Dễ dàng đáp ứng mọi nhu cầu video cho Marketing, Giáo dục, Giải trí</div>
+                    </div>
+                </div>
+
+                <!-- Nút "Trải Nghiệm Ngay" -->
+                <button class="btn" id="tryNowBtn">Trải Nghiệm Ngay</button>
+            </div>
+        </p>
+    </div>
+</div>
+
+                
+<div class="overlay" id="overlay"></div>
+   <!-- Chỉnh sửa registration panel -->
+<div class="registration-panel" id="registrationPanel">
+    <h2>Đăng Ký Trải Nghiệm</h2>
+    <form id="registrationForm">
+        <div class="form-group">
+            <input type="text" placeholder="Họ và tên" required>
+        </div>
+        <div class="form-group">
+            <input type="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+            <input type="tel" placeholder="Số điện thoại" required>
+        </div>
+        <div class="form-group">
+            <select required>
+                <option value="">Chọn mục đích sử dụng</option>
+                <option value="marketing">Marketing</option>
+                <option value="education">Giáo dục</option>
+                <option value="entertainment">Giải trí</option>
+                <option value="other">Khác</option>
+            </select>
+        </div>
+        <button type="submit" class="btn">Đăng Ký Ngay</button>
+    </form>
+
+    <!-- Thêm thông báo cảm ơn -->
+    <div class="thank-you-message" id="thankYouMessage">
+        <h3>Cảm ơn bạn đã đăng ký!</h3>
+        <p>Chúng tôi đã nhận được thông tin của bạn. Vui lòng kiểm tra email để xác nhận và nhận hướng dẫn sử dụng.</p>
+        <p>Nếu không thấy email, hãy kiểm tra thư mục spam hoặc liên hệ hỗ trợ qua support@videogenius.com</p>
+        <button class="btn" onclick="closeRegistration()">Đóng</button>
+    </div>
+</div>
+
+<script>
+    // Thêm CSS cho loading spinner
+    const style = document.createElement('style');
+    style.innerHTML = `
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #00ff88;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Mở form đăng ký
+    document.getElementById('tryNowBtn').addEventListener('click', function() {
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('registrationPanel').style.display = 'block';
+    });
+
+    // Hàm gửi email
+    async function sendEmail(data) {
+        const emailData = {
+            to: 'v.leaguetube@gmail.com',
+            subject: 'Đăng ký mới từ VideoGenius',
+            text: `Thông tin đăng ký:
+                   Họ tên: ${data.name}
+                   Email: ${data.email}
+                   Số điện thoại: ${data.phone}
+                   Mục đích: ${data.purpose}`
+        };
+        try {
+            const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    service_id: 'service_kxyp24p',
+                    template_id: 'template_zhhdnlj',
+                    user_id: 'D4CSo8nVYpCiFPDPI',
+                    template_params: emailData
+                })
+            });
+            if (!response.ok) {
+                throw new Error('Gửi email thất bại');
+            }
+            return true;
+        } catch (error) {
+            console.error('Lỗi khi gửi email:', error);
+            return false;
+        }
+    }
+
+    // Xử lý submit form
+    document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Lấy dữ liệu form
+        const formData = {
+            name: document.querySelector('#registrationForm input[type="text"]').value,
+            email: document.querySelector('#registrationForm input[type="email"]').value,
+            phone: document.querySelector('#registrationForm input[type="tel"]').value,
+            purpose: document.querySelector('#registrationForm select').value
+        };
+
+        // Hiển thị loading spinner
+        document.getElementById('registrationForm').style.display = 'none';
+        document.getElementById('thankYouMessage').innerHTML = `
+            <div class="loading-spinner"></div>
+            <p>Đang xử lý đăng ký...</p>
+        `;
+        document.getElementById('thankYouMessage').style.display = 'block';
+
+        // Gửi email
+        const emailSent = await sendEmail(formData);
+
+        // Hiển thị kết quả
+        if (emailSent) {
+            document.getElementById('thankYouMessage').innerHTML = `
+                <h3>Cảm ơn bạn đã đăng ký!</h3>
+                <p>Chúng tôi đã nhận được thông tin của bạn. Vui lòng kiểm tra email để xác nhận và nhận hướng dẫn sử dụng.</p>
+                <p>Nếu không thấy email, hãy kiểm tra thư mục spam hoặc liên hệ hỗ trợ qua support@videogenius.com</p>
+                <button class="btn" onclick="closeRegistration()">Đóng</button>
+            `;
+        } else {
+            document.getElementById('thankYouMessage').innerHTML = `
+                <h3>Đã xảy ra lỗi!</h3>
+                <p>Xin lỗi, đã có lỗi xảy ra trong quá trình đăng ký. Vui lòng thử lại sau hoặc liên hệ trực tiếp qua email v.leaguetube@gmail.com</p>
+                <button class="btn" onclick="closeRegistration()">Đóng</button>
+            `;
+        }
+    });
+
+    // Đóng form
+    function closeRegistration() {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('registrationPanel').style.display = 'none';
+        document.getElementById('registrationForm').style.display = 'block';
+        document.getElementById('thankYouMessage').style.display = 'none';
+        document.getElementById('registrationForm').reset();
+    }
+
+    // Đóng khi click ra ngoài
+    document.getElementById('overlay').addEventListener('click', closeRegistration);
+
+    // Scroll reveal animation
+    function reveal() {
+        const reveals = document.querySelectorAll('.reveal');
+        
+        for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const elementTop = reveals[i].getBoundingClientRect().top;
+            const elementVisible = 150;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add('active');
+            } else {
+                reveals[i].classList.remove('active');
+            }
+        }
+    }
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
+</script>
+</body>
+</html>
