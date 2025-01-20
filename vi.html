@@ -76,6 +76,36 @@ body {
     object-fit: cover;
 }
 
+.device1 {
+    width: 375px;
+    height: 667px;
+    background: #222;
+    border-radius: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.device1 .screen {
+    width: 90%;
+    height: 90%;
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.device1 .screen iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: cover;
+}
+
+
 /* Horizontal sections */
 .horizontal-grid {
     display: flex;
@@ -463,6 +493,12 @@ body {
         <!-- TikTok video display -->
         <div class="vertical-section">
             <div class="device">
+                <div class="screen">
+                    <iframe src="https://www.tiktok.com/embed/7461841072747023624" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+                    </iframe>
+                </div>
+            </div>
+            <div class="device1">
                 <div class="screen">
                     <iframe src="https://www.tiktok.com/embed/7461841072747023624" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
                     </iframe>
