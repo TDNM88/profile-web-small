@@ -545,11 +545,11 @@ body {
 }
 
 /* Video player bên trong LCD */
-.lcd-frame iframe {
+.lcd-frame video {
     width: 100%;
     height: 100%;
-    border: none;
     object-fit: cover;
+    border: none;
 }
 
 /* Phần thông tin mô tả */
@@ -628,49 +628,86 @@ body {
         </p>
             <!-- Grid hiển thị các MC -->
                 <div class="lcd-grid">
-    <!-- LCD Square 1 -->
-    <div class="lcd square">
+    <!-- Square LCD 1 -->
+    <div class="lcd lcd-square">
         <div class="lcd-frame">
-            <iframe src="https://www.tiktok.com/embed/7459244883216190738" allowfullscreen></iframe>
+            <video controls>
+                <source src="video1.mp4" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ video.
+            </video>
         </div>
-        <p class="lcd-description">Video TikTok: Giới thiệu sản phẩm A</p>
+        <div class="lcd-info">
+            <h3>Giới thiệu sản phẩm A</h3>
+            <p>Video giúp bạn hiểu rõ hơn về sản phẩm A.</p>
+        </div>
     </div>
-    <!-- LCD Square 2 -->
-    <div class="lcd square">
+    <!-- Square LCD 2 -->
+    <div class="lcd lcd-square">
         <div class="lcd-frame">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            <video controls>
+                <source src="video2.mp4" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ video.
+            </video>
         </div>
-        <p class="lcd-description">Video YouTube: Khám phá tính năng B</p>
+        <div class="lcd-info">
+            <h3>Tính năng B</h3>
+            <p>Khám phá tính năng nổi bật của sản phẩm B.</p>
+        </div>
     </div>
-    <!-- LCD Portrait 1 -->
-    <div class="lcd portrait">
+    <!-- Portrait LCD 1 -->
+    <div class="lcd lcd-portrait">
         <div class="lcd-frame">
-            <iframe src="https://www.tiktok.com/embed/7461841072747023624" allowfullscreen></iframe>
+            <video controls>
+                <source src="video3.mp4" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ video.
+            </video>
         </div>
-        <p class="lcd-description">Video TikTok: Tính năng mới C</p>
+        <div class="lcd-info">
+            <h3>Tính năng mới C</h3>
+            <p>Video giới thiệu tính năng cải tiến C.</p>
+        </div>
     </div>
-    <!-- LCD Portrait 2 -->
-    <div class="lcd portrait">
+    <!-- Portrait LCD 2 -->
+    <div class="lcd lcd-portrait">
         <div class="lcd-frame">
-            <iframe src="https://www.youtube.com/embed/jNQXAC9IVRw" allowfullscreen></iframe>
+            <video controls>
+                <source src="video4.mp4" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ video.
+            </video>
         </div>
-        <p class="lcd-description">Video YouTube: Thử nghiệm sản phẩm D</p>
+        <div class="lcd-info">
+            <h3>Thử nghiệm sản phẩm D</h3>
+            <p>Video mô tả quá trình thử nghiệm D.</p>
+        </div>
     </div>
-    <!-- LCD Landscape 1 -->
-    <div class="lcd landscape">
+    <!-- Landscape LCD 1 -->
+    <div class="lcd lcd-landscape">
         <div class="lcd-frame">
-            <iframe src="https://www.tiktok.com/embed/7461956823879703814" allowfullscreen></iframe>
+            <video controls>
+                <source src="video5.mp4" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ video.
+            </video>
         </div>
-        <p class="lcd-description">Video TikTok: Hướng dẫn sử dụng E</p>
+        <div class="lcd-info">
+            <h3>Hướng dẫn sử dụng E</h3>
+            <p>Video minh họa cách sử dụng sản phẩm E.</p>
+        </div>
     </div>
-    <!-- LCD Landscape 2 -->
-    <div class="lcd landscape">
+    <!-- Landscape LCD 2 -->
+    <div class="lcd lcd-landscape">
         <div class="lcd-frame">
-            <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" allowfullscreen></iframe>
+            <video controls>
+                <source src="video6.mp4" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ video.
+            </video>
         </div>
-        <p class="lcd-description">Video YouTube: Tổng quan sản phẩm F</p>
+        <div class="lcd-info">
+            <h3>Tổng quan sản phẩm F</h3>
+            <p>Video tóm tắt các tính năng của sản phẩm F.</p>
+        </div>
     </div>
 </div>
+
 
                 
 <div class="overlay" id="overlay"></div>
