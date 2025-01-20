@@ -1,104 +1,121 @@
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VideoGenius - Ứng dụng Tạo Video AI</title>
-    <style>
-       /* Reset CSS */
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* Reset CSS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body styling */
+/* Body */
 body {
-    background-color: #121212;
+    background: linear-gradient(135deg, #1a1a1a, #333);
     color: #fff;
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding: 2rem;
 }
 
-/* Floating header */
+/* Header */
 .floating-header {
     position: fixed;
-    top: 0;
+    top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.8);
     padding: 1rem 2rem;
-    border-radius: 50px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     z-index: 1000;
 }
 
 .header-content h1 {
-    font-size: 1.5rem;
-    text-align: center;
     color: #00ff88;
+    text-transform: uppercase;
 }
 
-/* Main grid */
+/* Main Grid */
 .main-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-    width: 100%;
-    max-width: 1200px;
-    margin-top: 80px; /* To prevent overlap with the header */
+    margin-top: 100px;
 }
 
-/* Vertical section */
-.vertical-section {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-}
-
-/* Device frame */
+/* Video Devices */
 .device {
-    width: 100%;
-    max-width: 300px;
+    background: #222;
     border-radius: 20px;
-    background: linear-gradient(145deg, #222, #333);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-    padding: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     overflow: hidden;
+    padding: 10px;
 }
 
-/* Screen inside the device */
 .screen {
     width: 100%;
-    aspect-ratio: 16 / 9; /* Standard video ratio */
+    aspect-ratio: 16 / 9;
     background: #000;
-    border-radius: 15px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-.screen iframe {
+.screen video {
     width: 100%;
     height: 100%;
-    border: none;
     object-fit: cover;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    .main-grid {
-        grid-template-columns: 1fr;
-    }
-    .device {
-        max-width: 100%;
-    }
+/* Registration Panel */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 999;
 }
-    </style>
-</head>
+
+.registration-panel {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #222;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.registration-panel h2 {
+    color: #00ff88;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: none;
+    background: #333;
+    color: #fff;
+}
+</style>
 <body>
 <header class="floating-header">
     <div class="header-content">
@@ -111,59 +128,45 @@ body {
     <div class="vertical-section">
         <div class="device">
             <div class="screen">
-                <iframe src="https://www.tiktok.com/embed/7459244883216190738" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
-                </iframe>
+                <video controls>
+                    <source src="/videos/video1.mp4" type="video/mp4">
+                    Trình duyệt không hỗ trợ video.
+                </video>
             </div>
         </div>
         <div class="device">
             <div class="screen">
-                <iframe src="https://www.tiktok.com/embed/7461841072747023624" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
-                </iframe>
-            </div>
-        </div>
-    </div>
-
-    <div class="vertical-section">
-        <div class="device">
-            <div class="screen">
-                <iframe src="https://www.tiktok.com/embed/7461956823879703814" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
-                </iframe>
-            </div>
-        </div>
-        <div class="device">
-            <div class="screen">
-                <iframe src="https://www.tiktok.com/embed/7459244883216190738" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
-                </iframe>
+                <video controls>
+                    <source src="/videos/video2.mp4" type="video/mp4">
+                    Trình duyệt không hỗ trợ video.
+                </video>
             </div>
         </div>
     </div>
 
+    <!-- Additional video displays -->
     <div class="vertical-section">
         <div class="device">
             <div class="screen">
-                <iframe src="https://www.tiktok.com/embed/7461841072747023624" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
-                </iframe>
+                <video controls>
+                    <source src="/videos/video3.mp4" type="video/mp4">
+                    Trình duyệt không hỗ trợ video.
+                </video>
             </div>
         </div>
         <div class="device">
             <div class="screen">
-                <iframe src="https://www.tiktok.com/embed/7461956823879703814" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
-                </iframe>
+                <video controls>
+                    <source src="/videos/video4.mp4" type="video/mp4">
+                    Trình duyệt không hỗ trợ video.
+                </video>
             </div>
         </div>
     </div>
 </div>
-</body>
 
-                
+<!-- Registration panel -->
 <div class="overlay" id="overlay"></div>
-   <!-- Chỉnh sửa registration panel -->
 <div class="registration-panel" id="registrationPanel">
     <h2>Đăng Ký Trải Nghiệm</h2>
     <form id="registrationForm">
@@ -187,146 +190,8 @@ body {
         </div>
         <button type="submit" class="btn">Đăng Ký Ngay</button>
     </form>
-
-    <!-- Thêm thông báo cảm ơn -->
-    <div class="thank-you-message" id="thankYouMessage">
-        <h3>Cảm ơn bạn đã đăng ký!</h3>
-        <p>Chúng tôi đã nhận được thông tin của bạn. Vui lòng kiểm tra email để xác nhận và nhận hướng dẫn sử dụng.</p>
-        <p>Nếu không thấy email, hãy kiểm tra thư mục spam hoặc liên hệ hỗ trợ qua support@videogenius.com</p>
-        <button class="btn" onclick="closeRegistration()">Đóng</button>
-    </div>
 </div>
 
-<script>
-    // Thêm CSS cho loading spinner
-    const style = document.createElement('style');
-    style.innerHTML = `
-        .loading-spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #00ff88;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    `;
-    document.head.appendChild(style);
-
-    // Mở form đăng ký
-    document.getElementById('tryNowBtn').addEventListener('click', function() {
-        document.getElementById('overlay').style.display = 'block';
-        document.getElementById('registrationPanel').style.display = 'block';
-    });
-
-    // Hàm gửi email
-    async function sendEmail(data) {
-        const emailData = {
-            to: 'v.leaguetube@gmail.com',
-            subject: 'Đăng ký mới từ VideoGenius',
-            text: `Thông tin đăng ký:
-                   Họ tên: ${data.name}
-                   Email: ${data.email}
-                   Số điện thoại: ${data.phone}
-                   Mục đích: ${data.purpose}`
-        };
-        try {
-            const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    service_id: 'service_kxyp24p',
-                    template_id: 'template_zhhdnlj',
-                    user_id: 'D4CSo8nVYpCiFPDPI',
-                    template_params: emailData
-                })
-            });
-            if (!response.ok) {
-                throw new Error('Gửi email thất bại');
-            }
-            return true;
-        } catch (error) {
-            console.error('Lỗi khi gửi email:', error);
-            return false;
-        }
-    }
-
-    // Xử lý submit form
-    document.getElementById('registrationForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        // Lấy dữ liệu form
-        const formData = {
-            name: document.querySelector('#registrationForm input[type="text"]').value,
-            email: document.querySelector('#registrationForm input[type="email"]').value,
-            phone: document.querySelector('#registrationForm input[type="tel"]').value,
-            purpose: document.querySelector('#registrationForm select').value
-        };
-
-        // Hiển thị loading spinner
-        document.getElementById('registrationForm').style.display = 'none';
-        document.getElementById('thankYouMessage').innerHTML = `
-            <div class="loading-spinner"></div>
-            <p>Đang xử lý đăng ký...</p>
-        `;
-        document.getElementById('thankYouMessage').style.display = 'block';
-
-        // Gửi email
-        const emailSent = await sendEmail(formData);
-
-        // Hiển thị kết quả
-        if (emailSent) {
-            document.getElementById('thankYouMessage').innerHTML = `
-                <h3>Cảm ơn bạn đã đăng ký!</h3>
-                <p>Chúng tôi đã nhận được thông tin của bạn. Vui lòng kiểm tra email để xác nhận và nhận hướng dẫn sử dụng.</p>
-                <p>Nếu không thấy email, hãy kiểm tra thư mục spam hoặc liên hệ hỗ trợ qua support@videogenius.com</p>
-                <button class="btn" onclick="closeRegistration()">Đóng</button>
-            `;
-        } else {
-            document.getElementById('thankYouMessage').innerHTML = `
-                <h3>Đã xảy ra lỗi!</h3>
-                <p>Xin lỗi, đã có lỗi xảy ra trong quá trình đăng ký. Vui lòng thử lại sau hoặc liên hệ trực tiếp qua email v.leaguetube@gmail.com</p>
-                <button class="btn" onclick="closeRegistration()">Đóng</button>
-            `;
-        }
-    });
-
-    // Đóng form
-    function closeRegistration() {
-        document.getElementById('overlay').style.display = 'none';
-        document.getElementById('registrationPanel').style.display = 'none';
-        document.getElementById('registrationForm').style.display = 'block';
-        document.getElementById('thankYouMessage').style.display = 'none';
-        document.getElementById('registrationForm').reset();
-    }
-
-    // Đóng khi click ra ngoài
-    document.getElementById('overlay').addEventListener('click', closeRegistration);
-
-    // Scroll reveal animation
-    function reveal() {
-        const reveals = document.querySelectorAll('.reveal');
-        
-        for (let i = 0; i < reveals.length; i++) {
-            const windowHeight = window.innerHeight;
-            const elementTop = reveals[i].getBoundingClientRect().top;
-            const elementVisible = 150;
-            if (elementTop < windowHeight - elementVisible) {
-                reveals[i].classList.add('active');
-            } else {
-                reveals[i].classList.remove('active');
-            }
-        }
-    }
-    window.addEventListener('scroll', reveal);
-    window.addEventListener('load', reveal);
-</script>
+<script src="script.js"></script>
 </body>
 </html>
