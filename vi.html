@@ -490,87 +490,106 @@ body {
     padding: 20px;
 }
 
-/* LCD Grid */
+/* Grid bố trí các LCD */
 .lcd-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     padding: 20px;
     justify-items: center;
 }
 
-/* LCD styling */
+/* Phong cách container LCD */
 .lcd {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #111;
+    background: linear-gradient(145deg, #222, #333);
     border-radius: 20px;
     padding: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    width: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     max-width: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* LCD Frame */
+.lcd:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Khung màn hình LCD */
 .lcd-frame {
     position: relative;
     background: #000;
-    border-radius: 10px;
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-/* Square LCD */
-.lcd.square .lcd-frame {
+/* LCD vuông */
+.lcd-square .lcd-frame {
     width: 250px;
     height: 250px;
 }
 
-/* Portrait LCD */
-.lcd.portrait .lcd-frame {
+/* LCD dọc */
+.lcd-portrait .lcd-frame {
     width: 200px;
     height: 350px;
 }
 
-/* Landscape LCD */
-.lcd.landscape .lcd-frame {
+/* LCD ngang */
+.lcd-landscape .lcd-frame {
     width: 350px;
     height: 200px;
 }
 
-/* Video player inside LCD */
+/* Video player bên trong LCD */
 .lcd-frame iframe {
     width: 100%;
     height: 100%;
     border: none;
+    object-fit: cover;
 }
 
-/* Description styling */
-.lcd-description {
+/* Phần thông tin mô tả */
+.lcd-info {
     margin-top: 10px;
-    font-size: 0.9rem;
-    color: #fff;
     text-align: center;
 }
 
-/* Responsive adjustments */
+.lcd-info h3 {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.lcd-info p {
+    font-size: 0.85rem;
+    color: #ccc;
+    margin: 0;
+}
+
+/* Responsive cho màn hình nhỏ */
 @media (max-width: 768px) {
-    .lcd.square .lcd-frame {
+    .lcd-square .lcd-frame {
         width: 200px;
         height: 200px;
     }
 
-    .lcd.portrait .lcd-frame {
+    .lcd-portrait .lcd-frame {
         width: 150px;
         height: 300px;
     }
 
-    .lcd.landscape .lcd-frame {
+    .lcd-landscape .lcd-frame {
         width: 300px;
         height: 150px;
     }
 }
+
     </style>
 </head>
 <body>
