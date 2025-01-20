@@ -482,27 +482,25 @@ body {
     box-shadow: 0 0 0 3px rgba(0, 120, 255, 0.5);
 }
 
-/* Tablet grid styling */
+/* Grid bố trí tablet */
 .tablet-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin: 2rem 0;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
-/* Tablet device styling */
+/* Phong cách tablet */
 .tablet {
-    position: relative;
-    width: 400px;
-    height: 250px;
+    width: 100%;
+    aspect-ratio: 16/9;
     background: #222;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
 }
 
 .tablet-screen {
@@ -520,15 +518,11 @@ body {
     object-fit: cover;
 }
 
-/* Responsive design for tablets */
+/* Điểm dừng media */
 @media (max-width: 768px) {
     .tablet-grid {
         grid-template-columns: 1fr;
-    }
-
-    .tablet {
-        width: 90%;
-        height: auto;
+        gap: 15px;
     }
 }
     </style>
@@ -569,34 +563,35 @@ body {
         </p>
             <!-- Grid hiển thị các MC -->
                 <div class="tablet-grid">
+    <div class="tablet-grid">
     <div class="tablet">
         <div class="tablet-screen">
-            <iframe src="https://www.tiktok.com/embed/7459244883216190738" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.tiktok.com/embed/7459244883216190738" allowfullscreen></iframe>
         </div>
     </div>
     <div class="tablet">
         <div class="tablet-screen">
-            <iframe src="https://www.tiktok.com/embed/7461841072747023624" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.tiktok.com/embed/7461841072747023624" allowfullscreen></iframe>
         </div>
     </div>
     <div class="tablet">
         <div class="tablet-screen">
-            <iframe src="https://www.tiktok.com/embed/7461956823879703814" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.tiktok.com/embed/7461956823879703814" allowfullscreen></iframe>
         </div>
     </div>
     <div class="tablet">
         <div class="tablet-screen">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
         </div>
     </div>
     <div class="tablet">
         <div class="tablet-screen">
-            <iframe src="https://www.youtube.com/embed/jNQXAC9IVRw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/jNQXAC9IVRw" allowfullscreen></iframe>
         </div>
     </div>
     <div class="tablet">
         <div class="tablet-screen">
-            <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" allowfullscreen></iframe>
         </div>
     </div>
 </div>
