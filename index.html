@@ -429,6 +429,28 @@ body {
         font-size: 0.9rem;
     }
 }
+
+/* Style cho nút Xem thêm sản phẩm */
+.view-more-btn {
+    margin-top: 2rem;
+    background: linear-gradient(135deg, #00a8ff 0%, #0077ff 100%);
+    width: 80%;
+    max-width: 300px;
+}
+
+.view-more-btn:hover {
+    background: linear-gradient(135deg, #0077ff 0%, #0055cc 100%);
+    box-shadow: 0 6px 20px rgba(0, 120, 255, 0.6);
+}
+
+.view-more-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 15px rgba(0, 120, 255, 0.4);
+}
+
+.view-more-btn:focus {
+    box-shadow: 0 0 0 3px rgba(0, 120, 255, 0.5);
+}
     </style>
 </head>
 <body>
@@ -446,7 +468,9 @@ body {
                     </iframe>
                 </div>
             </div>
+            <button class="btn view-more-btn" onclick="window.location.href='vi.html'">XEM THÊM SẢN PHẨM</button>
         </div>
+    </div>
 
         <!-- Horizontal sections -->
         <div class="horizontal-grid">
