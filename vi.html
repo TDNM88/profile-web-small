@@ -490,39 +490,85 @@ body {
     padding: 20px;
 }
 
-/* Phong cách tablet */
-.tablet {
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: #222;
-    border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
+/* LCD Grid */
+.lcd-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+}
+
+/* LCD styling */
+.lcd {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    background: #111;
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
 }
 
-.tablet-screen {
-    width: 90%;
-    height: 90%;
+/* LCD Frame */
+.lcd-frame {
+    position: relative;
     background: #000;
-    border-radius: 15px;
+    border-radius: 10px;
     overflow: hidden;
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.tablet-screen iframe {
+/* Square LCD */
+.lcd.square .lcd-frame {
+    width: 250px;
+    height: 250px;
+}
+
+/* Portrait LCD */
+.lcd.portrait .lcd-frame {
+    width: 200px;
+    height: 350px;
+}
+
+/* Landscape LCD */
+.lcd.landscape .lcd-frame {
+    width: 350px;
+    height: 200px;
+}
+
+/* Video player inside LCD */
+.lcd-frame iframe {
     width: 100%;
     height: 100%;
     border: none;
-    object-fit: cover;
 }
 
-/* Điểm dừng media */
+/* Description styling */
+.lcd-description {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #fff;
+    text-align: center;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    .tablet-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
+    .lcd.square .lcd-frame {
+        width: 200px;
+        height: 200px;
+    }
+
+    .lcd.portrait .lcd-frame {
+        width: 150px;
+        height: 300px;
+    }
+
+    .lcd.landscape .lcd-frame {
+        width: 300px;
+        height: 150px;
     }
 }
     </style>
@@ -562,37 +608,48 @@ body {
             VideoGenius là giải pháp sáng tạo video thông minh sử dụng công nghệ Trí Tuệ Nhân Tạo tiên tiến. Công cụ hoàn hảo cho doanh nghiệp, nhà sáng tạo nội dung và bất kỳ ai muốn tạo video chuyên nghiệp một cách nhanh chóng và hiệu quả. Hãy trải nghiệm sức mạnh của AI trong sản xuất video ngay hôm nay!
         </p>
             <!-- Grid hiển thị các MC -->
-                <div class="tablet-grid">
-    <div class="tablet-grid">
-    <div class="tablet">
-        <div class="tablet-screen">
+                <div class="lcd-grid">
+    <!-- LCD Square 1 -->
+    <div class="lcd square">
+        <div class="lcd-frame">
             <iframe src="https://www.tiktok.com/embed/7459244883216190738" allowfullscreen></iframe>
         </div>
+        <p class="lcd-description">Video TikTok: Giới thiệu sản phẩm A</p>
     </div>
-    <div class="tablet">
-        <div class="tablet-screen">
-            <iframe src="https://www.tiktok.com/embed/7461841072747023624" allowfullscreen></iframe>
-        </div>
-    </div>
-    <div class="tablet">
-        <div class="tablet-screen">
-            <iframe src="https://www.tiktok.com/embed/7461956823879703814" allowfullscreen></iframe>
-        </div>
-    </div>
-    <div class="tablet">
-        <div class="tablet-screen">
+    <!-- LCD Square 2 -->
+    <div class="lcd square">
+        <div class="lcd-frame">
             <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
         </div>
+        <p class="lcd-description">Video YouTube: Khám phá tính năng B</p>
     </div>
-    <div class="tablet">
-        <div class="tablet-screen">
+    <!-- LCD Portrait 1 -->
+    <div class="lcd portrait">
+        <div class="lcd-frame">
+            <iframe src="https://www.tiktok.com/embed/7461841072747023624" allowfullscreen></iframe>
+        </div>
+        <p class="lcd-description">Video TikTok: Tính năng mới C</p>
+    </div>
+    <!-- LCD Portrait 2 -->
+    <div class="lcd portrait">
+        <div class="lcd-frame">
             <iframe src="https://www.youtube.com/embed/jNQXAC9IVRw" allowfullscreen></iframe>
         </div>
+        <p class="lcd-description">Video YouTube: Thử nghiệm sản phẩm D</p>
     </div>
-    <div class="tablet">
-        <div class="tablet-screen">
+    <!-- LCD Landscape 1 -->
+    <div class="lcd landscape">
+        <div class="lcd-frame">
+            <iframe src="https://www.tiktok.com/embed/7461956823879703814" allowfullscreen></iframe>
+        </div>
+        <p class="lcd-description">Video TikTok: Hướng dẫn sử dụng E</p>
+    </div>
+    <!-- LCD Landscape 2 -->
+    <div class="lcd landscape">
+        <div class="lcd-frame">
             <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" allowfullscreen></iframe>
         </div>
+        <p class="lcd-description">Video YouTube: Tổng quan sản phẩm F</p>
     </div>
 </div>
 
