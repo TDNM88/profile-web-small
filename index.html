@@ -553,6 +553,11 @@ body {
 </div>
 
 <script>
+    // Thêm sự kiện click cho header
+    document.getElementById('header').addEventListener('click', function() {
+        window.location.href = 'index.html';
+    });
+
     // Thêm CSS cho loading spinner
     const style = document.createElement('style');
     style.innerHTML = `
