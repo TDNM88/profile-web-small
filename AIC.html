@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLUX Enhanced All - Realistic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a, #3a4452);
+            overflow: hidden;
+        }
+        .card-container {
+            position: relative;
+            width: 400px;
+            height: 750px;
+            perspective: 1200px;
+        }
+        .card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            animation: glowing-border 3s infinite alternate;
+        }
+        @keyframes glowing-border {
+            0% {
+                box-shadow: 0 0 10px 2px rgba(79, 209, 197, 0.5), 0 0 20px 5px rgba(79, 209, 197, 0.3);
+            }
+            100% {
+                box-shadow: 0 0 20px 5px rgba(79, 209, 197, 0.8), 0 0 40px 10px rgba(79, 209, 197, 0.5);
+            }
+        }
+        .card:hover {
+            transform: rotateY(15deg) scale(1.03);
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(79, 209, 197, 0.2), rgba(99, 179, 237, 0.2));
+            opacity: 0.5;
+            z-index: -1;
+            filter: blur(30px);
+        }
+        .card-content {
+            padding: 25px;
+            color: white;
+            z-index: 2;
+            position: relative;
+            overflow-y: auto;
+        }
+        .model-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .model-name {
+            font-size: 1.8em;
+            font-weight: 800;
+            margin: 0;
+            color: #4fd1c5;
+            text-shadow: 0 0 20px rgba(79, 209, 197, 0.8);
+            line-height: 1.2;
+        }
+        .model-author {
+            font-size: 0.9em;
+            font-weight: 500;
+            color: rgba(241, 231, 40, 0.8);
+            margin: 5px 0;
+            line-height: 1.2;
+        }
+        .model-tagline {
+            font-size: 0.8em;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 5px 0;
+            line-height: 1.2;
+        }
+        .model-image {
+            width: 100%;
+            height: 180px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .model-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+        .model-image:hover img {
+            transform: scale(1.05);
+        }
+        .specs {
+            margin: 15px 0;
+        }
+        .spec-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .spec-item:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .spec-icon {
+            margin-right: 10px;
+            font-size: 1em;
+            color: #4fd1c5;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin: 10px 0;
+            overflow: hidden;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .progress {
+            width: 90%;
+            height: 100%;
+            background: linear-gradient(90deg, #4fd1c5, #63b3ed);
+            animation: progressAnim 1.5s ease-out;
+        }
+        @keyframes progressAnim {
+            from { width: 0; }
+            to { width: 90%; }
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .feature {
+            padding: 8px;
+            background: rgba(79, 209, 197, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.8em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .feature:hover {
+            transform: translateY(-5px);
+            background: rgba(79, 209, 197, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        /* Scrollbar Styling */
+        .card-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .card-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+        .card-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="card-container">
+        <div class="card">
+            <div class="card-content">
+                <div class="model-header">
+                    <h1 class="model-name">FLUX Enhanced All Realistic</h1>
+                    <p class="model-author">Trained by TDNM</p>
+                    <p class="model-tagline">Winner of the TensorArt Global FLUX Training Event 2024 | Over 10,000 Models Participated</p>
+                </div>
+                <div class="model-image">
+                    <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=false,plain=false,w=480,f=avif,q=85/model_showcase/0/6c7163e5-f274-93a7-10db-82bc8779980c.png" alt="AI Generated Image">
+                </div>
+                
+                <div class="specs">
+                    <div class="spec-item">
+                        <span class="spec-icon">🎨</span>
+                        <span>458k runs on Tensor.Art (from August 27th 2024)</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">⚡</span>
+                        <span>~5,000 training steps | Epochs: 10</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">🧠</span>
+                        <span>Buffet Plan for Model Downloading Permission: $20 USD</span>
+                    </div>
+                </div>
+                <div class="performance">
+                    <h3 style="font-size: 0.9em; font-weight: 600; margin-bottom: 8px;">Realism Quality Score</h3>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="features">
+                    <div class="feature">Text-to-Image</div>
+                    <div class="feature">Image-to-Image</div>
+                    <div class="feature">Inpainting</div>
+                    <div class="feature">Style Transfer</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Three.js Animation for Continuous 3D Motion Effect with Stars
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        // Create a 3D Plane Geometry
+        const geometry = new THREE.PlaneGeometry(100, 100, 32, 32);
+        const material = new THREE.MeshPhongMaterial({
+            color: 0x4fd1c5,
+            side: THREE.DoubleSide,
+            wireframe: true,
+        });
+        const plane = new THREE.Mesh(geometry, material);
+        scene.add(plane);
+
+        // Add Lights
+        const light = new THREE.DirectionalLight(0xffffff, 0.8);
+        light.position.set(0, 0, 10);
+        scene.add(light);
+
+        // Add Stars
+        const starGeometry = new THREE.BufferGeometry();
+        const starVertices = [];
+        const starCount = 1000;
+
+        for (let i = 0; i < starCount; i++) {
+            const x = (Math.random() - 0.5) * 2000;
+            const y = (Math.random() - 0.5) * 2000;
+            const z = (Math.random() - 0.5) * 2000;
+            starVertices.push(x, y, z);
+        }
+
+        starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+
+        const starMaterial = new THREE.PointsMaterial({
+            color: 0xffd700, // Gold color for stars
+            size: 0.5,
+            transparent: true,
+            opacity: 0.8,
+        });
+
+        const stars = new THREE.Points(starGeometry, starMaterial);
+        scene.add(stars);
+
+        camera.position.z = 50;
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Rotate the plane for a continuous motion effect
+            plane.rotation.x += 0.005;
+            plane.rotation.y += 0.005;
+
+            // Animate stars
+            stars.rotation.x += 0.001;
+            stars.rotation.y += 0.001;
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Responsive Canvas
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
