@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FLUX Enhanced All - Realistic</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         * {
@@ -179,6 +180,71 @@
             background: rgba(79, 209, 197, 0.2);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
+        .author-card {
+            width: 350px;
+            height: 450px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: glowing-border 3s infinite alternate;
+        }
+        .author-header {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .author-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            object-fit: cover;
+            border: 3px solid #4fd1c5;
+            box-shadow: 0 0 20px rgba(79, 209, 197, 0.8);
+        }
+        .author-name {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: #4fd1c5;
+            text-shadow: 0 0 20px rgba(79, 209, 197, 0.8);
+        }
+        .author-role {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 5px 0;
+        }
+        .author-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            font-size: 1.0em;
+        }
+        .author-stats div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .author-stats div span:first-child {
+            font-weight: 600;
+            color: #4fd1c5;
+        }
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .social-media a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+        .social-media a:hover {
+            color: #4fd1c5;
+        }
+
         /* Scrollbar Styling */
         .card-content::-webkit-scrollbar {
             width: 6px;
@@ -244,76 +310,123 @@
             </div>
         </div>
     </div>
-    <script>
-        // Three.js Animation for Continuous 3D Motion Effect with Stars
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
+    <!-- Author Card -->
+    <div class="author-card">
+        <div class="card-content">
+            <div class="author-header">
+                <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=false,plain=false,w=180,f=avif,q=85/users/common/avatar/637285499601470901/771f8f48-e68f-30e3-db28-328eae94977e.png" alt="TDNM Logo" class="author-logo">
+                <h1 class="author-name">TDNM</h1>
+                <p class="author-role">Vietnamese Artist & AI Models Trainer | Creating Stunning AI Artworks</p>
+            </div>
+            <div class="social-media">
+                <a href="https://www.youtube.com/@showthesecret/shorts" target="_blank">
+                    <i class="fab fa-youtube" style="color: #ff0000;"></i>
+                </a>
+                <a href="https://www.tiktok.com/@showthesecret" target="_blank">
+                    <i class="fab fa-tiktok" style="color: #000000;"></i>
+                </a>
+                <a href="https://www.tdn-m.com" target="_blank">
+                    <i class="fas fa-globe" style="color: #4fd1c5;"></i>
+                </a>
+                <a href="https://tensor.art/u/637285499601470901/store" target="_blank">
+                    <i class="fas fa-store" style="color: #ffa500;"></i>
+                </a>
+            </div>
+            <div class="author-stats">
+                <div>
+                    <span>1.2K</span>
+                    <span>Followers</span>
+                </div>
+                <div>
+                    <span>168</span>
+                    <span>Models</span>
+                </div>
+                <div>
+                    <span>50</span>
+                    <span>Apps</span>
+                </div>
+                <div>
+                    <span>2.8M</span>
+                    <span>Runs</span>
+                </div>
+                <div>
+                    <span>16.2K</span>
+                    <span>Stars</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Three.js Animation for Continuous 3D Motion Effect with Stars
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+    // Create a 3D Plane Geometry
+    const geometry = new THREE.PlaneGeometry(100, 100, 32, 32);
+    const material = new THREE.MeshPhongMaterial({
+        color: 0x4fd1c5,
+        side: THREE.DoubleSide,
+        wireframe: true,
+    });
+    const plane = new THREE.Mesh(geometry, material);
+    scene.add(plane);
+
+    // Add Lights
+    const light = new THREE.DirectionalLight(0xffffff, 0.8);
+    light.position.set(0, 0, 10);
+    scene.add(light);
+
+    // Add Stars
+    const starGeometry = new THREE.BufferGeometry();
+    const starVertices = [];
+    const starCount = 1000;
+
+    for (let i = 0; i < starCount; i++) {
+        const x = (Math.random() - 0.5) * 2000;
+        const y = (Math.random() - 0.5) * 2000;
+        const z = (Math.random() - 0.5) * 2000;
+        starVertices.push(x, y, z);
+    }
+
+    starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+
+    const starMaterial = new THREE.PointsMaterial({
+        color: 0xffd700, // Gold color for stars
+        size: 0.5,
+        transparent: true,
+        opacity: 0.8,
+    });
+
+    const stars = new THREE.Points(starGeometry, starMaterial);
+    scene.add(stars);
+
+    camera.position.z = 50;
+
+    function animate() {
+        requestAnimationFrame(animate);
+
+        // Rotate the plane for a continuous motion effect
+        plane.rotation.x += 0.005;
+        plane.rotation.y += 0.005;
+
+        // Animate stars
+        stars.rotation.x += 0.001;
+        stars.rotation.y += 0.001;
+
+        renderer.render(scene, camera);
+    }
+    animate();
+
+    // Responsive Canvas
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById('canvas-container').appendChild(renderer.domElement);
-
-        // Create a 3D Plane Geometry
-        const geometry = new THREE.PlaneGeometry(100, 100, 32, 32);
-        const material = new THREE.MeshPhongMaterial({
-            color: 0x4fd1c5,
-            side: THREE.DoubleSide,
-            wireframe: true,
-        });
-        const plane = new THREE.Mesh(geometry, material);
-        scene.add(plane);
-
-        // Add Lights
-        const light = new THREE.DirectionalLight(0xffffff, 0.8);
-        light.position.set(0, 0, 10);
-        scene.add(light);
-
-        // Add Stars
-        const starGeometry = new THREE.BufferGeometry();
-        const starVertices = [];
-        const starCount = 1000;
-
-        for (let i = 0; i < starCount; i++) {
-            const x = (Math.random() - 0.5) * 2000;
-            const y = (Math.random() - 0.5) * 2000;
-            const z = (Math.random() - 0.5) * 2000;
-            starVertices.push(x, y, z);
-        }
-
-        starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
-
-        const starMaterial = new THREE.PointsMaterial({
-            color: 0xffd700, // Gold color for stars
-            size: 0.5,
-            transparent: true,
-            opacity: 0.8,
-        });
-
-        const stars = new THREE.Points(starGeometry, starMaterial);
-        scene.add(stars);
-
-        camera.position.z = 50;
-
-        function animate() {
-            requestAnimationFrame(animate);
-
-            // Rotate the plane for a continuous motion effect
-            plane.rotation.x += 0.005;
-            plane.rotation.y += 0.005;
-
-            // Animate stars
-            stars.rotation.x += 0.001;
-            stars.rotation.y += 0.001;
-
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // Responsive Canvas
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    </script>
+    });
+</script>
 </body>
 </html>
