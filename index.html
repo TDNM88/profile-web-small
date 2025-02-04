@@ -4,143 +4,579 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TDNM Official Page</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #0a0a0a, #3a4452);
+            color: white;
+            overflow-x: hidden;
+        }
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+        }
+        header h1 {
+            font-size: 1.8em;
+            color: #4fd1c5;
+        }
+        header nav a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            margin-left: 20px;
+            transition: color 0.3s ease;
+        }
+        header nav a:hover {
+            color: #4fd1c5;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        .container-row {
+            display: flex;
+            gap: 40px;
+            margin: 0 auto;
+            padding: 40px 0;
+            max-width: 1200px;
+            width: 90%;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        section h2 {
+            font-size: 2em;
+            color: #4fd1c5;
+            margin-bottom: 20px;
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            animation: glowing-border 3s infinite alternate;
+        }
+        @keyframes glowing-border {
+            0% {
+                box-shadow: 0 0 5px 2px rgba(79, 209, 197, 0.5), 0 0 10px 5px rgba(79, 209, 197, 0.3);
+            }
+            100% {
+                box-shadow: 0 0 10px 5px rgba(79, 209, 197, 0.8), 0 0 20px 10px rgba(79, 209, 197, 0.5);
+            }
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(79, 209, 197, 0.2), rgba(99, 179, 237, 0.2));
+            opacity: 0.5;
+            z-index: -1;
+            filter: blur(30px);
+        }
+        .card-icon {
+            font-size: 1.5em;
+            color: #4fd1c5;
+            margin-bottom: 10px;
+        }
+        .card-title {
+            font-size: 1.2em;
+            color: #4fd1c5;
+            margin-bottom: 10px;
+        }
+        .card-title:hover {
+            color: #63b3ed;
+        }
+        .card-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(238, 199, 90, 0.597);
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            font-size: 1em;
+            color:aliceblue;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        .card-button:hover {
+            transform: translateY(-3px);
+            background: rgba(238, 199, 90, 0.8);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+        }
+        .card-button:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        .card-content {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+        .author-card {
+            width: 512px;
+            height: 656px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: glowing-border 3s infinite alternate;
+        }
+        #models.container {
+            width: auto;
+            flex: 1;
+            padding: 0;
+        }
+        .author-card:hover {
+            transform:translateY(-5px);
+        }
+        .author-header {
+            text-align: center;
+            margin-top: 20px;
+            background-image: src="https://image.tensorartassets.com/cdn-cgi/image/anim=true,plain=false,w=2048,f=jpeg,q=85/posts/images/637285499601470901/b10d087e-efa7-45fb-98bf-fbd1f4f5d456.png";
+        }
+        .author-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            object-fit: cover;
+            border: 3px solid #4fd1c5;
+            box-shadow: 0 0 20px rgba(79, 209, 197, 0.8);
+        }
+        .author-achievements {
+            padding: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .author-name {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: #4fd1c5;
+            text-shadow: 0 0 20px rgba(79, 209, 197, 0.8);
+        }
+        .author-role {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 5px 0;
+        }
+        .author-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            font-size: 1.0em;
+        }
+        .author-stats div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .author-stats div:hover {
+            transform: scale(1.1);
+        }
+        .author-stats div span:first-child {
+            font-weight: 700;
+            font-size: larger;
+            color: #4fd1c5;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px rgba(79, 209, 197, 0.5);
+        }
+        .author-stats div:hover span:first-child {
+            font-size: 1.2em;
+            color: #63b3ed;
+            text-shadow: 0 0 15px rgba(99, 179, 237, 0.8);
+        }
+        .author-achievements .achievement-list {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+        .author-achievements .achievement-item {
+            display: flex;
+            align-items: center;
+            border: 2px solid #4fd1c5;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: rgba(79, 209, 197, 0.1);
+            transition: all 0.3s ease;
+        }
+        .author-achievements .achievement-item:hover {
+            border-color: #63b3ed;
+            background: rgba(99, 179, 237, 0.15);
+            transform: translateX(5px);
+        }
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .social-media a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+        .social-media a:hover {
+            color: #4fd1c5;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .social-icon {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+        .social-icon:hover {
+            color: #4fd1c5;
+        }
+
+        .services {
+        padding: 50px 20px;
+        text-align: center;
+        background: linear-gradient(135deg, #0a0a0a, #3a4452);
+        }
+
+        .services h2 {
+        font-size: 36px;
+        margin-bottom: 40px;
+        color: #63b3ed;
+        }
+
+        .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 25px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: glowing-border 3s infinite alternate;
+        }
+        #models.container {
+            width: auto;
+            flex: 1;
+            padding: 0;
+        }
+
+        .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+        font-size: 20px;
+        margin-bottom: 5px;
+        color: #4fd1c5;
+        }
+
+        .service-card p {
+        font-size: 14px;
+        color: #ffffff;
+        line-height: 1.6;
+        }
+
+        .cta-button {
+        display: inline-block;
+        margin-top: 5px;
+        padding: 5px 10px;
+        background: rgba(238, 199, 90, 0.597);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+        background: #e2d40e;
+        }
+    </style>
 </head>
 <body>
+    <div id="canvas-container"></div>
+    <!-- Header -->
     <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="header-left">
-                    <button class="star-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M12 .587l3.668 7.431 8.18 1.18-5.91 5.744 1.393 8.12L12 18.897l-7.43 3.908 1.393-8.12-5.91-5.744 8.18-1.18z"></path>
-                        </svg>
-                    </button>
-                    <h1>TDNM</h1>
-                </div>
-                <div class="header-right">
-                    <a href="index.html" id="lounge-button" class="nav-button active">Lounge</a>
-                    <a href="gallery.html" id="gallery-button" class="nav-button">Gallery</a>
-                    <a href="tool.html" id="my-apps-button" class="nav-button">Tools</a>
-                </div>
-            </div>
-        </div>
+        <h1>TDNM</h1>
+        <nav>
+            <a href="#about">Tổng quan</a>
+            <a href="#achievements">Thành Tựu</a>
+            <a href="#services">Dịch Vụ</a>
+            <a href="#models">Mô Hình</a>
+            <a href="#apps">Ứng Dụng</a>
+        </nav>
     </header>
 
-    <main>
-        <div class="container">
-            <div id="content" class="lounge-content">
-                <section class="about-me" style="text-align: center; background-image: url('images/artwork9.jpg'); background-size: cover; background-position: center;">
-                    <div style="background-color: rgba(0, 0, 0, 0.8); padding: 20px;">
-                        <h1 class="fade-in" style="color: rgb(200, 197, 57);">Chào mừng đến với Gallery</h1>
-                        <p class="fade-in">TDNM - AI Developer - Model Trainer được biết đến rộng rãi trong cộng đồng AIGC (tạo sinh hình ảnh và video) quốc tế, với hơn 300 mô hình AI đã huấn luyện và công bố trên các nền tảng lớn, hàng triệu lượt sử dụng từ các nghệ sỹ toàn cầu</p>
-                        <h2 class="slide-in" style="margin-bottom: 10px;">Thành tích quốc tế</h2>
-                        <div class="achievements-container" style="margin-top: 0;">
-                            <ul class="slide-in" style="display: inline-block; text-align: left; font-size: 1.2em;">
-                                <li>🏆 Giải Nhất Sự kiện Huấn luyện Mô hình Flux Tensor Art với hơn 10.000 mô hình trên khắp thế giới tham dự (9-2024)</li>
-                                <li>🏆 Giải Nhất Ứng dụng AI sản xuất video do Tensor Art tổ chức (7-2024)</li>
-                                <li>🥉 Giải Ba Sự kiện Huấn luyện mô hình Stable Diffusion XL quốc tế (2-2024)</li>
-                                <li>🔝 Top 10 Sự kiện Huấn luyện mô hình Stable Diffusion 3 & HunYuan DiT (7-2024)</li>
-                            </ul>
+    <div class="container-row">
+        <!-- Author Card -->
+        <div class="author-card">
+            <div class="card-content">
+                <div class="author-header">
+                    <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=false,plain=false,w=180,f=avif,q=85/users/common/avatar/637285499601470901/771f8f48-e68f-30e3-db28-328eae94977e.png" alt="TDNM Logo" class="author-logo">
+                    <h1 class="author-name">TDNM</h1>
+                    <p class="author-role">Nhà phát triển mô hình AI & Nghệ sỹ tạo sinh hình ảnh hàng đầu châu Á. Tác giả hàng ngàn tác phẩm nghệ thuật, mô hình và giải pháp AI được sử dụng rộng rãi trên toàn cầu</p><div class="author-stats">
+                        <div>
+                            <span>288</span>
+                            <span>Mô hình AI</span>
+                        </div>
+                        <div>
+                            <span>50</span>
+                            <span>Apps</span>
+                        </div>
+                        <div>
+                            <span>3.550.000 </span>
+                            <span>Lượt sử dụng mô hình</span>
+                        </div>
+                        <div>
+                            <span>7.600</span>
+                            <span>Tác phẩm</span>
                         </div>
                     </div>
-                    <div class="stats">
-                        <div class="stat-item">
-                            <i class="fas fa-image"></i>
-                            <span class="stat-number">8000+</span>
-                            <span class="stat-label">Tác phẩm tạo sinh hình ảnh</span>
+                </div>
+                <div class="author-achievements">
+                    <div class="achievement-list">
+                        <div class="achievement-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>Vô địch TensorArt Global FLUX Training Event 2024 (vượt qua hơn 10.000 đối thủ) và nhiều lần giành các vị trí trong Top 3 của các sự kiện huấn luyện mô hình HunYuan Dit, Stable Diffusion (XL, 3 và 3.5) </span>
                         </div>
-                        <div class="stat-item">
-                            <i class="fas fa-code-branch"></i>
-                            <span class="stat-number">350+</span>
-                            <span class="stat-label">Mô hình tạo sinh ảnh đã huấn luyện và phát hành</span>
+                        <div class="achievement-item">
+                            <i class="fas fa-medal"></i>
+                            <span>Tác giả nhiều mô hình AI, ứng dụng Machine Learning được sử dụng rộng rãi khắp thế giới</span>
                         </div>
-                        <div class="stat-item">
-                            <i class="fas fa-users"></i>
-                            <span class="stat-number">2.4 triệu</span>
-                            <span class="stat-label">Lượt người dùng trên toàn cầu</span>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-star"></i>
-                            <span class="stat-number">60+</span>
-                            <span class="stat-label">Ứng dụng AI đã phát hành</span>
+                        <div class="achievement-item">
+                            <i class="fas fa-award"></i>
+                            <span>Top 10 nhà phát triển mô hình AI được tin dùng nhất tại TensorArt - nền tảng chia sẻ AI tạo sinh hình ảnh và video lớn nhất thế giới</span>
                         </div>
                     </div>
-                    <p class="location" style="color: rgb(220, 218, 218); font-style: italic; font-weight: 300;">Số liệu ngày 30-11-2024</p>
-                </section>
-
-                <div class="content-wrapper">
-                    <section class="featured-products">
-                        <h2>Ứng Dụng Thực Tế</h2>
-                        <div class="product-grid">
-                            <div class="product-card">
-                                <img src="images/media_production.jpg" alt="Sản xuất media">
-                                <h3>Sản xuất media</h3>
-                                <p>Khám phá các dịch vụ sản xuất media chất lượng cao, từ video quảng cáo đến nội dung truyền thông xã hội.</p>
-                                <a href="media_production.html" class="view-more-button">Xem thêm</a>
-                            </div>
-                            <div class="product-card">
-                                <img src="images/ai_app_development.jpg" alt="Phát triển ứng dụng AI">
-                                <h3>Phát triển ứng dụng AI</h3>
-                                <p>Tận dụng sức mạnh của AI để phát triển các ứng dụng thông minh, từ chatbot đến hệ thống nhận dạng hình ảnh.</p>
-                                <a href="ai_app_development.html" class="view-more-button">Xem thêm</a>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section class="featured-models">
-                        <h2>CÁC MÔ HÌNH NỔI BẬT</h2>
-                        <div class="model-grid">
-                            <div class="model-card">
-                                <img src="images/model1.jpg" alt="Flux Best Face Ever-Reborn 1">
-                                <h3>Flux Best Face Ever-Reborn 1</h3>
-                                <p>LORA model for enhanced facial features</p>
-                            </div>
-                            <div class="model-card">
-                                <img src="images/model2.jpg" alt="FLUX VIET-COSTUME 1">
-                                <h3>FLUX VIET-COSTUME 1</h3>
-                                <p>LORA model for Vietnamese traditional costumes</p>
-                            </div>
-                            <div class="model-card">
-                                <img src="images/model3.jpg" alt="FLUX WONDER BEAUTY TDNM-V1">
-                                <h3>FLUX WONDER BEAUTY TDNM-V1</h3>
-                                <p>LORA model for stunning beauty effects</p>
-                            </div>
-                            <div class="model-card">
-                                <img src="images/model4.jpg" alt="FLUX TA Realistic-Legendary">
-                                <h3>FLUX TA Realistic-Legendary</h3>
-                                <p>CHECKPOINT model for realistic legendary characters</p>
-                            </div>
-                        </div>
-                        <div class="view-more-container">
-                            <a href="gallery.html" class="view-more-button">ENTER THE GALLERY</a>
-                        </div>
-                    </section>
+                </div>
+                <div class="social-media">
+                    <a href="https://www.youtube.com/@showthesecret/shorts" target="_blank">
+                        <i class="fab fa-youtube" style="color: #ff0000;"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@showthesecret" target="_blank">
+                        <i class="fab fa-tiktok" style="color: #000000;"></i>
+                    </a>
+                    <a href="https://www.tdn-m.com" target="_blank">
+                        <i class="fas fa-globe" style="color: #4fd1c5;"></i>
+                    </a>
+                    <a href="https://tensor.art/u/637285499601470901/store" target="_blank">
+                        <i class="fas fa-store" style="color: #ffa500;"></i>
+                    </a>
                 </div>
             </div>
         </div>
-    </main>
 
-    <footer>
-        <div class="container">
-            <div class="social-icons">
-                <a href="https://facebook.com" target="_blank" class="social-icon">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://twitter.com" target="_blank" class="social-icon">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="https://instagram.com" target="_blank" class="social-icon">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://linkedin.com" target="_blank" class="social-icon">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
+        <!-- Models Section -->
+        <section id="models" class="container">
+            <h2>Các Mô Hình Nổi Bật</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=true,plain=false,w=2048,f=jpeg,q=85/model_showcase/766419665653268679/22d58900-d7ce-2811-0227-b8da5c5cbfc2.png" alt="Model 1" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px;">
+                    <a href="https://tensor.art/models/766419665653268679/FLUX-Enhanced-All-Realistic" style="text-decoration: none; color: inherit;">
+                        <h3 class="card-title">FLUX Enhanced All - Realistic</h3>
+                      </a>
+                    <p class="card-content">LoRA giành hạng Nhất tại TensorArt Global FLUX Training Event 2024</p>
+                </div>
+                <div class="card">
+                    <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=true,plain=false,w=2048,f=jpeg,q=85/posts/images/637285499601470901/e1d3aa12-3c64-4b57-a6f4-2c6c1aa0ca68.png" alt="Model 2" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px;">
+                    <a href="https://tensor.art/models/770694094415489962/FLUX-TA-Realistic-Legendary" style="text-decoration: none; color: inherit;">
+                        <h3 class="card-title">FLUX TA Realistic - Legendary</h3>
+                      </a>
+                    <p class="card-content">Checkpoint phong cách Realistic được ưa chuộng hàng đầu và độc quyền phát hành tại Tensor Art</p>
+                </div>
+                <div class="card-button">Xem Toàn Bộ Danh Sách Mô Hình</div>
             </div>
+        </section>
+    </div>
+
+    <section class="services">
+        <h2>Dịch Vụ Của TDNM</h2>
+        <div class="services-grid">
+          <!-- Card 1 -->
+          <div class="service-card">
+            <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=true,plain=false,w=2048,f=jpeg,q=85/posts/images/637285499601470901/e7ac34bd-82c0-47aa-870e-fc18aebd4334.png" alt="Media Production Icon 1" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
+            <h3>Sản Xuất Nội Dung Đa Phương Tiện</h3>
+            <p>Hình ảnh, Video... quảng cáo chuyên nghiệp, sáng tạo</p> 
+            <p>Tối ưu hiệu quả sản xuất về thời gian, chi phí và chất lượng</p>
+            <a href="#" class="cta-button">Xem thêm</a>
+          </div>
+          
+          <!-- Card 2 -->
+          <div class="service-card">
+            <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=true,plain=false,w=2048,f=jpeg,q=85/posts/images/637285499601470901/1fe6fd13-f8f8-4624-b678-757331d07c66.png" alt="Media Production Icon 2" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
+            <h3>Phát Triển Ứng Dụng AI</h3>
+            <p>Xây dựng các ứng dụng được tùy chỉnh chính xác theo nhu cầu của doanh nghiệp</p>
+            <p>Hoạt động ổn định và dễ dàng nâng cấp, bổ sung các tính năng mới.</p>
+            <a href="#" class="cta-button">Xem thêm</a>
+          </div>
+      
+          <!-- Card 3 -->
+          <div class="service-card">
+            <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=true,plain=false,w=2048,f=jpeg,q=85/posts/images/637285499601470901/252aaac4-25e0-456e-8f95-19e113ea209e.png" alt="Media Production Icon 3" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
+            <h3>Huấn Luyện Mô Hình AI</h3>
+            <p>Huấn luyện mô hình AI độc quyền dành riêng cho doanh nghiệp của bạn.</p>
+            <p>Tùy chỉnh mô hình dựa trên dữ liệu cụ thể, đảm bảo tính chính xác và triển khai nhanh chóng</p>
+            <a href="#" class="cta-button">Xem Thêm</a>
+          </div>
+      
+          <!-- Card 4 -->
+          <div class="service-card">
+            <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=true,plain=false,w=2048,f=jpeg,q=85/posts/images/637285499601470901/4c114d18-5ae3-4de0-99e4-cd12cc1475fc.png" alt="Media Production Icon 3" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
+            <h3>Tư Vấn & Đào Tạo</h3>
+            <p>Cung cấp chiến lược và giải pháp tích hợp AI vào quá trình vận hành doanh nghiệp.</p>
+            <p>Đào tạo kiến thức, kỹ năng "thực chiến" để các tổ chức, cá nhân thực sự làm chủ công cụ AI</p>
+            <a href="#" class="cta-button">Xem Thêm</a>
+          </div>
+        </div>
+      </section>
+
+    <!-- Applications Section -->
+    <section id="apps" class="container">
+        <h2>Applications</h2>
+        <div class="card-container">
+            <div class="card">
+                <i class="fas fa-paint-brush card-icon"></i>
+                <h3 class="card-title">Text-to-Image</h3>
+                <p class="card-content">Chuyển đổi văn bản thành hình ảnh chất lượng cao.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-image card-icon"></i>
+                <h3 class="card-title">Image-to-Image</h3>
+                <p class="card-content">Chỉnh sửa và nâng cấp hình ảnh hiện có.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-fill-drip card-icon"></i>
+                <h3 class="card-title">Inpainting</h3>
+                <p class="card-content">Phục hồi và chỉnh sửa chi tiết hình ảnh.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Three.js Animation for Continuous 3D Motion Effect with Stars
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        // Add Lights
+        const light = new THREE.DirectionalLight(0xffffff, 0.8);
+        light.position.set(0, 0, 10);
+        scene.add(light);
+
+        // Add Stars
+        const starGeometry = new THREE.BufferGeometry();
+        const starVertices = [];
+        const starCount = 33000;
+
+        for (let i = 0; i < starCount; i++) {
+            const x = (Math.random() - 0.5) * 2000;
+            const y = (Math.random() - 0.5) * 2000;
+            const z = (Math.random() - 0.5) * 2000;
+            starVertices.push(x, y, z);
+        }
+
+        starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+
+        const starMaterial = new THREE.PointsMaterial({
+            color: 0xffd700, // Gold color for stars
+            size: 0.5,
+            transparent: true,
+            opacity: 0.8,
+        });
+
+        const stars = new THREE.Points(starGeometry, starMaterial);
+        scene.add(stars);
+
+        camera.position.z = 50;
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Animate stars
+            stars.rotation.x += 0.001;
+            stars.rotation.y += 0.001;
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Responsive Canvas
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
 </body>
 </html>
