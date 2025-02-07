@@ -1,86 +1,625 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TDNM - Chatbot AI</title>
-    
-    <!-- FontAwesome để hiển thị icon -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-    <!-- CSS cơ bản -->
+    <title>TDNM Official Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            text-align: center;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
-        header {
-            background-color: #333;
+        body {
+            background: linear-gradient(135deg, #0a0a0a, #3a4452);
             color: white;
-            padding: 10px 0;
+            overflow-x: hidden;
         }
-        nav {
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        /* Header */
+        header {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 60px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 999;
         }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(79, 209, 197, 0.1), rgba(79, 209, 197, 0.05));
+            transform: translateZ(-50px);
+            border-radius: 20px;
+            pointer-events: none; /* Đảm bảo không ảnh hưởng đến tương tác */
+        }
+
+        header h1 {
+            font-size: 1.3em;
+            color: #4fd1c5;
+            text-shadow: 0 0 10px rgba(79, 209, 197, 0.8);
+            transform: translateZ(30px);
+            margin: 0;
+        }
+
+        /* Navigation */
+        header nav {
+            transform: translateZ(30px);
+            display: flex;
+            gap: 20px; /* Khoảng cách giữa các mục */
+        }
+
+        header nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        header nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #4fd1c5;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #4fd1c5;
+            text-shadow: 0 0 10px rgba(79, 209, 197, 0.8);
+        }
+
+        header nav a:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Drop-down Button */
+        .dropbtn {
+            background-color: transparent;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 10px;
+            border-radius: 8px;
+        }
+
+        .dropbtn::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #4fd1c5;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .dropbtn:hover {
+            color: #4fd1c5;
+            text-shadow: 0 0 10px rgba(79, 209, 197, 0.8);
+        }
+
+        .dropbtn:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Dropdown container */
         .dropdown {
             position: relative;
             display: inline-block;
         }
-        .dropbtn {
-            background-color: #444;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-        }
+
+        /* Dropdown content (hidden by default) */
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: white;
+            background-color: #ffffff;
             min-width: 160px;
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
             z-index: 1;
+            top: 100%; /* Position below the button */
+            left: 0;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.3s ease;
         }
-        .dropdown-content a {
-            color: black;
-            padding: 10px;
-            text-decoration: none;
-            display: block;
-        }
-        .dropdown-content a:hover {
-            background-color: #ddd;
-        }
+
         .dropdown:hover .dropdown-content {
             display: block;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
         }
         .container {
-            margin: 20px auto;
-            max-width: 900px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
         }
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 10px;
+        .container-row {
+            display: flex;
+            gap: 40px;
+            margin: 0 auto;
+            padding: 40px 0;
+            max-width: 1200px;
+            width: 90%;
+            justify-content: center;
+            align-items: center;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        section h2 {
+            font-size: 2em;
+            color: #4fd1c5;
+            margin-bottom: 20px;
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            overflow: hidden;
             position: relative;
-            bottom: 0;
+            animation: glowing-border 3s infinite alternate;
+        }
+        @keyframes glowing-border {
+            0% {
+                box-shadow: 0 0 5px 2px rgba(79, 209, 197, 0.5), 0 0 10px 5px rgba(79, 209, 197, 0.3);
+            }
+            100% {
+                box-shadow: 0 0 10px 5px rgba(79, 209, 197, 0.8), 0 0 20px 10px rgba(79, 209, 197, 0.5);
+            }
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(79, 209, 197, 0.2), rgba(99, 179, 237, 0.2));
+            opacity: 0.5;
+            z-index: -1;
+            filter: blur(30px);
+        }
+        .card-icon {
+            font-size: 1.5em;
+            color: #4fd1c5;
+            margin-bottom: 10px;
+        }
+        .card-title {
+            font-size: 1.2em;
+            color: #4fd1c5;
+            margin-bottom: 10px;
+        }
+        .card-title:hover {
+            color: #63b3ed;
+        }
+        .card-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(238, 199, 90, 0.597);
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            font-size: 1em;
+            color:aliceblue;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        .card-button:hover {
+            transform: translateY(-3px);
+            background: rgba(238, 199, 90, 0.8);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+        }
+        .card-button:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        .card-content {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+        .author-card {
+            width: 612px;
+            height: 686px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: glowing-border 3s infinite alternate;
+        }
+        #models.container {
+            width: auto;
+            flex: 1;
+            padding: 0;
+        }
+        .author-card:hover {
+            transform:translateY(-5px);
+        }
+        .author-header {
+            text-align: center;
+            margin-top: 20px;
+            background-image: src="https://image.tensorartassets.com/cdn-cgi/image/anim=true,plain=false,w=2048,f=jpeg,q=85/posts/images/637285499601470901/b10d087e-efa7-45fb-98bf-fbd1f4f5d456.png";
+        }
+        .author-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            object-fit: cover;
+            border: 3px solid #4fd1c5;
+            box-shadow: 0 0 20px rgba(79, 209, 197, 0.8);
+        }
+        .author-achievements {
+            padding: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .author-name {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: #4fd1c5;
+            text-shadow: 0 0 20px rgba(79, 209, 197, 0.8);
+        }
+        .author-role {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 5px 0;
+        }
+        .author-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            font-size: 1.0em;
+        }
+        .author-stats div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .author-stats div:hover {
+            transform: scale(1.1);
+        }
+        .author-stats div span:first-child {
+            font-weight: 700;
+            font-size: larger;
+            color: #4fd1c5;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px rgba(79, 209, 197, 0.5);
+        }
+        .author-stats div:hover span:first-child {
+            font-size: 1.2em;
+            color: #63b3ed;
+            text-shadow: 0 0 15px rgba(99, 179, 237, 0.8);
+        }
+        .author-achievements .achievement-list {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+        .author-achievements .achievement-item {
+            display: flex;
+            align-items: center;
+            border: 2px solid #4fd1c5;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: rgba(79, 209, 197, 0.1);
+            transition: all 0.3s ease;
+        }
+        .author-achievements .achievement-item:hover {
+            border-color: #63b3ed;
+            background: rgba(99, 179, 237, 0.15);
+            transform: translateX(5px);
+        }
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
         }
         .social-media a {
-            margin: 0 10px;
-            font-size: 24px;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+        .social-media a:hover {
+            color: #4fd1c5;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .social-icon {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+        .social-icon:hover {
+            color: #4fd1c5;
+        }
+
+        .services {
+        padding: 50px 20px;
+        text-align: center;
+        background: linear-gradient(135deg, #0a0a0a, #3a4452);
+        }
+
+        .services h2 {
+        font-size: 36px;
+        text-align: left;
+        margin-bottom: 40px;
+        color: #63b3ed;
+        }
+
+        .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 25px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: glowing-border 3s infinite alternate;
+        }
+        #models.container {
+            width: auto;
+            flex: 1;
+            padding: 0;
+        }
+
+        .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+        font-size: 20px;
+        margin-bottom: 5px;
+        color: #4fd1c5;
+        }
+
+        .service-card p {
+        font-size: 14px;
+        color: #ffffff;
+        line-height: 1.6;
+        }
+
+        .cta-button {
+        display: inline-block;
+        margin-top: 5px;
+        padding: 5px 10px;
+        background: rgba(238, 199, 90, 0.597);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+        background: #e2d40e;
+        }
+
+        /* Định dạng chung */
+        #button-contact-vr {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99999;
+        }
+
+        .button-contact {
+            position: relative;
+            margin-top: 5px;
+        }
+
+        /* Định dạng chung cho nút Phone */
+        #phone-vr {
+            position: fixed; /* Giữ nút cố định trên màn hình */
+            bottom: 30px; /* Khoảng cách từ dưới cùng của màn hình */
+            right: 30px; /* Khoảng cách từ bên phải của màn hình */
+            z-index: 99999; /* Đảm bảo nút hiển thị trên tất cả các phần tử khác */
+        }
+
+        .phone-vr {
+            position: relative;
+            visibility: visible;
+            background-color: transparent;
+            width: 60px; /* Điều chỉnh kích thước nút */
+            height: 60px; /* Điều chỉnh kích thước nút */
+            cursor: pointer;
+            border-radius: 50%; /* Làm nút tròn */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease; /* Hiệu ứng phóng to khi hover */
+        }
+
+        .phone-vr:hover {
+            transform: scale(1.1); /* Phóng to nút khi hover */
+        }
+
+        .phone-vr-circle-fill {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: rgba(211, 51, 51, 0.3);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite; /* Hiệu ứng động */
+        }
+
+        .phone-vr-img-circle img {
+            max-width: 30px;
+            max-height: 30px;
+        }
+
+        /* Hiệu ứng động */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+        }
+
+        /* Popup */
+        .bg-popup-vr {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Màu nền mờ */
+            display: none; /* Ẩn mặc định */
+            z-index: 99998;
+        }
+
+        /* Container của popup */
+        .content-popup-vr {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px; /* Giới hạn chiều rộng tối đa */
+            display: none; /* Ẩn mặc định */
+            z-index: 99999;
+        }
+
+        /* Nội dung bên trong popup */
+        .content-popup-div-vr h1 {
+            font-size: 228px;
+            text-align: center;
+            margin: 0 0 20px 0;
+            color: #f6fa04;
+        }
+
+        /* Nút đóng popup */
+        .close-popup-vr {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #000;
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+
+        .close-popup-vr:hover {
+            color: #d33; /* Đổi màu khi hover */
         }
     </style>
 </head>
-
 <body>
+    <div id="canvas-container"></div>
     <!-- Header -->
     <header>
         <h1>TDNM</h1>
