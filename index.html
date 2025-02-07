@@ -25,26 +25,120 @@
             height: 100%;
             z-index: -1;
         }
+        /* Header */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
+            padding: 10px 60px;
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px);
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(79, 209, 197, 0.1), rgba(79, 209, 197, 0.05));
+            transform: translateZ(-50px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
         header h1 {
-            font-size: 1.8em;
+            font-size: 1.3em;
             color: #4fd1c5;
+            text-shadow: 0 0 10px rgba(79, 209, 197, 0.8);
+            transform: translateZ(30px);
         }
-        header nav a {
+
+        /* Navigation */
+        header nav {
+            transform: translateZ(30px);
+        }
+
+        /* Drop-down Button */
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 10px;
+        }
+
+        .dropbtn::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #4fd1c5;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .dropbtn:hover {
+            color: #4fd1c5;
+            text-shadow: 0 0 10px rgba(79, 209, 197, 0.8);
+        }
+
+        .dropbtn:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            top: 100%; /* Position below the button */
+            left: 0;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
             text-decoration: none;
-            color: rgba(255, 255, 255, 0.8);
-            margin-left: 20px;
-            transition: color 0.3s ease;
+            display: block;
+            transition: all 0.3s ease;
         }
-        header nav a:hover {
-            color: #4fd1c5;
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
         }
         .container {
             width: 90%;
@@ -152,8 +246,8 @@
             line-height: 1.5;
         }
         .author-card {
-            width: 512px;
-            height: 656px;
+            width: 612px;
+            height: 686px;
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px);
             border-radius: 30px;
@@ -284,7 +378,7 @@
 
         .services {
         padding: 50px 20px;
-        text-align: center;
+        text-align: left;
         background: linear-gradient(135deg, #0a0a0a, #3a4452);
         }
 
@@ -359,11 +453,16 @@
     <header>
         <h1>TDNM</h1>
         <nav>
-            <a href="#about">Tổng quan</a>
-            <a href="#achievements">Thành Tựu</a>
-            <a href="#services">Dịch Vụ</a>
-            <a href="#models">Mô Hình</a>
-            <a href="#apps">Ứng Dụng</a>
+            <div class="dropdown">
+                <button class="dropbtn">Menu</button>
+                <div class="dropdown-content">
+                    <a href="#about">Tổng quan</a>
+                    <a href="#achievements">Thành Tựu</a>
+                    <a href="#services">Dịch Vụ</a>
+                    <a href="#models">Mô Hình</a>
+                    <a href="#apps">Ứng Dụng</a>
+                </div>
+            </div>
         </nav>
     </header>
         <div class="container-row">
@@ -493,22 +592,31 @@
 
     <!-- Applications Section -->
     <section id="apps" class="container">
-        <h2>Applications</h2>
+        <h2>Ứng Dụng</h2>
         <div class="card-container">
             <div class="card">
                 <i class="fas fa-paint-brush card-icon"></i>
-                <h3 class="card-title">Text-to-Image</h3>
-                <p class="card-content">Chuyển đổi văn bản thành hình ảnh chất lượng cao.</p>
+                <h3 class="card-title">Market Radar by TDNM</h3>
+                <p class="card-content">Ứng dụng Machine Learning tự động quét thông tin thị trường và đưa ra đánh giá dựa trên nguồn dữ liệu thời gian thực</p>
+                <a href="https://marketradar.created.app" target="_blank" class="cta-button" style="margin-top: 15px; display: inline-block;">
+                    Trải nghiệm ngay
+                </a>
             </div>
             <div class="card">
                 <i class="fas fa-image card-icon"></i>
-                <h3 class="card-title">Image-to-Image</h3>
-                <p class="card-content">Chỉnh sửa và nâng cấp hình ảnh hiện có.</p>
+                <h3 class="card-title">Tạo Ảnh với Flux Enhanced All - Realistic</h3>
+                <p class="card-content">Tạo hình ảnh bằng lời nhắc. Trải nghiệm sự sáng tạo vô tận cùng mô hình nổi tiếng toàn cầu</p>
+                <a href="https://tdn-m-tams-image-gen.hf.space" target="_blank" class="cta-button" style="margin-top: 15px; display: inline-block;">
+                    Trải nghiệm ngay
+                </a>
             </div>
             <div class="card">
                 <i class="fas fa-fill-drip card-icon"></i>
-                <h3 class="card-title">Inpainting</h3>
-                <p class="card-content">Phục hồi và chỉnh sửa chi tiết hình ảnh.</p>
+                <h3 class="card-title">Giả lập chữ viết tay tiếng Việt</h3>
+                <p class="card-content">Giúp bạn tạo visual động mô tả nét chữ viết tay với ký tự tiếng Việt đa dạng</p>
+                <a href="https://tdn-m-vn-handwriting.static.hf.space" target="_blank" class="cta-button" style="margin-top: 15px; display: inline-block;">
+                    Trải nghiệm ngay
+                </a>
             </div>
         </div>
     </section>
