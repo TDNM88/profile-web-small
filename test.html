@@ -15,22 +15,26 @@
     <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.3/libs/oversea/index.js"></script>
     
     <script>
-        // Token xác thực API
+        // Token API của bạn
         const token = "pat_2m7T2qaVBLJ84bjZvXIsSfqu9k41dQBfXmM5xNn5sMvTmin87ebuGXYWajrwZJTE"; 
 
-        // Khởi tạo Coze WebChatClient với token
-        new CozeWebSDK.WebChatClient({
-            config: {
-                bot_id: '7468876593676156935',
-                auth: {
-                    type: 'token',
-                    value: token // Thêm token vào đây
-                }
-            },
-            componentProps: {
-                title: 'Coze',
-            },
-        });
+        // Kiểm tra xem SDK đã được tải chưa
+        if (window.CozeWebSDK) {
+            new CozeWebSDK.WebChatClient({
+                config: {
+                    bot_id: '7468876593676156935',
+                    auth: {
+                        type: 'token',  // Chỉ chấp nhận "token", không được để trống
+                        value: token    // Truyền token vào đây
+                    }
+                },
+                componentProps: {
+                    title: 'Coze Chat',
+                },
+            });
+        } else {
+            console.error("Coze SDK chưa được tải!");
+        }
     </script>
 
     <!-- Footer -->
