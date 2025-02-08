@@ -11,23 +11,20 @@
         <h1>TDNM</h1>
     </header>
 
+    <!-- Nhúng Coze Web SDK -->
     <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.3/libs/oversea/index.js"></script>
+    
     <script>
-        // Hàm giải mã Base64
-        function decodeBase64(encoded) {
-            return atob(encoded);
-        }
+        // Token xác thực API
+        const token = "pat_2m7T2qaVBLJ84bjZvXIsSfqu9k41dQBfXmM5xNn5sMvTmin87ebuGXYWajrwZJTE"; 
 
-        // Token đã mã hóa bằng Base64
-        const encodedToken = "cGF0XzJtN1QycWFWQkxKODRialp2WElzU2ZxdTlrNDFkUUJmWG1NNXhObjVzTXZUbWluODdlYnVHWFlXYWpyd1pKVEU=";
-
-        // Khởi tạo Coze Chatbot với token đã giải mã
+        // Khởi tạo Coze WebChatClient với token
         new CozeWebSDK.WebChatClient({
             config: {
                 bot_id: '7468876593676156935',
                 auth: {
                     type: 'token',
-                    value: decodeBase64(encodedToken) // Giải mã token
+                    value: token // Thêm token vào đây
                 }
             },
             componentProps: {
