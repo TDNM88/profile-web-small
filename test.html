@@ -3,29 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TDNM Gallery Lounge - Ứng dụng Tạo Sinh Hình Ảnh 1</title>
+    <title>TDNM</title>
     <link rel="stylesheet" href="../apps/app-styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/5.15.0/gradio.js"></script>
 </head>
 <body>
     <header>
         <h1>TDNM</h1>
     </header>
 
-    <main>
-        <div class="container">
-
-            <div class="app-content">
-                <div class="app-description">
-                    <p>DEMO 1</p>
-                    <div class="module"> 
-                        <gradio-app src="https://tdn-m-demo1.hf.space"></gradio-app>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+    <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.3/libs/oversea/index.js"></script>
+    <script>
+        new CozeWebSDK.WebChatClient({
+            config: {
+                bot_id: '7468876593676156935',
+            },
+            componentProps: {
+                title: 'Coze',
+            },
+        });
+    </script>
 
     <!-- Footer -->
     <footer>
