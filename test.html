@@ -25,27 +25,17 @@
     <div id="chat-container"></div>
 
     <!-- Nhúng Coze SDK -->
-    <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.3/libs/oversea/index.js"></script>
-    <script>
-        // Kiểm tra SDK đã tải chưa
-        if (window.CozeWebSDK) {
-            new CozeWebSDK.WebChatClient({
-                config: {
-                    bot_id: "7468876593676156935",  // Thay bot_id của bạn vào đây
-                    auth: {
-                        type: "token",
-                        value: "pat_lh118Mp0Eo0IcOYn1iOrrADlb3CoTT0IKalMfyvK0W2qDGgzXJwi6IbNquoDsrvF" // Thay token API vào đây
-                    }
-                },
-                componentProps: {
-                    title: "Chat với AI",
-                    container: "#chat-container" // Hiển thị chatbot trong khung này
-                }
-            });
-        } else {
-            console.error("Coze SDK chưa tải xong!");
-        }
-    </script>
+          <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.3/libs/oversea/index.js"></script>
+      <script>
+          new CozeWebSDK.WebChatClient({
+            config: {
+              bot_id: '7468876593676156935',
+            },
+            componentProps: {
+              title: 'Coze',
+            },
+          });
+      </script>
 
 </body>
 </html>
