@@ -1,80 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot Coze</title>
-    <style>
-        #chat-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 390px;
-            height: 500px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Khung chatbot -->
-    <div id="chat-container"></div>
-
-    <!-- Nhúng Coze SDK -->
-    
-      <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.3/libs/oversea/index.js"></script>
-      <script>
-          new CozeWebSDK.WebChatClient({
-            config: {
-              bot_id: '7468876593676156935',
-            },
-            componentProps: {
-              title: 'Coze',
-            },
-          });
-      </script>
-    
-            userInfo: { 
-                id: "user", 
-                url: "https://lf-coze-web-cdn.coze.cn/obj/coze-web-cn/obric/coze/favicon.1970.png", 
-                nickname: "UserA", 
-            }, 
-            ui: { 
-                base: { 
-                    icon: "https://lf-coze-web-cdn.coze.cn/obj/coze-web-cn/obric/coze/favicon.1970.png", 
-                    layout: "pc", 
-                    lang: "en",
-                    zIndex: 1000, 
-                },
-                chatBot: {
-                    title: "Coze Bot",
-                    uploadable: true,
-                    width: 390,
-                    el: "#chat-container" // Quan trọng: Xác định container để chatbot hiển thị
+new CozeWebSDK.WebChatClient({
+    config: {
+        bot_id: "7468876593676156935",  // Thay bằng bot_id của bạn
+    },
+    userInfo: { 
+        id: "user", 
+        url: "https://lf-coze-web-cdn.coze.cn/obj/coze-web-cn/obric/coze/favicon.1970.png", 
+        nickname: "UserA" 
+    }, 
+    ui: { 
+        base: { 
+            icon: "https://lf-coze-web-cdn.coze.cn/obj/coze-web-cn/obric/coze/favicon.1970.png", 
+            layout: "pc", 
+            lang: "en",
+            zIndex: 1000 
+        },
+        chatBot: {
+            title: "Coze Bot",
+            uploadable: true,
+            width: 390,
+            el: "#chat-container"  // Xác định container để chatbot hiển thị
+        }, 
+        asstBtn: { 
+            isNeed: true 
+        }, 
+        footer: { 
+            isShow: true, 
+            expressionText: "Powered by &", 
+            linkvars: { 
+                name: { 
+                    text: "A", 
+                    link: "https://www.test1.com" 
                 }, 
-                asstBtn: { 
-                    isNeed: true, 
-                }, 
-                footer: { 
-                    isShow: true, 
-                    expressionText: "Powered by &", 
-                    linkvars: { 
-                        name: { 
-                            text: "A", 
-                            link: "https://www.test1.com" 
-                        }, 
-                        name1: { 
-                            text: "B", 
-                            link: "https://www.test2.com" 
-                        } 
-                    } 
+                name1: { 
+                    text: "B", 
+                    link: "https://www.test2.com" 
                 } 
-            },
-        });
-    </script>
-
-</body>
-</html>
+            } 
+        } 
+    }
+});
