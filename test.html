@@ -24,17 +24,19 @@
     <div id="chat-container"></div>
 
     <!-- Nhúng Coze SDK -->
-    <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.3/libs/oversea/index.js"></script>
-    <script>
-        new CozeWebSDK.WebChatClient({
+    
+      <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.3/libs/oversea/index.js"></script>
+      <script>
+          new CozeWebSDK.WebChatClient({
             config: {
-                bot_id: "7468895875520086034",  // Thay bằng bot_id của bạn
+              bot_id: '7468876593676156935',
             },
-            auth: { 
-                type: "token",
-                token: "pat_lh118Mp0Eo0IcOYn1iOrrADlb3CoTT0IKalMfyvK0W2qDGgzXJwi6IbNquoDsrvF", // Thay bằng token API
-                onRefreshToken: async () => "TOKEN_MỚI_CỦA_BẠN", 
+            componentProps: {
+              title: 'Coze',
             },
+          });
+      </script>
+    
             userInfo: { 
                 id: "user", 
                 url: "https://lf-coze-web-cdn.coze.cn/obj/coze-web-cn/obric/coze/favicon.1970.png", 
