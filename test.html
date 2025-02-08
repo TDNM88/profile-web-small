@@ -13,9 +13,22 @@
 
     <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.3/libs/oversea/index.js"></script>
     <script>
+        // Hàm giải mã Base64
+        function decodeBase64(encoded) {
+            return atob(encoded);
+        }
+
+        // Token đã mã hóa bằng Base64
+        const encodedToken = "cGF0XzJtN1QycWFWQkxKODRialp2WElzU2ZxdTlrNDFkUUJmWG1NNXhObjVzTXZUbWluODdlYnVHWFlXYWpyd1pKVEU=";
+
+        // Khởi tạo Coze Chatbot với token đã giải mã
         new CozeWebSDK.WebChatClient({
             config: {
                 bot_id: '7468876593676156935',
+                auth: {
+                    type: 'token',
+                    value: decodeBase64(encodedToken) // Giải mã token
+                }
             },
             componentProps: {
                 title: 'Coze',
