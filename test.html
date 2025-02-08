@@ -3,56 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TDNM</title>
-    <link rel="stylesheet" href="../apps/app-styles.css">
+    <title>Chatbot Coze</title>
+    <style>
+        /* Định dạng cho khung chatbot */
+        #chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 400px;
+            height: 500px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>TDNM</h1>
-    </header>
 
-    <!-- Nhúng Coze Web SDK -->
+    <!-- Khung chatbot -->
+    <div id="chat-container"></div>
+
+    <!-- Nhúng Coze SDK -->
     <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.3/libs/oversea/index.js"></script>
-    
     <script>
-        // Token API của bạn
-        const token = "pat_2m7T2qaVBLJ84bjZvXIsSfqu9k41dQBfXmM5xNn5sMvTmin87ebuGXYWajrwZJTE"; 
-
-        // Kiểm tra xem SDK đã được tải chưa
+        // Kiểm tra SDK đã tải chưa
         if (window.CozeWebSDK) {
             new CozeWebSDK.WebChatClient({
                 config: {
-                    bot_id: '7468876593676156935',
+                    bot_id: "7468876593676156935",  // Thay bot_id của bạn vào đây
                     auth: {
-                        type: 'token',  // Chỉ chấp nhận "token", không được để trống
-                        value: token    // Truyền token vào đây
+                        type: "token",
+                        value: "pat_lh118Mp0Eo0IcOYn1iOrrADlb3CoTT0IKalMfyvK0W2qDGgzXJwi6IbNquoDsrvF" // Thay token API vào đây
                     }
                 },
                 componentProps: {
-                    title: 'Coze Chat',
-                },
+                    title: "Chat với AI",
+                    container: "#chat-container" // Hiển thị chatbot trong khung này
+                }
             });
         } else {
-            console.error("Coze SDK chưa được tải!");
+            console.error("Coze SDK chưa tải xong!");
         }
     </script>
 
-    <!-- Footer -->
-    <footer>
-        <div class="social-media">
-            <a href="https://www.youtube.com/@showthesecret/shorts" target="_blank">
-                <i class="fab fa-youtube" style="color: #ff0000;"></i>
-            </a>
-            <a href="https://www.tiktok.com/@showthesecret" target="_blank">
-                <i class="fab fa-tiktok" style="color: #000000;"></i>
-            </a>
-            <a href="https://www.tdn-m.com" target="_blank">
-                <i class="fas fa-globe" style="color: #4fd1c5;"></i>
-            </a>
-            <a href="https://tensor.art/u/637285499601470901/store" target="_blank">
-                <i class="fas fa-store" style="color: #ffa500;"></i>
-            </a>
-        </div>
-    </footer>
 </body>
 </html>
