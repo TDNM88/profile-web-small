@@ -1,75 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot Coze</title>
+    <title>Nhúng Code Sandbox</title>
     <style>
-        /* Định dạng khung chatbot */
-        #chat-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 390px;
-            height: 500px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            background-color: #fff;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
         }
     </style>
 </head>
 <body>
-
-    <!-- Khung chứa chatbot -->
-    <div id="chat-container"></div>
-
-    <!-- Nhúng Coze SDK -->
-    <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.3/libs/oversea/index.js"></script>
-    <script>
-        new CozeWebSDK.WebChatClient({
-            config: {
-                bot_id: "7468876593676156935" // Thay bằng bot_id của bạn
-            },
-            userInfo: { 
-                id: "user", 
-                url: "https://lf-coze-web-cdn.coze.cn/obj/coze-web-cn/obric/coze/favicon.1970.png", 
-                nickname: "UserA" 
-            }, 
-            ui: { 
-                base: { 
-                    icon: "https://lf-coze-web-cdn.coze.cn/obj/coze-web-cn/obric/coze/favicon.1970.png", 
-                    layout: "pc", 
-                    lang: "en",
-                    zIndex: 1000 
-                },
-                chatBot: {
-                    title: "Coze Bot",
-                    uploadable: true,
-                    width: 390,
-                    el: "#chat-container"  // Xác định container để chatbot hiển thị
-                }, 
-                asstBtn: { 
-                    isNeed: true 
-                }, 
-                footer: { 
-                    isShow: true, 
-                    expressionText: "Powered by &", 
-                    linkvars: { 
-                        name: { 
-                            text: "A", 
-                            link: "https://www.test1.com" 
-                        }, 
-                        name1: { 
-                            text: "B", 
-                            link: "https://www.test2.com" 
-                        } 
-                    } 
-                } 
-            }
-        });
-    </script>
-
+    <div class="container">
+        <h1>Code Sandbox Nhúng</h1>
+        <p>Dưới đây là mã nhúng từ Code Sandbox:</p>
+        <!-- Đoạn mã iframe -->
+        <iframe 
+            src="https://codesandbox.io/embed/qdlthw?view=preview&module=%2Fpublic%2Findex.html&hidenavigation=1"
+            style="width:100%; height: 500px; border:0; border-radius: 4px; overflow:hidden;"
+            title="cool-bush-qdlthw"
+            allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+            sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts">
+        </iframe>
+    </div>
 </body>
 </html>
