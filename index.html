@@ -13,16 +13,12 @@
     <header>
         <h1>TDNM</h1>
         <nav>
-            <div class="dropdown">
-                <button class="dropbtn">Menu</button>
-                <div class="dropdown-content">
-                    <a href="#about">Tổng quan</a>
-                    <a href="#achievements">Thành Tựu</a>
-                    <a href="#services">Dịch Vụ</a>
-                    <a href="#models">Mô Hình</a>
-                    <a href="#apps">Ứng Dụng</a>
-                </div>
-            </div>
+            <button class="menu-button">Menu</button>
+            <button class="nav-button" onclick="scrollToSection('about')">Tổng quan</button>
+            <button class="nav-button" onclick="scrollToSection('achievements')">Thành Tựu</button>
+            <button class="nav-button" onclick="scrollToSection('services')">Dịch Vụ</button>
+            <button class="nav-button" onclick="scrollToSection('models')">Mô Hình</button>
+            <button class="nav-button" onclick="scrollToSection('apps')">Ứng Dụng</button>
         </nav>
     </header>
         <div class="container-row">
@@ -317,6 +313,14 @@
                 bgPopup.style.display = "none";
             });
         });
+
+    <script>
+            function scrollToSection(sectionId) {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
     </script>
 </body>
 </html>
