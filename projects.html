@@ -25,65 +25,7 @@ body {
     align-items: center;
     padding: 2rem;
 }
-
-/* Main container */
-.main-grid {
-    display: grid;
-    grid-template-columns: 375px 1fr;
-    gap: 2rem;
-    max-width: 1200px;
-    width: 100%;
-    height: 80vh;
-    align-items: stretch; /* Đảm bảo cả hai phần có chiều cao bằng nhau */
-}
-
-/* Vertical smartphone section */
-.vertical-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%; /* Đảm bảo phần này chiếm toàn bộ chiều cao */
-}
-
-/* TikTok device */
-.device {
-    width: 375px;
-    height: 667px;
-    background: #222;
-    border-radius: 40px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.device .screen {
-    width: 90%;
-    height: 90%;
-    background: #000;
-    border-radius: 20px;
-    overflow: hidden;
-    position: relative;
-}
-
-.device .screen iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    object-fit: cover;
-}
-
-/* Horizontal sections */
-.horizontal-grid {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Căn chỉnh nội dung bên trong */
-    height: 100%; /* Đảm bảo phần này chiếm toàn bộ chiều cao */
-}
-
+	    
 /* Panels styling */
 .info-panel {
     background-image: url('/images/bg.png');
