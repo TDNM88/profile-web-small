@@ -3,135 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <title>Khóa Học: Ứng Dụng AI Vào Công Việc</title>
     <style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.6;
-        margin: 0;
-        padding: 20px;
-        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-        color: #333;
-    }
+        /* Đặt font mặc định */
+body {
+    font-family: 'Arial', sans-serif; /* Bạn có thể thay thế bằng font bạn thích */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9; /* Màu nền nhẹ nhàng */
+    color: #333; /* Màu chữ tối */
+    line-height: 1.6; /* Chiều cao dòng chữ */
+}
 
-    h1 {
-        text-align: center;
-        font-size: 2.8em;
-        margin-bottom: 20px;
-        color: #2c3e50;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    }
+/* Định dạng tiêu đề */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif; /* Font tiêu đề mạnh mẽ */
+    color: #2c3e50; /* Màu tiêu đề tối */
+    margin-bottom: 20px;
+}
 
-    h2 {
-        border-bottom: 2px solid #3498db;
-        padding-bottom: 10px;
-        margin-top: 30px;
-        color: #2980b9;
-        position: relative;
-    }
+/* Định dạng đoạn văn */
+p {
+    margin-bottom: 15px;
+}
 
-    h2::after {
-        content: '';
-        display: block;
-        width: 50px;
-        height: 3px;
-        background: #e74c3c;
-        margin-top: 5px;
-    }
+/* Định dạng liên kết */
+a {
+    color: #007bff; /* Màu liên kết */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Hiệu ứng chuyển đổi màu */
+}
 
-    h3 {
-        color: #e67e22;
-        margin-top: 20px;
-        font-size: 1.3em;
-    }
+a:hover {
+    color: #0056b3; /* Màu khi di chuột qua */
+}
 
-    p {
-        margin: 10px 0;
-        line-height: 1.8;
-    }
+/* Định dạng các phần tử container */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-    ul {
-        margin-left: 20px;
-        list-style-type: disc;
-    }
+/* Định dạng các nút */
+button, .btn {
+    background-color: #007bff; /* Màu nền nút */
+    color: white; /* Màu chữ trắng */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px; /* Bo góc */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu nền */
+}
 
-    .highlight {
-        background: linear-gradient(135deg, #ffffff, #f0f8ff);
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        margin: 20px 0;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+button:hover, .btn:hover {
+    background-color: #0056b3; /* Màu nền khi di chuột qua */
+}
 
-    .highlight:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    }
+/* Định dạng bảng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
 
-    .step {
-        margin-left: 20px;
-        background: #f9f9f9;
-        padding: 15px;
-        border-left: 4px solid #3498db;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        transition: background 0.3s ease;
-    }
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
 
-    .step:hover {
-        background: #eef6ff;
-    }
+th {
+    background-color: #f4f4f9; /* Màu nền tiêu đề bảng */
+}
 
-    .tool-list {
-        background: #fff;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        margin: 20px 0;
-    }
+/* Định dạng danh sách */
+ul, ol {
+    margin-left: 20px;
+}
 
-    .footer {
-        text-align: center;
-        margin-top: 40px;
-        font-size: 1em;
-        color: #7f8c8d;
-        padding: 20px;
-        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .footer a {
-        color: #3498db;
-        text-decoration: none;
-        font-weight: bold;
-        transition: color 0.3s ease;
-    }
-
-    .footer a:hover {
-        color: #e74c3c;
-    }
-
-    /* Hover effects for buttons */
-    button {
-        background-color: #3498db;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 1em;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    button:hover {
-        background-color: #e74c3c;
-        transform: scale(1.05);
-    }
+/* Định dạng footer */
+footer {
+    background-color: #333; /* Màu nền footer tối */
+    color: white; /* Màu chữ trắng */
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
 </style>
+    
 </head>
 <body>
     <h1>NỘI DUNG KHOÁ HỌC: ỨNG DỤNG AI VÀO CÔNG VIỆC - LẬP KẾ HOẠCH VÀ TỐI ƯU QUY TRÌNH (8 GIỜ)</h1>
