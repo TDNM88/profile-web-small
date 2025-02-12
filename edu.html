@@ -6,125 +6,124 @@
     <title>Khóa Học: Ứng Dụng AI Vào Công Việc</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <style>
-/* Đặt font mặc định */
-body {
-    font-family: 'Open Sans', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9; /* Màu nền nhẹ nhàng */
-    color: #333; /* Màu chữ tối */
-    line-height: 1.6; /* Chiều cao dòng chữ */
-}
+        /* Đặt font mặc định */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9; /* Màu nền nhẹ nhàng */
+            color: #333; /* Màu chữ tối */
+            line-height: 1.6; /* Chiều cao dòng chữ */
+        }
 
-/* Định dạng tiêu đề */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Roboto', sans-serif; /* Font tiêu đề mạnh mẽ */
-    color: #2c3e50; /* Màu tiêu đề tối */
-    margin-bottom: 20px;
-}
+        /* Định dạng tiêu đề */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Roboto', sans-serif; /* Font tiêu đề mạnh mẽ */
+            color: #2c3e50; /* Màu tiêu đề tối */
+            margin-bottom: 20px;
+        }
 
-/* Định dạng đoạn văn */
-p {
-    margin-bottom: 15px;
-}
+        /* Định dạng đoạn văn */
+        p {
+            margin-bottom: 15px;
+        }
 
-/* Định dạng liên kết */
-a {
-    color: #007bff; /* Màu liên kết */
-    text-decoration: none;
-    transition: color 0.3s ease; /* Hiệu ứng chuyển đổi màu */
-}
+        /* Định dạng liên kết */
+        a {
+            color: #007bff; /* Màu liên kết */
+            text-decoration: none;
+            transition: color 0.3s ease; /* Hiệu ứng chuyển đổi màu */
+        }
 
-a:hover {
-    color: #0056b3; /* Màu khi di chuột qua */
-}
+        a:hover {
+            color: #0056b3; /* Màu khi di chuột qua */
+        }
 
-/* Định dạng các phần tử container */
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff; /* Màu nền trắng cho container */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
-    border-radius: 8px; /* Bo góc */
-    margin-top: 20px;
-}
+        /* Định dạng các phần tử container */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff; /* Màu nền trắng cho container */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
+            border-radius: 8px; /* Bo góc */
+            margin-top: 20px;
+        }
 
-/* Định dạng header */
-header {
-    background-color: #007bff; /* Màu nền xanh dương cho header */
-    color: white; /* Màu chữ trắng */
-    padding: 20px;
-    border-radius: 8px 8px 0 0; /* Bo góc trên */
-    text-align: center;
-}
+        /* Định dạng header */
+        header {
+            background-color: #007bff; /* Màu nền xanh dương cho header */
+            color: white; /* Màu chữ trắng */
+            padding: 20px;
+            border-radius: 8px 8px 0 0; /* Bo góc trên */
+            text-align: center;
+        }
 
-header h1 {
-    margin-bottom: 10px;
-}
+        header h1 {
+            margin-bottom: 10px;
+        }
 
-/* Định dạng section */
-section {
-    margin-bottom: 30px;
-}
+        /* Định dạng section */
+        section {
+            margin-bottom: 30px;
+        }
 
-/* Định dạng danh sách */
-ul, ol {
-    margin-left: 20px;
-}
+        /* Định dạng danh sách */
+        ul, ol {
+            margin-left: 20px;
+        }
 
-/* Định dạng footer */
-footer {
-    background-color: #333; /* Màu nền tối */
-    color: white; /* Màu chữ trắng */
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 30px;
-    border-radius: 0 0 8px 8px; /* Bo góc dưới */
-}
+        /* Định dạng footer */
+        footer {
+            background-color: #333; /* Màu nền tối */
+            color: white; /* Màu chữ trắng */
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 30px;
+            border-radius: 0 0 8px 8px; /* Bo góc dưới */
+        }
 
-footer p {
-    margin: 0;
-}
+        footer p {
+            margin: 0;
+        }
 
-/* Định dạng các phần tử khác */
-strong {
-    color: #2c3e50; /* Màu đậm cho chữ in đậm */
-}
+        /* Định dạng các phần tử khác */
+        strong {
+            color: #2c3e50; /* Màu đậm cho chữ in đậm */
+        }
 
-/* Hiệu ứng hover cho các phần tử */
-button, .btn {
-    background-color: #007bff; /* Màu nền nút */
-    color: white; /* Màu chữ trắng */
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px; /* Bo góc */
-    transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu nền */
-}
+        /* Hiệu ứng hover cho các phần tử */
+        button, .btn {
+            background-color: #007bff; /* Màu nền nút */
+            color: white; /* Màu chữ trắng */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px; /* Bo góc */
+            transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu nền */
+        }
 
-button:hover, .btn:hover {
-    background-color: #0056b3; /* Màu nền khi di chuột qua */
-}
+        button:hover, .btn:hover {
+            background-color: #0056b3; /* Màu nền khi di chuột qua */
+        }
 
-/* Định dạng bảng (nếu cần) */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
+        /* Định dạng bảng (nếu cần) */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
 
-th {
-    background-color: #f4f4f9; /* Màu nền tiêu đề bảng */
-}
-</style>
-    
+        th {
+            background-color: #f4f4f9; /* Màu nền tiêu đề bảng */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
