@@ -6,123 +6,126 @@
     <title>Khóa Học: Ứng Dụng AI Vào Công Việc</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Đặt font mặc định */
-        body {
-            font-family: 'Open Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9; /* Màu nền nhẹ nhàng */
-            color: #333; /* Màu chữ tối */
-            line-height: 1.6; /* Chiều cao dòng chữ */
-        }
+/* Reset cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* Định dạng tiêu đề */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Roboto', sans-serif; /* Font tiêu đề mạnh mẽ */
-            color: #2c3e50; /* Màu tiêu đề tối */
-            margin-bottom: 20px;
-        }
+body {
+    font-family: 'Poppins', sans-serif; /* Font hiện đại, dễ đọc */
+    line-height: 1.6;
+    background-color: #f9f9f9; /* Màu nền nhẹ nhàng */
+    color: #333; /* Màu chữ tối, dễ nhìn */
+    padding: 20px;
+}
 
-        /* Định dạng đoạn văn */
-        p {
-            margin-bottom: 15px;
-        }
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif; /* Font đậm cho tiêu đề */
+    color: #2c3e50; /* Màu xanh đậm sang trọng */
+    margin-bottom: 15px;
+}
 
-        /* Định dạng liên kết */
-        a {
-            color: #007bff; /* Màu liên kết */
-            text-decoration: none;
-            transition: color 0.3s ease; /* Hiệu ứng chuyển đổi màu */
-        }
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 20px;
+    letter-spacing: 1px;
+}
 
-        a:hover {
-            color: #0056b3; /* Màu khi di chuột qua */
-        }
+h2 {
+    font-size: 2rem;
+    border-bottom: 2px solid #ecf0f1; /* Đường viền dưới tiêu đề */
+    padding-bottom: 10px;
+    margin-top: 30px;
+}
 
-        /* Định dạng các phần tử container */
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff; /* Màu nền trắng cho container */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
-            border-radius: 8px; /* Bo góc */
-            margin-top: 20px;
-        }
+h3 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
 
-        /* Định dạng header */
-        header {
-            background-color: #007bff; /* Màu nền xanh dương cho header */
-            color: white; /* Màu chữ trắng */
-            padding: 20px;
-            border-radius: 8px 8px 0 0; /* Bo góc trên */
-            text-align: center;
-        }
+p {
+    font-size: 1rem;
+    color: #555; /* Màu chữ nhẹ nhàng */
+    margin-bottom: 15px;
+}
 
-        header h1 {
-            margin-bottom: 10px;
-        }
+a {
+    color: #3498db; /* Màu xanh dương tươi sáng */
+    text-decoration: none;
+    font-weight: bold;
+}
 
-        /* Định dạng section */
-        section {
-            margin-bottom: 30px;
-        }
+a:hover {
+    text-decoration: underline;
+    color: #2980b9; /* Hiệu ứng hover */
+}
 
-        /* Định dạng danh sách */
-        ul, ol {
-            margin-left: 20px;
-        }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
+}
 
-        /* Định dạng footer */
-        footer {
-            background-color: #333; /* Màu nền tối */
-            color: white; /* Màu chữ trắng */
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 30px;
-            border-radius: 0 0 8px 8px; /* Bo góc dưới */
-        }
+.section {
+    margin-bottom: 40px;
+}
 
-        footer p {
-            margin: 0;
-        }
+.section-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        /* Định dạng các phần tử khác */
-        strong {
-            color: #2c3e50; /* Màu đậm cho chữ in đậm */
-        }
+.section-content {
+    line-height: 1.8;
+}
 
-        /* Hiệu ứng hover cho các phần tử */
-        button, .btn {
-            background-color: #007bff; /* Màu nền nút */
-            color: white; /* Màu chữ trắng */
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px; /* Bo góc */
-            transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu nền */
-        }
+.list {
+    list-style: none;
+    padding-left: 20px;
+}
 
-        button:hover, .btn:hover {
-            background-color: #0056b3; /* Màu nền khi di chuột qua */
-        }
+.list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
 
-        /* Định dạng bảng (nếu cần) */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
+.list li::before {
+    content: "•";
+    color: #3498db;
+    font-size: 1.2rem;
+    position: absolute;
+    left: 0;
+}
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
+.button {
+    display: inline-block;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
 
-        th {
-            background-color: #f4f4f9; /* Màu nền tiêu đề bảng */
-        }
+.button:hover {
+    background-color: #2980b9;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #777;
+}
     </style>
 </head>
 <body>
