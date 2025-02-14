@@ -3,8 +3,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CaslaQuartz AI Project</title>
-    <style>
-       /* Reset CSS */
+    <style<style>
+/* Reset CSS */
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +17,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: rgb(255, 255, 255);
+    color: #ffffff; /* Màu chữ trắng dễ đọc trên nền tối */
     font-family: 'Arial', sans-serif;
     min-height: 100vh;
     display: flex;
@@ -25,17 +25,17 @@ body {
     align-items: center;
     padding: 2rem;
 }
-	    
+
 /* Panels styling */
 .info-panel {
-    background-image: url('/images/bg.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 2rem;
-    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1); /* Nền mờ nhẹ */
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 800px; /* Giới hạn chiều rộng để tránh nội dung quá dài */
+    width: 100%;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -44,10 +44,9 @@ body {
 
 .panel h2 {
     font-size: 1.5rem;
-    color: #00ff88;
+    color: #00ff88; /* Màu xanh neon nổi bật */
     margin-bottom: 1rem;
 }
-
 
 /* Hiệu ứng khi focus */
 .btn:focus {
@@ -66,94 +65,42 @@ body {
 .intro-section {
     text-align: left;
     margin-bottom: 2rem;
+    width: 100%; /* Đảm bảo phần giới thiệu không bị lệch */
 }
 
 .intro-section h1 {
-    font-size: 2rem/* CSS tổng thể cho intro-section */
-.intro-section {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    color: #00ff88; /* Màu xanh neon nổi bật */
+    margin-bottom: 1rem;
 }
 
-/* CSS cho phần tiêu đề */
 .intro-section h2 {
-    font-size: 1.8rem;
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: bold;
+    font-size: 1.5rem;
+    color: #00ff88;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
-/* CSS cho phần mô tả dự án */
-.intro-section .description {
-    font-size: 1rem;
+.intro-section ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.intro-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.intro-section p {
+    margin-bottom: 1rem;
     line-height: 1.6;
-    color: #444;
-    margin-bottom: 20px;
-    text-align: justify;
-}
-
-.intro-section .description strong {
-    color: #007BFF; /* Màu xanh dương nhấn mạnh */
-    font-weight: bold;
-}
-
-/* CSS cho phần hướng dẫn sử dụng */
-.intro-section .instructions h3 {
-    font-size: 1.2rem;
-    color: #2c3e50;
-    margin-bottom: 10px;
-}
-
-.intro-section .instructions ol {
-    padding-left: 20px;
-    margin-bottom: 20px;
-}
-
-.intro-section .instructions li {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 8px;
-}
-
-.intro-section .instructions li strong {
-    color: #007BFF;
-    font-weight: bold;
-}
-
-/* CSS cho phần ví dụ minh họa */
-.intro-section .examples h3 {
-    font-size: 1.2rem;
-    color: #2c3e50;
-    margin-bottom: 10px;
-}
-
-.intro-section .examples ul {
-    padding-left: 20px;
-    margin-bottom: 20px;
-}
-
-.intro-section .examples li {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 8px;
-}
-
-.intro-section .examples li em {
-    font-style: italic;
-    color: #3498db; /* Màu xanh dương nhẹ nhàng */
 }
 
 /* CSS cho phần description */
 .info-panel .description {
     font-size: 1rem;
     line-height: 1.6;
-    color: #333;
+    color: #ffffff; /* Màu chữ trắng dễ đọc */
     margin-bottom: 20px;
 }
 
@@ -165,7 +112,7 @@ body {
 /* CSS cho phần instructions */
 .info-panel .instructions h3 {
     font-size: 1.2rem;
-    color: #2c3e50;
+    color: #00ff88; /* Màu xanh neon nổi bật */
     margin-bottom: 10px;
 }
 
@@ -176,7 +123,7 @@ body {
 
 .info-panel .instructions li {
     font-size: 1rem;
-    color: #444;
+    color: #ffffff; /* Màu chữ trắng dễ đọc */
     margin-bottom: 8px;
 }
 
@@ -188,7 +135,7 @@ body {
 /* CSS cho phần examples */
 .info-panel .examples h3 {
     font-size: 1.2rem;
-    color: #2c3e50;
+    color: #00ff88; /* Màu xanh neon nổi bật */
     margin-bottom: 10px;
 }
 
@@ -199,7 +146,7 @@ body {
 
 .info-panel .examples li {
     font-size: 1rem;
-    color: #555;
+    color: #ffffff; /* Màu chữ trắng dễ đọc */
     margin-bottom: 8px;
 }
 
@@ -239,29 +186,7 @@ body {
     box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.5);
 }
 
-/* Tối ưu hóa màu sắc và độ tương phản */
-body {
-    color: #ffffff;
-}
-
-.intro-section h1, .intro-section h2 {
-    color: #00ff88;
-}
-
-.btn {
-    background: #00ff88;
-    color: #000000;
-}
-
-.btn:hover {
-    background: #00cc66;
-}
-
-.mc-label {
-    background: rgba(0, 0, 0, 0.7);
-    color: #ffffff;
-}
-    /* Floating header styles */
+/* Floating header styles */
 .floating-header {
     position: fixed;
     top: 20px;
@@ -280,7 +205,7 @@ body {
 .header-content h1 {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #00ff88;
+    color: #00ff88; /* Màu xanh neon nổi bật */
     margin: 0;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -308,16 +233,16 @@ body {
         top: 10px;
         padding: 10px 20px;
     }
-    
+
     .header-content h1 {
         font-size: 1.2rem;
     }
-    
+
     .header-content h1 span {
         font-size: 0.9rem;
     }
 }
-    </style>
+</style>
 </head>
 <body>
 <header class="floating-header" id="header">
