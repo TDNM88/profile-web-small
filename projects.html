@@ -253,7 +253,7 @@ body {
 <div class="info-panel">
     <div class="intro-section">
         <div class="instructions">
-		<h2>Ứng dụng công nghệ trí tuệ nhân tạo (AI) để mô hình hóa các mẫu sản phẩm đá của CaslaQuartz, mang đến những ý tưởng sáng tạo trong thiết kế kiến trúc và nội thất sử dụng đá thạch anh nhân tạo, giúp khách hàng dễ dàng hình dung và lựa chọn sản phẩm phù hợp.</h2>
+            <h2>Ứng dụng công nghệ trí tuệ nhân tạo (AI) để mô hình hóa các mẫu sản phẩm đá của CaslaQuartz, mang đến những ý tưởng sáng tạo trong thiết kế kiến trúc và nội thất sử dụng đá thạch anh nhân tạo, giúp khách hàng dễ dàng hình dung và lựa chọn sản phẩm phù hợp.</h2>
             <h3>Hướng dẫn sử dụng:</h3>
             <ol>
                 <li>Nhập mô tả về không gian và sản phẩm mà bạn muốn tạo.</li>
@@ -262,7 +262,6 @@ body {
                 <li>Nhấn <strong>"Generate"</strong> để tạo ảnh.</li>
             </ol>
         </div>
-
         <div class="examples">
             <h3>Ví dụ minh họa:</h3>
             <ul>
@@ -271,14 +270,20 @@ body {
             </ul>
         </div>
     </div>
-
-    <div class="intro-section">
-	    <gradio-app 
-		space="TDN-M/ta2"
-		info="false"
-		theme_mode="dark"
-		></gradio-app>
+    <div class="generate-section">
+        <div class="generate-header">
+            <h3>Tạo mẫu thiết kế của bạn ngay</h3>
+            <p>Sử dụng công cụ AI mạnh mẽ để khám phá ý tưởng thiết kế độc đáo với đá thạch anh CaslaQuartz.</p>
+        </div>
+        <div class="gradio-container">
+            <gradio-app 
+                space="TDN-M/ta2"
+                info="false"
+                theme_mode="dark">
+            </gradio-app>
+        </div>
     </div>
+</div>
 </div>          
 <script
 	type="module"
