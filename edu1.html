@@ -8,40 +8,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">   
 </head>
 <body>
-        <div class="container-row">
-            <!-- Author Card -->
-            <div class="author-card">
-                <div class="card-content">
-                    <div class="author-header">
-                        <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=false,plain=false,w=180,f=avif,q=85/users/common/avatar/637285499601470901/771f8f48-e68f-30e3-db28-328eae94977e.png" alt="TDNM Logo" class="author-logo">
-                        <h1 class="author-name">"TRUYỀN LỬA AI" Tới Cộng Đồng</h1>
-                        <p class="author-role">Trong kỷ nguyên Trí tuệ Nhân tạo, dù ở trình độ nào thì chúng ta đều cần không ngừng học hỏi và cập nhật kiến thức mới. Các khóa học được giới thiệu tại đây chính là cách để tôi "Truyền Lửa" đến những ai luôn khao khát tiến bộ và phát triển.</p>
-                    </div>
-                    <div class="author-achievements">
-                        <div class="achievement-list">
-                            <div class="card-button">
-                                <a href="https://www.tdn-m.com/edu1.html" target="_blank">
-                                <span>CHUYÊN ĐỀ "ỨNG DỤNG AI VÀO CÔNG VIỆC HÀNG NGÀY - TỰ ĐỘNG HOÁ TỪ NHỮNG ĐIỀU NHỎ NHẤT</span>
-                            </div>
+    <!-- Header Section -->
+    <div class="container-row">
+        <!-- Author Card -->
+        <div class="author-card">
+            <div class="card-content">
+                <div class="author-header">
+                    <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=false,plain=false,w=180,f=avif,q=85/users/common/avatar/637285499601470901/771f8f48-e68f-30e3-db28-328eae94977e.png" alt="TDNM Logo" class="author-logo">
+                    <h1 class="author-name">"TRUYỀN LỬA AI" Tới Cộng Đồng</h1>
+                    <p class="author-role">Trong kỷ nguyên Trí tuệ Nhân tạo, dù ở trình độ nào thì chúng ta đều cần không ngừng học hỏi và cập nhật kiến thức mới. Các khóa học được giới thiệu tại đây chính là cách để tôi "Truyền Lửa" đến những ai luôn khao khát tiến bộ và phát triển.</p>
+                </div>
+
+                <!-- Khóa học -->
+                <div class="course-section">
+                    <h2>Các Khóa Học</h2>
+                    <div class="course-list">
+                        <div class="course-item">
+                            <a href="https://www.tdn-m.com/edu1.html" target="_blank" class="course-link">
+                                <span class="course-title">CHUYÊN ĐỀ "ỨNG DỤNG AI VÀO CÔNG VIỆC HÀNG NGÀY - TỰ ĐỘNG HOÁ TỪ NHỮNG ĐIỀU NHỎ NHẤT"</span>
+                            </a>
                         </div>
-                        <div class="achievement-list">
-                            <div class="card-button">
-                                <a href="https://www.tdn-m.com/edu2.html" target="_blank">
-                                <span>CHUYÊN ĐỀ "3 BÍ QUYẾT ĐỂ LUÔN LÀM CHỦ CUỘC CHƠI VỚI AI"</span>
-                            </div>
+                        <div class="course-item">
+                            <a href="https://www.tdn-m.com/edu2.html" target="_blank" class="course-link">
+                                <span class="course-title">CHUYÊN ĐỀ "3 BÍ QUYẾT ĐỂ LUÔN LÀM CHỦ CUỘC CHƠI VỚI AI"</span>
+                            </a>
                         </div>
-                        <div class="achievement-list">
-                            <div class="card-button">
-                                <a href="https://www.tdn-m.com/edu3.html" target="_blank">
-                                <span>CHUYÊN ĐỀ "AI THỰC CHIẾN TRONG SẢN XUẤT CONTENT & MARKETING </span>
-                            </div>
+                        <div class="course-item">
+                            <a href="https://www.tdn-m.com/edu3.html" target="_blank" class="course-link">
+                                <span class="course-title">CHUYÊN ĐỀ "AI THỰC CHIẾN TRONG SẢN XUẤT CONTENT & MARKETING"</span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <!-- Footer -->
     <footer>
@@ -61,6 +62,7 @@
         </div>
     </footer>
 
+    <!-- Three.js Animation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         // Three.js Animation for Continuous 3D Motion Effect with Stars
@@ -118,40 +120,6 @@
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const phoneButton = document.getElementById("phone-vr");
-            const popupForm = document.getElementById("popup-form-contact-vr");
-            const bgPopup = document.querySelector(".bg-popup-vr");
-            const closeButtons = document.querySelectorAll(".close-popup-vr");
-
-            // Hiển thị popup khi nhấp vào nút Phone
-            phoneButton.addEventListener("click", function () {
-                popupForm.style.display = "block";
-                bgPopup.style.display = "block";
-            });
-
-            // Đóng popup khi nhấp vào nút đóng hoặc nền mờ
-            closeButtons.forEach((button) => {
-                button.addEventListener("click", function () {
-                    popupForm.style.display = "none";
-                    bgPopup.style.display = "none";
-                });
-            });
-
-            bgPopup.addEventListener("click", function () {
-                popupForm.style.display = "none";
-                bgPopup.style.display = "none";
-            });
-        });
-
-    <script>
-            function scrollToSection(sectionId) {
-                const section = document.getElementById(sectionId);
-                if (section) {
-                    section.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
     </script>
 </body>
 </html>
