@@ -200,7 +200,7 @@
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
         }
 
-        .card-button-1 {
+        .card-button-2 {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -215,12 +215,12 @@
             position: relative;
             cursor: pointer;
         }
-        .card-button-1:hover {
+        .card-button-2:hover {
             transform: translateY(-3px);
             background: rgba(238, 199, 90, 0.8);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
         }
-        .card-button-1:active {
+        .card-button-2:active {
             transform: translateY(0);
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
         }
