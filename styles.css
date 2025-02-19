@@ -204,12 +204,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: rgba(238, 199, 90, 0.597);
+            background: rgb(0 254 192);
             border-radius: 5px;
             padding: 10px;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
             font-size: 1em;
-            color:aliceblue;
+            color: #000000;
             transition: all 0.3s ease;
             overflow: hidden;
             position: relative;
@@ -217,7 +217,7 @@
         }
         .card-button-2:hover {
             transform: translateY(-3px);
-            background: rgba(238, 199, 90, 0.8);
+            background: #f59b9b;
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
         }
         .card-button-2:active {
