@@ -11,7 +11,8 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            background-color: #f4f4f9; /* Màu nền nhẹ nhàng */
+            color: #333;
         }
 
         .container-row {
@@ -20,12 +21,19 @@
             padding: 20px;
         }
 
+        /* Author Card */
         .author-card {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .author-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
         .author-logo {
@@ -34,20 +42,23 @@
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 15px;
+            border: 3px solid #007bff; /* Viền xanh dương nổi bật */
         }
 
         .author-name {
-            font-size: 24px;
+            font-size: 28px;
+            font-weight: bold;
             margin: 10px 0;
-            color: #333;
+            color: #2c3e50; /* Màu chữ đậm */
         }
 
         .author-role {
-            font-size: 16px;
+            font-size: 18px;
             line-height: 1.6;
             color: #555;
         }
 
+        /* Khóa học */
         .course-section {
             margin-top: 40px;
         }
@@ -60,9 +71,9 @@
         }
 
         .course-item {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
             width: calc(33.333% - 40px);
             text-align: center;
@@ -71,7 +82,7 @@
 
         .course-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
         .course-image {
@@ -80,12 +91,14 @@
             object-fit: cover;
             border-radius: 10px;
             margin-bottom: 15px;
+            border: 2px solid #007bff; /* Viền xanh dương */
         }
 
         .course-title {
-            font-size: 20px;
+            font-size: 22px;
+            font-weight: bold;
             margin: 10px 0;
-            color: #333;
+            color: #2c3e50;
         }
 
         .course-description {
@@ -98,19 +111,21 @@
         .cta-button {
             background-color: #007bff;
             color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 25px;
+            border-radius: 30px;
             text-decoration: none;
-            transition: background-color 0.3s ease;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .cta-button:hover {
             background-color: #0056b3;
+            transform: scale(1.05); /* Phóng to nút khi hover */
         }
 
         /* Footer */
         footer {
-            background-color: #333;
+            background-color: #2c3e50;
             color: #fff;
             text-align: center;
             padding: 20px 0;
@@ -122,11 +137,12 @@
             font-size: 24px;
             margin: 0 15px;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
         .social-media a:hover {
             color: #4fd1c5;
+            transform: scale(1.2); /* Phóng to biểu tượng mạng xã hội khi hover */
         }
     </style>
 </head>
@@ -179,16 +195,16 @@
     <footer>
         <div class="social-media">
             <a href="https://www.youtube.com/@showthesecret/shorts" target="_blank">
-                <i class="fab fa-youtube" style="color: #ff0000;"></i>
+                <i class="fab fa-youtube"></i>
             </a>
             <a href="https://www.tiktok.com/@showthesecret" target="_blank">
-                <i class="fab fa-tiktok" style="color: #000000;"></i>
+                <i class="fab fa-tiktok"></i>
             </a>
             <a href="https://www.tdn-m.com" target="_blank">
-                <i class="fas fa-globe" style="color: #4fd1c5;"></i>
+                <i class="fas fa-globe"></i>
             </a>
             <a href="https://tensor.art/u/637285499601470901/store" target="_blank">
-                <i class="fas fa-store" style="color: #ffa500;"></i>
+                <i class="fas fa-store"></i>
             </a>
         </div>
     </footer>
