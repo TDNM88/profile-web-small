@@ -443,11 +443,12 @@
             position: relative;
             margin-top: 5px;
         }
-            #main-article {
-    margin-bottom: 40px;
-            }
 
-            .card {
+         #main-article {
+                margin-bottom: 40px;
+            }
+            
+            .card-1 {
                 background-color: #fff;
                 border-radius: 10px;
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -455,23 +456,23 @@
                 text-align: center;
             }
             
-            .card img {
+            .card-1 img {
                 border-radius: 10px;
             }
             
-            .card-title {
+            .card-1-title {
                 font-size: 20px;
                 margin: 15px 0 10px;
                 color: #333;
             }
             
-            .card-content {
+            .card-1-content {
                 font-size: 16px;
                 line-height: 1.6;
                 color: #555;
             }
             
-            .cta-button {
+            .cta-button-1 {
                 background-color: #007bff;
                 color: #fff;
                 padding: 10px 20px;
@@ -480,30 +481,32 @@
                 transition: background-color 0.3s ease;
             }
             
-            .cta-button:hover {
+            .cta-button-1:hover {
                 background-color: #0056b3;
             }
             
             /* Các bài viết phụ */
-            .card-container {
+            .card-1-container {
                 display: flex;
                 flex-wrap: wrap;
                 gap: 20px;
             }
             
-            .small-card {
+            .small-card-1 {
                 flex: 1 1 calc(33.333% - 20px); /* 3 bài viết mỗi hàng */
                 padding: 10px;
             }
             
-            .small-card img {
+            .small-card-1 img {
                 height: 100px;
             }
             
-            .small-card .card-title {
+            .small-card-1 .card-title {
                 font-size: 18px;
                 margin-top: 10px;
             }
+
+
         /* Định dạng chung cho nút Phone */
         #phone-vr {
             position: fixed; /* Giữ nút cố định trên màn hình */
