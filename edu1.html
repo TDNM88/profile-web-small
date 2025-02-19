@@ -15,6 +15,48 @@
             color: #333;
         }
 
+        /* Header Branding */
+        .header-branding {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .brand-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .home-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .home-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Container */
         .container-row {
             max-width: 1200px;
             margin: 0 auto;
@@ -171,7 +213,16 @@
     </style>
 </head>
 <body>
-    <!-- Header Section -->
+    <!-- Header Branding -->
+    <div class="header-branding">
+        <div class="brand-info">
+            <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=false,plain=false,w=180,f=avif,q=85/users/common/avatar/637285499601470901/771f8f48-e68f-30e3-db28-328eae94977e.png" alt="Brand Logo" class="brand-logo">
+            <span class="brand-name">TDNM</span>
+        </div>
+        <a href="https://www.tdn-m.com" class="home-button">Trở về trang chủ</a>
+    </div>
+
+    <!-- Main Content -->
     <div class="container-row">
         <!-- Author Card -->
         <div class="author-card">
@@ -232,7 +283,6 @@
             </a>
         </div>
     </footer>
-
     <!-- Three.js Animation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
