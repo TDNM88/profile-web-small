@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDNM Official Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">   
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <!-- Header -->
+    <header>
+        <h1>TDNM</h1>
+    </header>
+        <div class="container-row">
+            <!-- Author Card -->
+            <div class="author-card">
+                <div class="card-content">
+                    <div class="author-header">
+                        <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=false,plain=false,w=180,f=avif,q=85/users/common/avatar/637285499601470901/771f8f48-e68f-30e3-db28-328eae94977e.png" alt="TDNM Logo" class="author-logo">
+                        <h1 class="author-name">Các Nội Dung "TRUYỀN LỬA" Tới Cộng Đồng</h1>
+                        <p class="author-role">Trong kỷ nguyên Trí tuệ nhân tạo, dù bản thân đã có một vài thành công nhưng tôi luôn quan niệm rằng phải không ngừng học tập để lĩnh hội những kiến thức mới. 
+                                                Vì vậy, tôi không coi các khoá học được giới thiệu tại đây là nguồn thu nhập hay lợi ích cá nhân. Tất cả chỉ đơn giản trong 2 chữ "Truyền Lửa"! </p><div class="author-stats">
+                    </div>
+                    <div class="author-achievements">
+                        <div class="achievement-list">
+                            <div class="achievement-item">
+                                <i class="fas fa-trophy"></i>
+                                <span>CHUYÊN ĐỀ 1 </span>
+                            </div>
+                            <div class="achievement-item">
+                                <i class="fas fa-trophy"></i>
+                                <span>CHUYÊN ĐỀ 2 </span>
+                            </div>
+                            <div class="achievement-item">
+                                <i class="fas fa-trophy"></i>
+                                <span>CHUYÊN ĐỀ 3 </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-media">
+                        <a href="https://www.youtube.com/@showthesecret/shorts" target="_blank">
+                            <i class="fab fa-youtube" style="color: #ff0000;"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@showthesecret" target="_blank">
+                            <i class="fab fa-tiktok" style="color: #000000;"></i>
+                        </a>
+                        <a href="https://www.tdn-m.com" target="_blank">
+                            <i class="fas fa-globe" style="color: #4fd1c5;"></i>
+                        </a>
+                        <a href="https://tensor.art/u/637285499601470901/store" target="_blank">
+                            <i class="fas fa-store" style="color: #ffa500;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-media">
+            <a href="https://www.youtube.com/@showthesecret/shorts" target="_blank">
+                <i class="fab fa-youtube" style="color: #ff0000;"></i>
+            </a>
+            <a href="https://www.tiktok.com/@showthesecret" target="_blank">
+                <i class="fab fa-tiktok" style="color: #000000;"></i>
+            </a>
+            <a href="https://www.tdn-m.com" target="_blank">
+                <i class="fas fa-globe" style="color: #4fd1c5;"></i>
+            </a>
+            <a href="https://tensor.art/u/637285499601470901/store" target="_blank">
+                <i class="fas fa-store" style="color: #ffa500;"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Three.js Animation for Continuous 3D Motion Effect with Stars
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        // Add Lights
+        const light = new THREE.DirectionalLight(0xffffff, 0.8);
+        light.position.set(0, 0, 10);
+        scene.add(light);
+
+        // Add Stars
+        const starGeometry = new THREE.BufferGeometry();
+        const starVertices = [];
+        const starCount = 33000;
+
+        for (let i = 0; i < starCount; i++) {
+            const x = (Math.random() - 0.5) * 2000;
+            const y = (Math.random() - 0.5) * 2000;
+            const z = (Math.random() - 0.5) * 2000;
+            starVertices.push(x, y, z);
+        }
+
+        starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+
+        const starMaterial = new THREE.PointsMaterial({
+            color: 0xffd700, // Gold color for stars
+            size: 0.5,
+            transparent: true,
+            opacity: 0.8,
+        });
+
+        const stars = new THREE.Points(starGeometry, starMaterial);
+        scene.add(stars);
+
+        camera.position.z = 50;
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Animate stars
+            stars.rotation.x += 0.001;
+            stars.rotation.y += 0.001;
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Responsive Canvas
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const phoneButton = document.getElementById("phone-vr");
+            const popupForm = document.getElementById("popup-form-contact-vr");
+            const bgPopup = document.querySelector(".bg-popup-vr");
+            const closeButtons = document.querySelectorAll(".close-popup-vr");
+
+            // Hiển thị popup khi nhấp vào nút Phone
+            phoneButton.addEventListener("click", function () {
+                popupForm.style.display = "block";
+                bgPopup.style.display = "block";
+            });
+
+            // Đóng popup khi nhấp vào nút đóng hoặc nền mờ
+            closeButtons.forEach((button) => {
+                button.addEventListener("click", function () {
+                    popupForm.style.display = "none";
+                    bgPopup.style.display = "none";
+                });
+            });
+
+            bgPopup.addEventListener("click", function () {
+                popupForm.style.display = "none";
+                bgPopup.style.display = "none";
+            });
+        });
+
+    <script>
+            function scrollToSection(sectionId) {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+    </script>
+</body>
+</html>
