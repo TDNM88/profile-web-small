@@ -17,7 +17,7 @@
 
         /* Header nhỏ gọn với ảnh nền */
         .header {
-            background-image: url('https://image.tensorartassets.com/cdn-cgi/image/anim=false,plain=false,w=180,f=avif,q=85/users/common/avatar/637285499601470901/771f8f48-e68f-30e3-db28-328eae94977e.png'); /* Ảnh nền header */
+            background-image: url('https://image.tensorartassets.com/cdn-cgi/image/anim=true,plain=false,w=2048,f=jpeg,q=85/posts/images/637285499601470901/f100dd50-9443-44b0-bd63-e7793658e7bb.png'); /* Ảnh nền header */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -67,7 +67,45 @@
             margin: 0 auto;
             padding: 40px 20px;
         }
+        /* Edu */
+        .edu-header {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
+        .edu-header:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .edu-logo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid #007bff; /* Viền xanh dương */
+        }
+
+        .edu-slogan {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .edu-words {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+        }
         /* Khóa học */
         .course-section {
             margin-top: 40px;
@@ -213,6 +251,11 @@
 
     <!-- Main Content -->
     <div class="container-row">
+        <div class="edu-header">
+            <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=false,plain=false,w=180,f=avif,q=85/users/common/avatar/637285499601470901/771f8f48-e68f-30e3-db28-328eae94977e.png" alt="TDNM Logo" class="edu-logo">
+            <h1 class="edu-slogan">"TRUYỀN LỬA AI" Tới Cộng Đồng</h1>
+            <p class="edu-words">Trong kỷ nguyên Trí tuệ Nhân tạo, dù ở trình độ nào thì chúng ta đều cần không ngừng học hỏi và cập nhật kiến thức mới. Các khóa học được giới thiệu tại đây chính là cách để tôi "Truyền Lửa" đến những ai luôn khao khát tiến bộ và phát triển.</p>
+        </div>
         <!-- Khóa học -->
         <div class="course-section">
             <h2>Các Khóa Học</h2>
