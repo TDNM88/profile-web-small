@@ -16,7 +16,18 @@
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed; /* Ảnh nền cố định khi cuộn */
-            color: #333;
+            color: #333;z-index: -1; /* Đưa lớp nền ra phía sau */
+        }
+
+        /* Lớp phủ với độ trong suốt */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Màu đen với độ trong suốt 50% */
+            z-index: 0; /* Nằm giữa ảnh nền và nội dung */
         }
 
         /* Header nhỏ gọn với ảnh nền */
