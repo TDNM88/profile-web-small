@@ -15,60 +15,40 @@
             color: #333;
         }
 
-        /* Header */
+        /* Header nhỏ gọn với ảnh nền */
         .header {
             background-image: url('https://image.tensorartassets.com/cdn-cgi/image/anim=false,plain=false,w=180,f=avif,q=85/users/common/avatar/637285499601470901/771f8f48-e68f-30e3-db28-328eae94977e.png'); /* Ảnh nền header */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             position: relative;
-            padding: 60px 20px;
-            text-align: center;
-            color: #fff; /* Màu chữ trắng */
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Lớp phủ mờ */
-            z-index: 1;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 2; /* Đảm bảo nội dung nằm trên lớp phủ mờ */
+            height: 80px; /* Chiều cao cố định cho header */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .header-logo img {
-            width: 100px;
-            height: 100px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 10px;
         }
 
         .header-title {
-            font-size: 36px;
+            font-size: 24px;
             font-weight: bold;
+            color: #fff;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
-        .header-description {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 20px;
         }
 
         .header-button {
             background-color: #007bff;
             color: #fff;
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
@@ -190,29 +170,19 @@
                 width: 100%;
             }
 
+            .header {
+                height: auto;
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
             .header-logo img {
-                width: 80px;
-                height: 80px;
+                margin-bottom: 10px;
             }
 
             .header-title {
-                font-size: 30px;
-            }
-
-            .header-description {
-                font-size: 16px;
-            }
-
-            .course-image {
-                height: 200px;
-            }
-
-            .course-title {
                 font-size: 20px;
-            }
-
-            .course-description {
-                font-size: 14px;
             }
         }
 
@@ -232,14 +202,13 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header nhỏ gọn -->
     <header class="header">
-        <div class="header-content">
-            <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=false,plain=false,w=180,f=avif,q=85/users/common/avatar/637285499601470901/771f8f48-e68f-30e3-db28-328eae94977e.png" alt="TDNM Logo" class="header-logo">
-            <h1 class="header-title">"TRUYỀN LỬA AI" Tới Cộng Đồng</h1>
-            <p class="header-description">Trong kỷ nguyên Trí tuệ Nhân tạo, dù ở trình độ nào thì chúng ta đều cần không ngừng học hỏi và cập nhật kiến thức mới. Các khóa học được giới thiệu tại đây chính là cách để tôi "Truyền Lửa" đến những ai luôn khao khát tiến bộ và phát triển.</p>
-            <a href="https://www.tdn-m.com" class="header-button">Trở về trang chủ</a>
+        <div class="header-logo">
+            <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=false,plain=false,w=180,f=avif,q=85/users/common/avatar/637285499601470901/771f8f48-e68f-30e3-db28-328eae94977e.png" alt="TDNM Logo">
         </div>
+        <h1 class="header-title">TDNM</h1>
+        <a href="https://www.tdn-m.com" class="header-button">Trở về trang chủ</a>
     </header>
 
     <!-- Main Content -->
