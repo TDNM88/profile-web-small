@@ -1,21 +1,229 @@
-
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khóa Học: Ứng Dụng AI Vào Công Việc</title>
+    <title>TDNM Official Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.6;
-        margin: 0;
-        padding: 20px;
-        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-        color: #333;
-    }
+        /* Reset CSS */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            position: relative;
+        }
 
-    h1 {
+        /* Lớp nền với ảnh nền */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://image.tensorartassets.com/cdn-cgi/image/anim=true,plain=false,w=2048,f=jpeg,q=85/posts/images/637285499601470901/073c9a3b-7288-47ce-8659-07c1a03a7a8e.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1; /* Đưa lớp nền ra phía sau */
+        }
+
+        /* Hiệu ứng mờ cho ảnh nền */
+        .background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Màu đen với độ trong suốt 50% */
+            z-index: 1;
+        }
+
+        /* Header nhỏ gọn với ảnh nền */
+        .header {
+            background-image: url('https://image.tensorartassets.com/cdn-cgi/image/anim=true,plain=false,w=2048,f=jpeg,q=85/posts/images/637285499601470901/f100dd50-9443-44b0-bd63-e7793658e7bb.png'); /* Ảnh nền header */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            height: 80px; /* Chiều cao cố định cho header */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .header-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header-button {
+            background-color: #1eafbec7;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Container */
+        .container-row {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            Z-index: 2;
+        }
+        /* Edu */
+        .edu-header {
+            background-color: #ffffffd4;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .edu-header:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .edu-logo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid #007bff; /* Viền xanh dương */
+        }
+
+        .edu-slogan {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .edu-words {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        /* Khóa học */
+        .course-section {
+            margin-top: 40px;
+        }
+
+        .course-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .course-item {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: calc(33.333% - 60px);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .course-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 3px solid #007bff;
+        }
+
+        .course-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .course-description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+
+        .social-media a {
+            color: #fff;
+            font-size: 28px;
+            margin: 0 20px;
+            text-decoration: none;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .social-media a:hover {
+            color: #4fd1c5;
+            transform: rotate(10deg) scale(1.2);
+        }
+
+        h1 {
         text-align: center;
         font-size: 2.8em;
         margin-bottom: 20px;
@@ -93,48 +301,63 @@
         margin: 20px 0;
     }
 
-    .footer {
-        text-align: center;
-        margin-top: 40px;
-        font-size: 1em;
-        color: #7f8c8d;
-        padding: 20px;
-        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
 
-    .footer a {
-        color: #3498db;
-        text-decoration: none;
-        font-weight: bold;
-        transition: color 0.3s ease;
-    }
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .course-item {
+                width: calc(50% - 30px);
+            }
+        }
 
-    .footer a:hover {
-        color: #e74c3c;
-    }
+        @media (max-width: 768px) {
+            .course-item {
+                width: 100%;
+            }
 
-    /* Hover effects for buttons */
-    button {
-        background-color: #3498db;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 1em;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+            .header {
+                height: auto;
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
 
-    button:hover {
-        background-color: #e74c3c;
-        transform: scale(1.05);
-    }
-</style>
+            .header-logo img {
+                margin-bottom: 10px;
+            }
+
+            .header-title {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container-row {
+                padding: 20px;
+            }
+
+            .course-item {
+                padding: 20px;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header nhỏ gọn -->
+    <header class="header">
+        <div class="header-logo">
+            <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=false,plain=false,w=180,f=avif,q=85/users/common/avatar/637285499601470901/771f8f48-e68f-30e3-db28-328eae94977e.png" alt="TDNM Logo">
+        </div>
+        <h1 class="header-title">TDNM</h1>
+        <a href="https://www.tdn-m.com" class="header-button">Trang Chủ</a>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="background"></div>
+    <div class="container-row">
     <h1>NỘI DUNG KHOÁ HỌC: ỨNG DỤNG AI VÀO CÔNG VIỆC - LẬP KẾ HOẠCH VÀ TỐI ƯU QUY TRÌNH (8 GIỜ)</h1>
 
     <h2>GIỚI THIỆU KHOÁ HỌC</h2>
