@@ -11,49 +11,68 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9; /* Màu nền chính */
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* Gradient nền */
             color: #333;
         }
 
-        /* Header Branding */
-        .header-branding {
+        /* Header kính mờ */
+        .header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 20px 40px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .brand-logo {
-            width: 50px;
-            height: 50px;
+        .header-logo img {
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             object-fit: cover;
         }
 
-        .brand-name {
+        .header-title {
             font-size: 24px;
             font-weight: bold;
             color: #007bff;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-left: 10px;
         }
 
-        .home-button {
+        .header-button {
             background-color: #007bff;
             color: #fff;
-            padding: 5px 10px;
-            border-radius: 15px;
+            padding: 10px 20px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .home-button:hover {
+        .header-button:hover {
             transform: scale(1.1);
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design cho Header */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-logo img {
+                margin-bottom: 10px;
+            }
+
+            .header-button {
+                margin-top: 10px;
+            }
         }
 
         /* Container */
@@ -250,20 +269,6 @@
         }
 
         @media (max-width: 480px) {
-            .header-branding {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .brand-info {
-                margin-bottom: 10px;
-            }
-
-            .home-button {
-                width: 50%;
-                text-align: center;
-            }
-
             .container-row {
                 padding: 20px;
             }
@@ -283,14 +288,15 @@
     </style>
 </head>
 <body>
-    <!-- Header Branding -->
-    <div class="header-branding">
-        <div class="brand-info">
-            <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=false,plain=false,w=180,f=avif,q=85/users/common/avatar/637285499601470901/771f8f48-e68f-30e3-db28-328eae94977e.png" alt="Brand Logo" class="brand-logo">
-            <span class="brand-name"> </span>
-            <a href="https://www.tdn-m.com" class="home-button">Trở về trang chủ</a>
+    <!-- Header kính mờ -->
+    <header class="header">
+        <div class="header-logo">
+            <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=false,plain=false,w=180,f=avif,q=85/users/common/avatar/637285499601470901/771f8f48-e68f-30e3-db28-328eae94977e.png" alt="TDNM Logo">
+            <span class="header-title">TDNM</span>
         </div>
-    </div>
+        <a href="https://www.tdn-m.com" class="header-button">Trở về trang chủ</a>
+    </header>
+
     <!-- Main Content -->
     <div class="container-row">
         <!-- Author Card -->
@@ -352,65 +358,5 @@
             </a>
         </div>
     </footer>
-
-    <!-- Three.js Animation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-        // Three.js Animation for Continuous 3D Motion Effect with Stars
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById('canvas-container').appendChild(renderer.domElement);
-
-        // Add Lights
-        const light = new THREE.DirectionalLight(0xffffff, 0.8);
-        light.position.set(0, 0, 10);
-        scene.add(light);
-
-        // Add Stars
-        const starGeometry = new THREE.BufferGeometry();
-        const starVertices = [];
-        const starCount = 33000;
-
-        for (let i = 0; i < starCount; i++) {
-            const x = (Math.random() - 0.5) * 2000;
-            const y = (Math.random() - 0.5) * 2000;
-            const z = (Math.random() - 0.5) * 2000;
-            starVertices.push(x, y, z);
-        }
-
-        starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
-
-        const starMaterial = new THREE.PointsMaterial({
-            color: 0xffd700, // Gold color for stars
-            size: 0.5,
-            transparent: true,
-            opacity: 0.8,
-        });
-
-        const stars = new THREE.Points(starGeometry, starMaterial);
-        scene.add(stars);
-
-        camera.position.z = 50;
-
-        function animate() {
-            requestAnimationFrame(animate);
-
-            // Animate stars
-            stars.rotation.x += 0.001;
-            stars.rotation.y += 0.001;
-
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // Responsive Canvas
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    </script>
 </body>
 </html>
