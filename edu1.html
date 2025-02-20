@@ -6,28 +6,39 @@
     <title>TDNM Official Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Bố cục chung */
+        /* Reset CSS */
         body {
-            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('https://image.tensorartassets.com/cdn-cgi/image/anim=true,plain=false,w=2048,f=jpeg,q=85/posts/images/637285499601470901/073c9a3b-7288-47ce-8659-07c1a03a7a8e.png'); /* Ảnh nền body */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed; /* Ảnh nền cố định khi cuộn */
-            color: #333;z-index: -1; /* Đưa lớp nền ra phía sau */
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            position: relative;
         }
 
-        /* Lớp phủ với độ trong suốt */
-        .overlay {
+        /* Lớp nền với ảnh nền */
+        .background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background-image: url('https://image.tensorartassets.com/cdn-cgi/image/anim=true,plain=false,w=2048,f=jpeg,q=85/posts/images/637285499601470901/073c9a3b-7288-47ce-8659-07c1a03a7a8e.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1; /* Đưa lớp nền ra phía sau */
+        }
+
+        /* Hiệu ứng mờ cho ảnh nền */
+        .background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-color: rgba(0, 0, 0, 0.5); /* Màu đen với độ trong suốt 50% */
-            z-index: 0; /* Nằm giữa ảnh nền và nội dung */
+            z-index: 1;
         }
 
         /* Header nhỏ gọn với ảnh nền */
@@ -81,6 +92,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
+            Z-index: 2;
         }
         /* Edu */
         .edu-header {
@@ -265,7 +277,7 @@
     </header>
     
     <!-- Main Content -->
-    <div class="overlay"></div>
+    <div class="background"></div>
     <div class="container-row">
         <div class="edu-header">
             <img src="https://image.tensorartassets.com/cdn-cgi/image/anim=false,plain=false,w=180,f=avif,q=85/users/common/avatar/637285499601470901/771f8f48-e68f-30e3-db28-328eae94977e.png" alt="TDNM Logo" class="edu-logo">
