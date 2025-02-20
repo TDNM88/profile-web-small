@@ -210,6 +210,76 @@
             color: #4fd1c5;
             transform: rotate(10deg) scale(1.2);
         }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .course-item {
+                width: calc(50% - 30px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .course-item {
+                width: 100%;
+            }
+
+            .author-logo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .author-name {
+                font-size: 28px;
+            }
+
+            .author-role {
+                font-size: 16px;
+            }
+
+            .course-image {
+                height: 200px;
+            }
+
+            .course-title {
+                font-size: 20px;
+            }
+
+            .course-description {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-branding {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .brand-info {
+                margin-bottom: 10px;
+            }
+
+            .home-button {
+                width: 100%;
+                text-align: center;
+            }
+
+            .container-row {
+                padding: 20px;
+            }
+
+            .author-card {
+                padding: 20px;
+            }
+
+            .course-item {
+                padding: 20px;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -283,6 +353,7 @@
             </a>
         </div>
     </footer>
+
     <!-- Three.js Animation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
