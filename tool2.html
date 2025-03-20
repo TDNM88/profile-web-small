@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Trust ACPA Chatbot & Workflow Tool Demo</title>
+    <link rel="stylesheet" href="styles1.css">
+    <style>
+        /* CSS for the instructions section */
+        .instructions-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px; /* Khoảng cách giữa hai khung */
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .instructions {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            flex: 1; /* Đảm bảo hai khung có cùng chiều rộng */
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .instructions h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .step {
+            margin-bottom: 15px;
+        }
+
+        .step strong {
+            color: #3498db;
+        }
+
+        .step p {
+            margin: 5px 0 0 20px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tool</h1>
+        <p>2025</p>
+    </header>
+    <main>
+        <!-- Gradio app integration -->
+        <gradio-app src="https://tdn-m-voff.hf.space"></gradio-app>
+    </main>
+    <script
+        type="module"
+        src="https://gradio.s3-us-west-2.amazonaws.com/5.20.1/gradio.js"
+    ></script>
+</body>
+</html>
